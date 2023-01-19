@@ -1,4 +1,6 @@
-export default function Register({ setCanvi }) {
+import React from "react";
+
+export default function Register({ setLogin }) {
     return (
       <>
         <div class="container right-panel-active" id="container">
@@ -22,8 +24,8 @@ export default function Register({ setCanvi }) {
               <div class="overlay-panel overlay-left">
                 <h1>Welcome Back!</h1>
                 <p>To keep connected with us please login with your personal info</p>
-                <button className="ghost" onClick={() => {
-                  setCanvi(true);
+                <button className="ghost" id="signUp" onClick={() => {
+                  setLogin(true);
                   }}
                 >
                   Inicia sesion
