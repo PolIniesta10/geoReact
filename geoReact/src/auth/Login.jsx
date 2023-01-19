@@ -1,9 +1,8 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faFacebookF } from "@fortawesome/free-brands-svg-icons"
-import { faGooglePlus } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
+import { faGooglePlusG } from "@fortawesome/free-brands-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
-
 export default function Login({ setLogin }) {
     return (
       <>
@@ -12,15 +11,15 @@ export default function Login({ setLogin }) {
             <form action="#">
               <h1>Sign in</h1>
               <div class="social-container">
-                <a href="#" class="social"><FontAwesomeIcon icon={faFacebookF}></FontAwesomeIcon></a>
-                <a href="#" class="social"><FontAwesomeIcon icon={faGooglePlus}></FontAwesomeIcon></a>
-                <a href="#" class="social"><FontAwesomeIcon icon={faTwitter}></FontAwesomeIcon></a>
+              <a href="#" class="social"><i><FontAwesomeIcon icon={faFacebookF}/></i></a>
+                <a href="#" class="social"><i><FontAwesomeIcon icon={faGooglePlusG}/></i></a>
+                <a href="#" class="social"><i><FontAwesomeIcon icon={faTwitter}/></i></a>
               </div>
               <span>or use your account</span>
               <input type="email" placeholder="Email" />
               <input type="password" placeholder="Password" />
               <a href="#">Forgot your password?</a>
-              <button class="ghost" id="signIn">Sign In</button>
+              <button class="SignBtn">Sign In</button>
             </form>
           </div>
           <div class="overlay-container">
@@ -28,7 +27,7 @@ export default function Login({ setLogin }) {
               <div class="overlay-panel overlay-right">
                 <h1>Hello, Friend!</h1>
                 <p>Enter your personal details and start journey with us</p>
-                <button className="ghost" id="signIn" onClick={() => {
+                <button className="SignBtn ghost" id="signIn" onClick={() => {
                   setLogin(false);
                   }}
                 >
