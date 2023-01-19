@@ -23,11 +23,11 @@ export default function Login({ setCanvi }) {
                 <h1>Hello, Friend!</h1>
                 <p>Enter your personal details and start journey with us</p>
                 <button className="ghost" onClick={() => {
-          setCanvi(false);
-        }}
-      >
-        Registrate
-      </button>
+                  setCanvi(false);
+                  }}
+                >
+                  Registrate
+                </button>
               </div>
             </div>
           </div>

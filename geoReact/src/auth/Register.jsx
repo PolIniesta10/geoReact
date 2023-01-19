@@ -1,7 +1,7 @@
 export default function Register({ setCanvi }) {
     return (
       <>
-        <div class="container" id="container">
+        <div class="container right-panel-active" id="container">
           <div class="form-container sign-up-container">
             <form action="#">
               <h1>Create Account</h1>
@@ -23,11 +23,11 @@ export default function Register({ setCanvi }) {
                 <h1>Welcome Back!</h1>
                 <p>To keep connected with us please login with your personal info</p>
                 <button className="ghost" onClick={() => {
-          setCanvi(true);
-        }}
-      >
-        Inicia sesion
-      </button>
+                  setCanvi(true);
+                  }}
+                >
+                  Inicia sesion
+                </button>
               </div>
             </div>
           </div>
