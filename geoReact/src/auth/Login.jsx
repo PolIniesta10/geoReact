@@ -1,4 +1,4 @@
-export default function Login() {
+export default function Login({ setCanvi }) {
     return (
       <>
         <div class="container" id="container">
@@ -22,7 +22,12 @@ export default function Login() {
               <div class="overlay-panel overlay-right">
                 <h1>Hello, Friend!</h1>
                 <p>Enter your personal details and start journey with us</p>
-                <button class="ghost" id="signUp">Sign Up</button>
+                <button className="ghost" onClick={() => {
+          setCanvi(false);
+        }}
+      >
+        Registrate
+      </button>
               </div>
             </div>
           </div>

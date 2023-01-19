@@ -9,14 +9,7 @@ function App() {
   
   return (
     <div className="App">
-      <button
-        onClick={() => {
-          setLogin(!login);
-        }}
-      >
-        Commutar Color
-      </button>
-      {login ? <Login /> : <Register />}
+      {login ? <Login setCanvi={setLogin} /> : <Register setCanvi={setLogin} />}
     </div>
     
   )
