@@ -310,6 +310,7 @@ input {
 .body-404{
     font-family: "Fira Sans", sans-serif;
     color: #f5f6fa;
+	height: 50%;
 }
 .background-404{
     position: absolute;
