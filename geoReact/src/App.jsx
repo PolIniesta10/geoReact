@@ -6,6 +6,10 @@ import { useState } from 'react'
 import Header from './Layout/Header';
 import Footer from './Layout/Footer';
 import About from './About';
+import { Routes, Route, Router } from 'react-router-dom';
+import Posts from './Posts/Posts';
+import Places from './Places/Places';
+import NotFound from './NotFound';
 
 
 function App() {
@@ -16,7 +20,16 @@ function App() {
     <UserContext.Provider value={{ authToken, setAuthToken }}  >
       {authToken ? (
       <>
-        <Header/><Footer/><About/>
+        <Header/>
+        <Routes>
+            <Route path='*' element={<NotFound />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/" element={<Places />}/>
+            <Route path="/places" element={<Places/>} />
+            <Route path="/posts" element={<Posts/>} />
+          </Routes>
+        
+        <Footer/>
       </>): ( 
       <>
         <LoginRegister/>
