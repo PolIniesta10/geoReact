@@ -46,6 +46,11 @@ export default function Register({ setLogin }) {
         if (resposta.success === true) {
           setAuthToken(resposta.authToken);
         }
+        else {
+          const errores = document.getElementsByClassName("errores")[0];
+          errores.innerHTML = resposta.message
+          errores.removeAttribute("hidden")
+        }
       })
       .catch((data) => {
         console.log(data);
@@ -72,6 +77,7 @@ export default function Register({ setLogin }) {
               <input name="email" type="email" placeholder="Email" onChange={handleChange}/>
               <input name="password" type="password" placeholder="Contraseña" onChange={handleChange}/>
               <input name="password2" type="password" placeholder="Repite contraseña" onChange={handleChange}/>
+              <div className="errores" hidden></div>
               <button className="SignBtn margin-top" onClick={(e) => {handleRegister(e);}}>Registrarse</button>
             </form>
           </div>
