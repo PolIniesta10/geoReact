@@ -87,6 +87,10 @@ a {
 	margin: 15px 0;
 }
 
+a:hover{
+	color: #FF4B2B;
+}
+
 .SignBtn {
 	border-radius: 20px;
 	border: 1px solid #FF4B2B;
@@ -100,6 +104,14 @@ a {
 	transition: transform 80ms ease-in;
 }
 
+
+.SignBtn:hover {
+	background-color: transparent;
+	color: #FF4B2B;
+  transition: all 1ms;
+  cursor: pointer;
+}
+
 .SignBtn:active {
 	transform: scale(0.95);
 }
@@ -111,6 +123,18 @@ a {
 .ghost {
 	background-color: transparent;
 	border-color: #FFFFFF;
+}
+
+.ghost:hover {
+	background-color: #00000010;
+  color: #FFFFFF;
+  transition: all 1ms;
+  cursor: pointer;
+}
+
+
+.margin-top{
+  margin-top: 10px;
 }
 
 form {
@@ -127,6 +151,7 @@ form {
 input {
 	background-color: #eee;
 	border: none;
+  border-radius: 5px;
 	padding: 12px 15px;
 	margin: 8px 0;
 	width: 100%;
