@@ -1,12 +1,16 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 import { faGooglePlusG } from "@fortawesome/free-brands-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { UserContext } from '../userContext'
+
 
 export default function Register({ setLogin }) {
   let [formulari, setFormulari] = useState({});
+  let { authToken,setAuthToken } = useContext(UserContext)
+
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -20,16 +24,7 @@ export default function Register({ setLogin }) {
     e.preventDefault();
 
     let { name, password, password2, email } = formulari;
-    console.log(
-      "He enviat les Dades:  " +
-        name +
-        "/" +
-        email +
-        "/" +
-        password +
-        "/" +
-        password2
-    );
+    
       
     if (password2 !== password) {
       alert("La contraseña no coincide");
@@ -49,7 +44,7 @@ export default function Register({ setLogin }) {
       .then((resposta) => {
         console.log(resposta);
         if (resposta.success === true) {
-          alert(resposta.authToken);
+          setAuthToken(resposta.authToken);
         }
       })
       .catch((data) => {

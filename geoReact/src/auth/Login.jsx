@@ -1,13 +1,17 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 import { faGooglePlusG } from "@fortawesome/free-brands-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { UserContext } from '../userContext'
+
 
 export default function Login({ setLogin }) {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
+  let { authToken,setAuthToken } = useContext(UserContext)
+
 
   const sendLogin = (e) => {
     e.preventDefault();
@@ -26,7 +30,7 @@ export default function Login({ setLogin }) {
       .then((resposta) => {
         console.log(resposta);
         if (resposta.success === true) {
-          alert(resposta.authToken);
+          setAuthToken(resposta.authToken);
         }
         else {
             const errores = document.getElementsByClassName("errores")[0];
@@ -38,7 +42,6 @@ export default function Login({ setLogin }) {
         alert("Catchch");
       });
 
-    alert("He enviat les Dades:  " + email + "/" + password);
   };
     return (
       <>
