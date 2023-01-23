@@ -28,6 +28,10 @@ export default function Login({ setLogin }) {
         if (resposta.success === true) {
           alert(resposta.authToken);
         }
+        else {
+            const errores = document.getElementsByClassName("errores")[0];
+            errores.innerHTML = resposta.message
+        }
       })
       .catch((data) => {
         console.log(data);
@@ -50,8 +54,9 @@ export default function Login({ setLogin }) {
               <span>o usa tu cuenta ya existente</span>
               <input name="email" type="email" placeholder="Email" onChange={(e) => {setEmail(e.target.value);}} />
               <input name="password" type="password" placeholder="Contraseña" onChange={(e) => {setPassword(e.target.value);}}/>
+              <div className="errores"></div>
               <a href="#">Olvidaste tu contraseña?</a>
-              <button className="SignBtn" onClick={(e) => {sendLogin(e.target.value);}}>Iniciar sesion</button>
+              <button className="SignBtn" onClick={(e) => {sendLogin(e);}}>Iniciar sesion</button>
             </form>
           </div>
           <div className="overlay-container">
@@ -61,7 +66,6 @@ export default function Login({ setLogin }) {
                 <p>Ingresa tus datos personales y comienza tu viaje con nosotros</p>
                 <button className="SignBtn ghost" id="signIn" onClick={() => {setLogin(false);}}>Registrate
                 </button>
-                alert(message.alert)
               </div>
             </div>
           </div>
