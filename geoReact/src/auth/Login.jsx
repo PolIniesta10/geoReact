@@ -31,6 +31,7 @@ export default function Login({ setLogin }) {
         else {
             const errores = document.getElementsByClassName("errores")[0];
             errores.innerHTML = resposta.message
+            errores.removeAttribute("hidden")
         }
       })
       .catch((data) => {
@@ -54,7 +55,7 @@ export default function Login({ setLogin }) {
               <span>o usa tu cuenta ya existente</span>
               <input name="email" type="email" placeholder="Email" onChange={(e) => {setEmail(e.target.value);}} />
               <input name="password" type="password" placeholder="Contraseña" onChange={(e) => {setPassword(e.target.value);}}/>
-              <div className="errores"></div>
+              <div className="errores" hidden></div>
               <a href="#">Olvidaste tu contraseña?</a>
               <button className="SignBtn" onClick={(e) => {sendLogin(e);}}>Iniciar sesion</button>
             </form>
