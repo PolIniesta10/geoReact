@@ -8,6 +8,7 @@ export default function Header() {
         <Link to="/places">Places </Link>
         <Link to="/posts">Posts </Link>
         <Link to="/about">About </Link>
+        <Link to="/notFound">NotFound </Link>
 
     </div>
   )

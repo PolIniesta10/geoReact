@@ -22,7 +22,7 @@ function App() {
       <>
         <Header/>
         <Routes>
-            <Route path='*' element={<NotFound />} />
+            <Route path="/notFound" element={<NotFound />} />
             <Route path="/about" element={<About />} />
             <Route path="/" element={<Places />}/>
             <Route path="/places" element={<Places/>} />
