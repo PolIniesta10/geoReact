@@ -5,6 +5,7 @@ import { UserContext } from "./userContext";
 import { useState } from 'react'
 import Header from './Layout/Header';
 import Footer from './Layout/Footer';
+import NotFound from './Layout/NotFound';
 import About from './About';
 
 
@@ -16,7 +17,7 @@ function App() {
     <UserContext.Provider value={{ authToken, setAuthToken }}  >
       {authToken ? (
       <>
-        <Header/><Footer/><About/>
+        <Header/><Footer/><About/><NotFound/>
       </>): ( 
       <>
         <LoginRegister/>
