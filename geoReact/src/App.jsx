@@ -20,16 +20,24 @@ function App() {
     <UserContext.Provider value={{ authToken, setAuthToken }}  >
       {authToken ? (
       <>
+      <div className='cajamaster'>
+        <div className='header'>
         <Header/>
+        </div>
+        
         <Routes>
-            <Route path="/notFound" element={<NotFound />} />
+            <Route path="/*" element={<NotFound />} />
             <Route path="/about" element={<About />} />
-            <Route path="/" element={<Places />}/>
+            <Route path="/" element={<Posts />}/>
             <Route path="/places" element={<Places/>} />
             <Route path="/posts" element={<Posts/>} />
           </Routes>
+        <div className='footer'>
+          <Footer/>
+        </div>
+      </div>
+     
         
-        <Footer/>
       </>): ( 
       <>
         <LoginRegister/>

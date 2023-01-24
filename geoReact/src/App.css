@@ -451,3 +451,39 @@ input {
 	}
 
 }
+.cajamaster {
+	display: flex;
+	width: 1200px;
+	height: 450px;
+	flex-direction: column;
+}
+
+.cajamasterheader {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+	width: 100%;
+
+}
+.izq_header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+.linksheader {
+	width: 80%;
+	margin: auto;
+	background-color: yellow;
+}
+
+.footer {
+	background-color: green;
+	width: 100%;
+}
+.posts {
+	width: 100%;
+	height: 100%;
+	background-color: blue;
+}
