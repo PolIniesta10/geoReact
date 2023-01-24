@@ -21,7 +21,7 @@ function App() {
       {authToken ? (
       <>
       <div className='cajamaster'>
-        <div className='header'>
+        <div>
         <Header/>
         </div>
         
