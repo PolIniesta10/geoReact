@@ -3,13 +3,17 @@ import { Link } from 'react-router-dom'
 
 
 export default function Header() {
+  
   return (
-    <div>
-        <Link to="/places">Places </Link>
-        <Link to="/posts">Posts </Link>
-        <Link to="/about">About </Link>
-        <Link to="/notFound">NotFound </Link>
+    <div className='cajamasterheader'>
+      <div className='izq_header'>
+          <div className='linksheader'><Link to="/places">Places</Link></div>
+          <div className='linksheader'><Link to="/posts">Posts</Link></div>
+          <div className='linksheader'><Link to="/about">About</Link></div>
+        </div>
+        <div className='der_header'>
 
+        </div>
     </div>
   )
 }
