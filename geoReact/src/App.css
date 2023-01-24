@@ -60,7 +60,7 @@ body {
 	margin: -20px 0 50px;
 }
 
-h1 {
+.h1_log_reg {
 	font-weight: bold;
 	margin: 0;
 }
@@ -69,7 +69,7 @@ h2 {
 	text-align: center;
 }
 
-p {
+.p_log_reg{
 	font-size: 14px;
 	font-weight: 100;
 	line-height: 20px;
@@ -77,18 +77,18 @@ p {
 	margin: 20px 0 30px;
 }
 
-span {
+.span_log_reg{
 	font-size: 12px;
 }
 
-a {
+.a_log_reg {
 	color: #333;
 	font-size: 14px;
 	text-decoration: none;
 	margin: 15px 0;
 }
 
-a:hover{
+.a_log_reg:hover{
 	color: #FF4B2B;
 }
 
@@ -307,150 +307,75 @@ input {
 					PAGE 404
 ##################################################### */
 
-.body-404{
-    font-family: "Fira Sans", sans-serif;
-    color: #f5f6fa;
-	height: 50%;
+.page_404{ 
+	padding:40px 0; 
+	background:transparent; 
 }
-.background-404{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(#0C0E10, #446182);
-}
-.ground-404{
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 25vh;
-	background: #0C0E10;
 
+.page_404  img{
+	width:100%;
 }
-.container-404{
-    position: relative;
-    margin: 0 auto;
-    width: 85%;
-    height: 100vh;
-    padding-bottom: 25vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-.left-section-404, .right-section-404{
-    position: relative;
-}
-.left-section-404{
-    width: 40%;
-}
-.inner-content-404{
+
+.page_404  .container_404{
+	padding: 30px;
+	background-color: transparent; 
 	position: relative;
-	padding: 1rem ;
-}
-.heading-404{
-    text-align: center;
-    font-size: 9em;
-    line-height: 1.3em;
-    margin: 2rem 0 0.5rem 0;
-    padding: 0;
-    text-shadow: 0 0 1rem #fefefe;
-}
-.subheading-404{
-    text-align: center ;
-    max-width: 480px;
-    font-size: 1.5em;
-    line-height: 1.15em;
-    padding: 0 1rem ;
-    margin: 0 auto;
+	width: 768px;
+	max-width: 100%;
+	min-height: 480px;
 }
 
-.right-section-404{
-    width: 50%;
-}
-.svgimg{
-    position: absolute;
-    bottom: 0;
-    padding-top: 10vh;
-    padding-left: 1vh;
-    max-width: 100%;
-    max-height: 100%;
-}
-.bench-legs{
-	fill: #0C0E10;
-}
-.top-bench, .bottom-bench{
-	stroke: #0C0E10 ;
-	stroke-width: 1px;
-	fill: #5B3E2B;
-}
-.bottom-bench path:nth-child(1){
-	fill: darken(#5B3E2B,7%);
-}
-.lamp-details{
-	fill: #202425;
-}
-.lamp-accent{
-	fill: lighten(#202425, 5%);
-}
-.lamp-bottom{
-	fill: linear-gradient(#202425, #0C0E10);
-}
-.lamp-light{
-	fill: #EFEFEF;
-}
-@keyframes glow{
-    0%{
-        text-shadow: 0 0 1rem #fefefe;
-	}
-    50% {
-        text-shadow: 0 0 1.85rem #ededed;
-	}
-    100%{
-        text-shadow: 0 0 1rem #fefefe;
-	}
-}
 
-@media only screen and (max-width: 770px) {
-
-	.ground-404{
-		height: 0vh;
-	}
-	.container-404{
-		flex-direction: column;
-		padding-bottom: 0vh;
-	}
-	.left-section-404, .right-section-404{
-		position: relative;
-	}
-	.left-section-404{
-		width: 100%;
-		height: 40%;
-		position: absolute;
-		top: 0;
-	}
-	.heading-404{
-		font-size: 7em;
-		line-height: 1.15;
-		margin: 0;
-	}
-	.subheading-404{
-		font-size: 1.3em;
-		line-height: 1.15;
-		max-width: 100%;
-	}
-	
-	.right-section-404{
-		width: 100;
-		height: 60%;
-		position: absolute;
-		bottom: 0;
-	}
-	.svgimg{
-		padding: 0;
-	}
+.four_zero_four_bg{
+	background-image: url(./assets/Simpsons.gif);
+    height: 523px;
+	background-repeat: no-repeat;
+	background-size: cover;
 
 }
+ 
+ 
+.h1_404{
+ 	font-size:80px;
+	margin:0
+}
+ 
+.h3_404{
+	font-size:22px;
+	margin-block-start: 1em;
+    margin-block-end: 0em;
+}
+
+.p_404{
+	font-size:19px;
+	margin-block-start: 0.10000000000000009em;
+}
+			 
+.link_404{			 
+	color: #fff!important;
+    padding: 10px 20px;
+    background: #39ac31;
+	border: 3px solid #11770a;
+    margin: 10px 0;
+	border-radius: 10px;
+    display: inline-block;
+	text-decoration: none;
+	font-size:18px;
+	font-weight:bold;
+}
+.link_404:hover{			 
+    background: #27971f;
+	border: 3px solid #11770a;
+
+}
+.contant_box_404{
+	margin-top: 5px;
+}
+
+/* #####################################################
+					HEADER
+##################################################### */
+
 .cajamaster {
 	display: flex;
 	width: 1200px;

@@ -66,13 +66,13 @@ export default function Register({ setLogin }) {
         <div className="container right-panel-active" id="container">
           <div className="form-container sign-up-container">
             <form action="#">
-              <h1>Crear cuenta</h1>
+              <h1 className="h1_log_reg">Crear cuenta</h1>
               <div className="social-container">
                 <a href="#" className="social"><i><FontAwesomeIcon icon={faFacebookF}/></i></a>
                 <a href="#" className="social"><i><FontAwesomeIcon icon={faGooglePlusG}/></i></a>
                 <a href="#" className="social"><i><FontAwesomeIcon icon={faTwitter}/></i></a>
               </div>
-              <span>o use su correo electrónico para registrarse</span>
+              <span className="span_log_reg">o use su correo electrónico para registrarse</span>
               <input name="name" type="text" placeholder="Nombre" onChange={handleChange}/>
               <input name="email" type="email" placeholder="Email" onChange={handleChange}/>
               <input name="password" type="password" placeholder="Contraseña" onChange={handleChange}/>
@@ -84,8 +84,8 @@ export default function Register({ setLogin }) {
           <div className="overlay-container">
             <div className="overlay">
               <div className="overlay-panel overlay-left">
-                <h1>Bienvenido de nuevo!</h1>
-                <p>Para mantenerse conectado con nosotros, inicie sesión con su información personal</p>
+                <h1 className="h1_log_reg">Bienvenido de nuevo!</h1>
+                <p className="p_log_reg">Para mantenerse conectado con nosotros, inicie sesión con su información personal</p>
                 <button className="SignBtn ghost" id="signUp" onClick={() => {setLogin(true);}}>Iniciar sesion</button>
               </div>
             </div>
