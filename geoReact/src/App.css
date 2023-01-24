@@ -317,10 +317,12 @@ input {
 }
 
 .page_404  .container_404{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	padding: 30px;
 	background-color: transparent; 
 	position: relative;
-	width: 768px;
 	max-width: 100%;
 	min-height: 480px;
 }
@@ -328,9 +330,9 @@ input {
 
 .four_zero_four_bg{
 	background-image: url(./assets/Simpsons.gif);
-    height: 523px;
+    height: 310px;
+	background-size: contain;
 	background-repeat: no-repeat;
-	background-size: cover;
 
 }
  

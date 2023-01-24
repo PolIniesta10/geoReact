@@ -21,9 +21,7 @@ function App() {
       {authToken ? (
       <>
       <div className='cajamaster'>
-        <div>
         <Header/>
-        </div>
         
         <Routes>
             <Route path="/*" element={<NotFound />} />
