@@ -406,9 +406,9 @@ input {
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-	width: 25%;
-	padding: 10px;
-	margin: 2px;
+	width: 130px;
+	margin: 5px;
+	padding: 15px;
 	background-color: rgb(255, 0, 0);
 	border: 2px solid rgb(141, 8, 8);
 	cursor: pointer;
@@ -425,9 +425,10 @@ input {
 	justify-content: center;
 	align-items: center;
 	color: #FFFFFF;
-	text-decoration: none;
+	text-decoration: transparent;	
 	padding: 2px;
 }
+
 .der_header {
 	display: flex;
 	justify-content: right;
@@ -451,7 +452,7 @@ input {
 	cursor: pointer;
 }
 .logout__header:hover{
-	font-size:23px;
+	color: #333333a9;
 }
 
 
