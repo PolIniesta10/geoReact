@@ -10,7 +10,9 @@ import { useState, useContext, useEffect } from "react";
 
 export default function Header() {
   let { authToken,setAuthToken } = useContext(UserContext);
-  let { user,setUser } = useState({});
+  let [ user,setUser ] = useState('');
+  let [ roles, setRoles] = useState([]);
+
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -31,6 +33,7 @@ export default function Header() {
         console.log(resposta);
         if (resposta.success === true) {
           setAuthToken("");
+          
         }
       })
       .catch((data) => {
@@ -41,12 +44,7 @@ export default function Header() {
 
   useEffect(() => {
       
-    const handleUser = (e) => {
-      e.preventDefault();
-  
-      
-    
-  
+
       fetch("https://backend.insjoaquimmir.cat/api/user", {
         headers: {
           Accept: "application/json",
@@ -59,14 +57,14 @@ export default function Header() {
         .then((resposta) => {
           if (resposta.success === true) {
             console.log(resposta);
+            setUser(resposta.user.name);
+            setRoles(resposta.roles);
           }
         })
         .catch((data) => {
           console.log(data);
           alert("Catchch");
         });
-    };
-  
 }, [])
 
   return (
@@ -77,7 +75,9 @@ export default function Header() {
           <div className='linksheader'><Link to="/about"><TiInfoLargeOutline />About</Link></div>
       </div>
       <div className='der_header'>
-          <div className='user__header'></div>
+          <div className='user__header'><p>{user}({ roles.map (  (v)=> ( 
+          <span key={v}> {v} </span>
+) ) })</p></div>
           <button className='logout__header' onClick={(e) => {handleRegister(e);}}><FiLogOut /></button>
       </div>
     </div>
