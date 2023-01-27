@@ -9,12 +9,26 @@ import { useState, useContext, useEffect } from "react";
 
 
 export default function Header() {
-  
+
   let { authToken,setAuthToken } = useContext(UserContext);
   let [ user,setUser ] = useState('');
   let [ roles, setRoles] = useState([]);
 
-  const handleRegister = (e) => {
+  const active = (d) => {
+    var header = d.getElementById("izq_header");
+    var btns = header.getElementsByClassName("linksheader");
+    setAuthToken(authToken);
+
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function() {
+      var current = d.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+      });
+    }
+  }
+
+  const logOut = (e) => {
     e.preventDefault();
 
     fetch("https://backend.insjoaquimmir.cat/api/logout", {
@@ -66,13 +80,13 @@ export default function Header() {
   return (
     <div className='cajamasterheader'>
       <div className='izq_header'>
-          <Link to="/places" className='linksheader'><MdOutlinePlace />Places</Link>
-          <Link to="/posts" className='linksheader'><AiOutlinePicture />Posts</Link>
-          <Link to="/about" className='linksheader'><TiInfoLargeOutline />About</Link>
+          <Link to="/places" className='linksheader active' onClick={(d) => {active(d);}}><MdOutlinePlace />Places</Link>
+          <Link to="/posts" className='linksheader' onClick={(d) => {active(d);}}><AiOutlinePicture />Posts</Link>
+          <Link to="/about" className='linksheader' onClick={(d) => {active(d);}}><TiInfoLargeOutline />About</Link>
       </div>
       <div className='der_header'>
           <div className='user__header'><p>{user}({ roles.map ((v) => ( <span key={v}> {v} </span> ))})</p></div>
-          <button className='logout__header' onClick={(e) => {handleRegister(e);}}><FiLogOut /></button>
+          <button className='logout__header' onClick={(e) => {logOut(e);}}><FiLogOut /></button>
       </div>
     </div>
   )

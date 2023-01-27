@@ -421,6 +421,9 @@ input {
 	background-color: rgb(204, 36, 36);
 	border: 2px solid rgb(126, 0, 0);
 }
+.linksheader.active{
+	color: black;
+}
 
 .izq_header .linksheader svg{
 	margin-right: 5px;
