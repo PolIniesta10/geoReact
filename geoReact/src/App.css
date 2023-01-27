@@ -401,7 +401,8 @@ input {
 	width: 100%;
 	margin: 7px;
 }
-.linksheader{
+.izq_header .linksheader{
+	text-decoration: none;	
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -416,19 +417,14 @@ input {
 	color: #FFFFFF;
 	font-size: 20px;
 }
-.linksheader:hover{
+.izq_header .linksheader:hover{
 	background-color: rgb(204, 36, 36);
 	border: 2px solid rgb(126, 0, 0);
 }
-.linksheader a{
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	color: #FFFFFF;
-	text-decoration: transparent;	
-	padding: 2px;
-}
 
+.izq_header .linksheader svg{
+	margin-right: 5px;
+}
 .der_header {
 	display: flex;
 	justify-content: right;
@@ -463,7 +459,7 @@ input {
 	background-color: green;
 	width: 100%;
 }
-.posts {
+.postsHome {
 	width: 100%;
 	height: 100%;
 	background-color: blue;

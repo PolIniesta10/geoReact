@@ -44,7 +44,6 @@ export default function Header() {
 
   useEffect(() => {
       
-
       fetch("https://backend.insjoaquimmir.cat/api/user", {
         headers: {
           Accept: "application/json",
@@ -70,9 +69,9 @@ export default function Header() {
   return (
     <div className='cajamasterheader'>
       <div className='izq_header'>
-          <div className='linksheader'><Link to="/places"><MdOutlinePlace />Places</Link></div>
-          <div className='linksheader'><Link to="/posts"><AiOutlinePicture />Posts</Link></div>
-          <div className='linksheader'><Link to="/about"><TiInfoLargeOutline />About</Link></div>
+          <Link to="/places" className='linksheader'><MdOutlinePlace />Places</Link>
+          <Link to="/posts" className='linksheader'><AiOutlinePicture />Posts</Link>
+          <Link to="/about" className='linksheader'><TiInfoLargeOutline />About</Link>
       </div>
       <div className='der_header'>
           <div className='user__header'><p>{user}({ roles.map (  (v)=> ( 
