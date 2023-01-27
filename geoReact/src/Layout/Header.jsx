@@ -43,9 +43,7 @@ export default function Header() {
       
     const handleUser = (e) => {
       e.preventDefault();
-  
-      
-    
+
   
       fetch("https://backend.insjoaquimmir.cat/api/user", {
         headers: {
