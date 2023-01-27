@@ -9,16 +9,13 @@ import { useState, useContext, useEffect } from "react";
 
 
 export default function Header() {
+  
   let { authToken,setAuthToken } = useContext(UserContext);
   let [ user,setUser ] = useState('');
   let [ roles, setRoles] = useState([]);
 
-
   const handleRegister = (e) => {
     e.preventDefault();
-
-    
-  
 
     fetch("https://backend.insjoaquimmir.cat/api/logout", {
       headers: {
