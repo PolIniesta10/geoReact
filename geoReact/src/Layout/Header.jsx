@@ -74,9 +74,7 @@ export default function Header() {
           <Link to="/about" className='linksheader'><TiInfoLargeOutline />About</Link>
       </div>
       <div className='der_header'>
-          <div className='user__header'><p>{user}({ roles.map (  (v)=> ( 
-          <span key={v}> {v} </span>
-) ) })</p></div>
+          <div className='user__header'><p>{user}({ roles.map ((v) => ( <span key={v}> {v} </span> ))})</p></div>
           <button className='logout__header' onClick={(e) => {handleRegister(e);}}><FiLogOut /></button>
       </div>
     </div>
