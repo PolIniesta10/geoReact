@@ -11,27 +11,31 @@ export default function Register({ setLogin }) {
   let [formulari, setFormulari] = useState({});
   let { authToken,setAuthToken } = useContext(UserContext)
 
-
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     e.preventDefault();
-
-    setFormulari({
-      ...formulari,
-      [e.target.name]: e.target.value
-    });
+    try {
+      setFormulari({
+        ...formulari,
+        [e.target.name]: e.target.value
+      });
+    }
+    catch {
+      console.log("Catch!");
+    }
+    
   };
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
 
     let { name, password, password2, email } = formulari;
-    
-      
+
     if (password2 !== password) {
       alert("La contraseña no coincide");
       return false;
     }
 
-    fetch("https://backend.insjoaquimmir.cat/api/register", {
+    try {
+      const data = await fetch("https://backend.insjoaquimmir.cat/api/register", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json"
@@ -39,28 +43,23 @@ export default function Register({ setLogin }) {
       method: "POST",
       // Si els noms i les variables coincideix, podem simplificar
       body: JSON.stringify({ name, email, password })
-    })
-      .then((data) => data.json())
-      .then((resposta) => {
-        console.log(resposta);
-        if (resposta.success === true) {
-          setAuthToken(resposta.authToken);
-        }
-        else {
-          const errores = document.getElementsByClassName("errores")[0];
-          errores.innerHTML = resposta.message
-          errores.removeAttribute("hidden")
-        }
-      })
-      .catch((data) => {
-        console.log(data);
-        alert("Catchch");
       });
 
-      alert("He enviat les Dades:  " + email + "/" + password);
-
+      const resposta = await data.json();
+      if (resposta.success === true) {
+        setAuthToken(resposta.authToken);
+      }
+      else {
+        const errores = document.getElementsByClassName("errores")[0];
+        errores.innerHTML = resposta.message
+        errores.removeAttribute("hidden")
+      } 
+    }
+    catch {
+      console.log("Error");
+      alert("catch");
+    }
   };
-
     return (
       <>
         <div className="container right-panel-active" id="container">

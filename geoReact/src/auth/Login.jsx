@@ -13,36 +13,33 @@ export default function Login({ setLogin }) {
   let { authToken,setAuthToken } = useContext(UserContext)
 
 
-  const sendLogin = (e) => {
+  const sendLogin = async (e) =>  {
     e.preventDefault();
 
-    console.log("Comprovant credencials....");
-    // Enviam dades a l'aPI i recollim resultat
-    fetch("https://backend.insjoaquimmir.cat/api/login", {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      method: "POST",
-      body: JSON.stringify({ email: email, password: password })
-    })
-      .then((data) => data.json())
-      .then((resposta) => {
-        console.log(resposta);
-        if (resposta.success === true) {
-          setAuthToken(resposta.authToken);
-        }
-        else {
-            const errores = document.getElementsByClassName("errores")[0];
-            errores.innerHTML = resposta.message
-            errores.removeAttribute("hidden")
-        }
-      })
-      .catch((data) => {
-        console.log(data);
-        alert("Catchch");
+    try {
+      const data = await fetch("https://backend.insjoaquimmir.cat/api/login", {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        method: "POST",
+        body: JSON.stringify({ email, password })
       });
 
+
+      const resposta = await data.json();
+      if (resposta.success === true) {
+        setAuthToken(resposta.authToken);
+      }
+      else {
+        const errores = document.getElementsByClassName("errores")[0];
+        errores.innerHTML = resposta.message
+        errores.removeAttribute("hidden")
+      }
+    } catch {
+      console.log("Error");
+      alert("catch");
+    }
   };
     return (
       <>
