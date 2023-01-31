@@ -16,8 +16,8 @@ export default function PlacesMenu(){
       <div className='der_menu'>
         <div className="buscador">
           <div className="container_buscador">
-            <span className="icon"><BiSearchAlt /></span>
-            <input type="search" id="search" placeholder="Search..." /> 
+              <span className="icon"><BiSearchAlt /></span>
+              <input type="search" id="search" placeholder="Search..." />
           </div>
         </div>
       </div>
