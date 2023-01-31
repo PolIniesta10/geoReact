@@ -44,17 +44,17 @@ function App() {
             <Route path="/*" element={<NotFound />} />
             <Route path="/about" element={<About />} />
             <Route path="/" element={<Posts />}/>
-            <Route path="/places" element={ <Places/>} /> 
+            <Route path="/places" element={ <> <PlacesMenu/><Places/> </> } /> 
 
-            <Route path="/places/:id" element={ <Place/> } />
+            <Route path="/places/:id" element={ <> <PlacesMenu/><Place/> </>} />
             <Route path="/places/add" element={ <> <PlacesMenu/><PlaceAdd /> </>} /> 
             <Route path="/places/edit/:id" element={ <> <PlacesMenu/><PlaceEdit /> </>} /> 
             <Route path="/places/grid" element={ <> <PlacesMenu/><PlacesGrid /> </>} /> 
             <Route path="/places/list" element={ <> <PlacesMenu/><PlacesList /> </>} /> 
 
-            <Route path="/posts" element={<Posts/>} />
+            <Route path="/posts" element={ <> <PostsMenu/><Posts/> </>} />
 
-            <Route path="/posts/:id" element={ <Post/> } />
+            <Route path="/posts/:id" element={ <> <PostsMenu/><Post/> </>} />
             <Route path="/posts/add" element={  <> <PostsMenu/><PostAdd/> </>} /> 
             <Route path="/posts/edit/:id" element={ <> <PostsMenu/><PostEdit/> </>} /> 
             <Route path="/posts/grid" element={ <> <PostsMenu/><PostsGrid/> </>} /> 
