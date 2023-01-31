@@ -14,20 +14,6 @@ export default function Header() {
   let [ user,setUser ] = useState('');
   let [ roles, setRoles] = useState([]);
 
-  // const active = (d) => {
-  //   var header = d.getElementById("izq_header");
-  //   var btns = header.getElementsByClassName("linksheader");
-  //   setAuthToken(authToken);
-
-  //   for (var i = 0; i < btns.length; i++) {
-  //     btns[i].addEventListener("click", function() {
-  //     var current = d.getElementsByClassName("active");
-  //     current[0].className = current[0].className.replace(" active", "");
-  //     this.className += " active";
-  //     });
-  //   }
-  // }
-
   const logOut = async () => {
     try {
       const data = await fetch("https://backend.insjoaquimmir.cat/api/logout", {
@@ -80,6 +66,7 @@ export default function Header() {
 
   return (
     <div className='cajamasterheader'>
+      <div className='logo_header'></div>
       <div className='izq_header'>
           <Link to="/places" className='linksheader'><MdOutlinePlace />Places</Link>
           <Link to="/posts" className='linksheader'><AiOutlinePicture />Posts</Link>

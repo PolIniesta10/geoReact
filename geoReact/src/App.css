@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans');
 
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -385,7 +385,7 @@ input {
 
 .cajamaster {
 	display: flex;
-	width: 1200px;
+	width: 1700px;
 	height: 450px;
 	flex-direction: column;
 }
@@ -397,13 +397,22 @@ input {
 	flex-direction: row;
 	width: 100%;
 	height: 20%;
-	background-color: rgb(223, 223, 223);
+}
+.logo_header{
+	background-image: url(./assets/GeoReact.png);
+	height: 90px;
+	width: 200px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin-left: 20px;
+	margin-right: 10px;
 }
 .izq_header {
 	display: flex;
 	justify-content: left;
 	align-items: center;
 	width: 100%;
+	height: 100%;
 	margin: 7px;
 }
 .izq_header .linksheader{
@@ -412,24 +421,20 @@ input {
 	justify-content: center;
 	align-items: center;
 	flex-wrap: wrap;
-	width: 130px;
-	margin: 5px;
-	padding: 15px;
-	background-color: rgb(255, 0, 0);
-	border: 2px solid rgb(141, 8, 8);
+	width: 150px;
+	height: 100%;
 	cursor: pointer;
-	border-radius: 5px;
-	color: #FFFFFF;
+	color: #2b303b;
 	font-size: 20px;
+	border-radius: 0px 50px 0px 50px;
+
 }
 .izq_header .linksheader:hover{
-	background-color: rgb(204, 36, 36);
-	border: 2px solid rgb(126, 0, 0);
+	background-color: #e4e4e4;
 }
-.linksheader.active{
-	color: black;
+.izq_header .linksheader:active, .izq_header .linksheader:focus{
+	background-color: rgba(223, 223, 223, 0.377);
 }
-
 .izq_header .linksheader svg{
 	margin-right: 5px;
 }
