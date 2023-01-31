@@ -46,7 +46,7 @@ function App() {
             <Route path="/" element={<Posts />}/>
             <Route path="/places" element={ <Places/>} /> 
 
-            <Route path="/places/:id" element={ <Place/> } />
+            <Route path="/places/:id" element={ <> <PlacesMenu/><Place/> </> } />
             <Route path="/places/add" element={ <> <PlacesMenu/><PlaceAdd /> </>} /> 
             <Route path="/places/edit/:id" element={ <> <PlacesMenu/><PlaceEdit /> </>} /> 
             <Route path="/places/grid" element={ <> <PlacesMenu/><PlacesGrid /> </>} /> 

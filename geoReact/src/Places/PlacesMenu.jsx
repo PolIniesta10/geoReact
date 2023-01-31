@@ -13,9 +13,9 @@ export default function PlacesMenu(){
           <Link to="/places/list" className='link_menu'><BsListTask />List</Link>
       </div>
       <div className='der_menu'>
-        <div class="buscador">
-          <div class="container_buscador">
-              <span class="icon"><BiSearchAlt /></span>
+        <div className="buscador">
+          <div className="container_buscador">
+              <span className="icon"><BiSearchAlt /></span>
               <input type="search" id="search" placeholder="Search..." />
           </div>
         </div>
