@@ -58,7 +58,7 @@ body {
 	font-family: 'Montserrat', sans-serif;
 	/* height: 100vh; */
 	/* margin: -20px 0 50px; */
-	margin: -20px;
+	margin: -20;
 }
 
 .App{
@@ -601,4 +601,24 @@ input {
 .container_buscador:hover .icon svg{
 	right: 84%;
 	transition: all .55s ease;
+}
+#tr1PlaceList {
+	background-color: green;
+}
+#tr2PlaceList {
+	height: 30px;
+}
+#tr2PlaceList:nth-child(even) {
+	background-color: #2b303b;
+	color: white;
+}
+#tr1PostList {
+	background-color: green;
+}
+#tr2PostList {
+	height: 30px;
+}
+#tr2PostList:nth-child(even) {
+	background-color: #2b303b;
+	color: white;
 }
