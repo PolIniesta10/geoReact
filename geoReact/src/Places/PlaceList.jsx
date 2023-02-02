@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react'
 import { UserContext } from '../userContext';
+import { ImEye } from 'react-icons/im';
 
 export const PlaceList = ({place}) => {
 
@@ -14,7 +15,7 @@ export const PlaceList = ({place}) => {
             <td>{place.reviews_count}</td>
             <td>{place.visibility.name}</td>
             <td><i class="bi bi-star-fill"></i>{place.favorites_count}</td>
-            <td><i className="bi bi-eye"></i></td>
+            <td><ImEye /></td>
 
             {(usuari == place.author.name ) ?  
             <td><i className="bi bi-pencil-square"></i></td> : <td/>}
