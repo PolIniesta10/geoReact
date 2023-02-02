@@ -1,5 +1,8 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react'
 import { UserContext } from '../userContext';
+import { ImEye } from 'react-icons/im';
+import { BiEdit } from 'react-icons/bi';
+import { FaTrashAlt } from 'react-icons/fa';
 
 export const PostList = ({post}) => {
 
@@ -14,13 +17,12 @@ export const PostList = ({post}) => {
             <td>{post.comments_count}</td>
             <td>{post.visibility.name}</td>
             <td><i className="bi bi-star-fill"></i>{post.likes_count}</td>
-            <td><i className="bi bi-eye"></i></td>
+            <td><ImEye className='icono'/></td>
 
-            {(usuari == post.author.name ) ?  
-            <td><i className="bi bi-pencil-square"></i></td> : <td/>}
+           
+            <td><BiEdit className='icono2'/></td> 
 
-            {(usuari == post.author.name ) ?  
-            <td><i className="bi bi-trash3"></i></td> : <td/>}
+            <td><FaTrashAlt className='icono'/></td>
         </>
     )
 }

@@ -1,5 +1,9 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react'
 import { UserContext } from '../userContext';
+import { ImEye } from 'react-icons/im';
+import { BiEdit } from 'react-icons/bi';
+import { FaTrashAlt } from 'react-icons/fa';
+import { AiOutlineLike } from 'react-icons/ai';
 
 export const PlaceList = ({place}) => {
 
@@ -13,14 +17,18 @@ export const PlaceList = ({place}) => {
             <td>{place.longitude}</td>
             <td>{place.reviews_count}</td>
             <td>{place.visibility.name}</td>
-            <td><i class="bi bi-star-fill"></i>{place.favorites_count}</td>
-            <td><i className="bi bi-eye"></i></td>
+            <td>
+                <div className='iconofavourite'>
+                    <AiOutlineLike className='icono3'/>{place.favorites_count}
+                </div>
+            </td>
+            <td><ImEye className='icono'/></td>
 
-            {(usuari == place.author.name ) ?  
-            <td><i className="bi bi-pencil-square"></i></td> : <td/>}
+         
+            <td><BiEdit className='icono2'/></td> 
 
-            {(usuari == place.author.name ) ?  
-            <td><i className="bi bi-trash3"></i></td> : <td/>}
+           
+            <td><FaTrashAlt className='icono'/></td> 
         </>
     )
 }

@@ -622,3 +622,18 @@ input {
 	background-color: #2b303b;
 	color: white;
 }
+.icono {
+	color: blue;
+	font-size: 1.5em;
+}
+.icono2 {
+	color: red;
+	font-size: 1.5em;
+}
+.iconofavourite {
+	display: flex;
+	justify-content: center;
+}
+.icono3 {
+	font-size: 1.3em;
+}

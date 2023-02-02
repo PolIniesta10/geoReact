@@ -44,6 +44,9 @@ export default function PlacesList(){
             <th>Reviews</th>
             <th>Visibility</th>
             <th>Favorites</th>
+            <th></th>
+            <th></th>
+            <th></th>
 
           </tr>        
           {places.map((place) => (

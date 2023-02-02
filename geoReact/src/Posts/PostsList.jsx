@@ -44,6 +44,9 @@ export default function PostsList(){
             <th>Commentaris</th>
             <th>Visibility</th>
             <th>Likes</th>
+            <th></th>
+            <th></th>
+            <th></th>
 
           </tr>        
           {posts.map((post) => (
