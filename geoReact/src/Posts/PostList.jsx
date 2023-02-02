@@ -3,6 +3,7 @@ import { UserContext } from '../userContext';
 import { ImEye } from 'react-icons/im';
 import { BiEdit } from 'react-icons/bi';
 import { FaTrashAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 export const PostList = ({post}) => {
 
@@ -17,7 +18,7 @@ export const PostList = ({post}) => {
             <td>{post.comments_count}</td>
             <td>{post.visibility.name}</td>
             <td><i className="bi bi-star-fill"></i>{post.likes_count}</td>
-            <td><ImEye className='icono'/></td>
+            <td><Link className="headerLink" to={"/posts/" +post.id}><ImEye className='icono'/></Link></td>
 
            
             <td><BiEdit className='icono2'/></td> 
