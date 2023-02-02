@@ -33,6 +33,7 @@ export default function PlacesList(){
   useEffect(() => { getPLaces(); }, []);
   return (
     <>
+    <div className='bodyPlaceList'>
       <table id='tablePlaceList'>
         <tbody>
           <tr id='tr1PlaceList'>
@@ -47,16 +48,15 @@ export default function PlacesList(){
             <th></th>
             <th></th>
             <th></th>
-
           </tr>        
-          {places.map((place) => (
-            <tr  key={places.id} id='tr2PlaceList'>
-              <PlaceList place={place} />
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
+            {places.map((place) => (
+              <tr  key={places.id} id='tr2PlaceList'>
+                <PlaceList place={place} />
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   )
 }

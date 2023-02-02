@@ -602,25 +602,53 @@ input {
 	right: 84%;
 	transition: all .55s ease;
 }
+
+.bodyPlaceList{
+	padding-bottom: 10px;
+}
+#tablePlaceList{	
+	border-collapse: collapse;
+	background-color: #a8a8a8;
+	width: 100%;
+}
 #tr1PlaceList {
-	background-color: green;
+	background-color: #a8a8a8;
+}
+#tr1PlaceList th{
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 #tr2PlaceList {
-	height: 30px;
+	height: 35px;
+	background-color: #a8a8a8;
+	color: #2b303b;
 }
 #tr2PlaceList:nth-child(even) {
 	background-color: #2b303b;
-	color: white;
+	color: #a8a8a8;
+}
+#tr2PlaceList:hover {
+	background-color: rgb(218, 218, 218);
+	color: #2b303b;
+}
+
+
+#tablePostList{
+	border-collapse: collapse;
+	background-color: #0b68d3;
+	margin: 10px;
 }
 #tr1PostList {
-	background-color: green;
+	background-color: #0b68d3;
 }
 #tr2PostList {
 	height: 30px;
+	background-color: #a8a8a8;
+	color: #2b303b;
 }
 #tr2PostList:nth-child(even) {
 	background-color: #2b303b;
-	color: white;
+	color: #a8a8a8;
 }
 .icono {
 	color: blue;
