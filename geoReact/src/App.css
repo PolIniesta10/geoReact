@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap');
 
 #root {
   /* max-width: 1280px; */
@@ -64,6 +65,9 @@ body {
 .App{
 	margin: 200px;
 }
+/* #####################################################
+					LOGIN & REGISTER
+##################################################### */
 
 .h1_log_reg {
 	font-weight: bold;
@@ -309,6 +313,10 @@ input {
 }
 
 /* #####################################################
+				END LOGIN & REGISTER
+##################################################### */
+
+/* #####################################################
 					PAGE 404
 ##################################################### */
 
@@ -331,8 +339,6 @@ input {
 	max-width: 100%;
 	min-height: 480px;
 }
-
-
 .four_zero_four_bg{
 	background-image: url(./assets/Simpsons.gif);
     height: 310px;
@@ -340,8 +346,6 @@ input {
 	background-repeat: no-repeat;
 
 }
- 
- 
 .h1_404{
  	font-size:80px;
 	margin:0
@@ -380,7 +384,11 @@ input {
 }
 
 /* #####################################################
-					HEADER 404
+					END PAGE 404
+##################################################### */
+
+/* #####################################################
+					HEADER
 ##################################################### */
 
 .cajamaster {
@@ -465,28 +473,13 @@ input {
 }
 
 
+/* #####################################################
+					END HEADER
+##################################################### */
 
-
-
-.footer {
-	background-color: green;
-	width: 100%;
-}
-.postsHome {
-	width: 100%;
-	height: 100%;
-	background-color: rgb(14, 14, 255);
-}
-
-
-.placesHome {
-	width: 100%;
-	height: 100%;
-	background-color: rgb(14, 255, 195);
-}
-
-
-
+/* #####################################################
+				HEADER PLACES & POST
+##################################################### */
 
 
 .menu_header {
@@ -603,65 +596,138 @@ input {
 	transition: all .55s ease;
 }
 
-.bodyPlaceList{
+
+/* #####################################################
+				END HEADER PLACES & POST
+##################################################### */
+
+
+/* #####################################################
+				PLACES & POST HOME
+##################################################### */
+
+.postsHome {
+	width: 100%;
+	height: 100%;
+	background-color: rgb(14, 14, 255);
+}
+
+
+.placesHome {
+	width: 100%;
+	height: 100%;
+	background-color: rgb(14, 255, 195);
+}
+
+/* #####################################################
+				END PLACES & POST HOME
+##################################################### */
+
+/* #####################################################
+					PLACES & POSTS LIST	
+##################################################### */
+
+.bodyList{
 	padding-bottom: 10px;
 }
-#tablePlaceList{	
+#tableList{	
 	border-collapse: collapse;
 	background-color: #a8a8a8;
 	width: 100%;
 }
-#tr1PlaceList {
-	background-color: #a8a8a8;
+#tr1List {
+	background-color: #33FFA4;
 }
-#tr1PlaceList th{
+#tr1List th{
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
-#tr2PlaceList {
+#tr2List {
 	height: 35px;
 	background-color: #a8a8a8;
 	color: #2b303b;
 }
-#tr2PlaceList:nth-child(even) {
+#tr2List:nth-child(even) {
 	background-color: #2b303b;
 	color: #a8a8a8;
 }
-#tr2PlaceList:hover {
+#tr2List:hover {
 	background-color: rgb(218, 218, 218);
 	color: #2b303b;
 }
 
+/* #####################################################
+				END	PLACES & POST LIST	
+##################################################### */
 
-#tablePostList{
-	border-collapse: collapse;
-	background-color: #0b68d3;
-	margin: 10px;
-}
-#tr1PostList {
-	background-color: #0b68d3;
-}
-#tr2PostList {
-	height: 30px;
-	background-color: #a8a8a8;
-	color: #2b303b;
-}
-#tr2PostList:nth-child(even) {
-	background-color: #2b303b;
-	color: #a8a8a8;
-}
+/* #####################################################
+				ICONOS PLACES & POST LISTS	
+##################################################### */
 .icono {
 	color: blue;
 	font-size: 1.5em;
+	cursor: pointer;
 }
 .icono2 {
 	color: red;
 	font-size: 1.5em;
+	cursor: pointer;
 }
 .iconofavourite {
 	display: flex;
 	justify-content: center;
+	cursor: pointer;
 }
 .icono3 {
 	font-size: 1.3em;
+	cursor: pointer;
 }
+
+/* #####################################################
+				END ICONOS PLACES & POST LISTS	
+##################################################### */
+
+/* #####################################################
+						FOOTER
+##################################################### */
+
+.footer{
+	font-family: 'Play', sans-serif;
+	text-align:center;
+}
+	
+.footer .row{
+	width:100%;
+	margin:1% 0%;
+	padding:0.2% 0%;
+    color: #2b303b;
+	font-size:0.8em;
+}
+	
+.footer .row a{
+	text-decoration:none;
+    color: #2b303b;
+	transition:0.5s;
+}
+	
+.footer .row a:hover{
+	color:#a8a8a8;
+}
+	
+.footer .row ul{
+	width:100%;
+}
+	
+.footer .row ul li{
+	display:inline-block;
+	margin:0px 30px;
+}
+	
+.footer .row a svg{
+	font-size:2em;
+	margin:0% 1%;
+}
+	
+/* #####################################################
+					END FOOTER
+##################################################### */

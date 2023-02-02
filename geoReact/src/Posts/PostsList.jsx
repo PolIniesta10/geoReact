@@ -33,30 +33,31 @@ export default function PostsList(){
   useEffect(() => { getPosts(); }, []);
   return (
     <>
-      <table id='tablePostList'>
-        <tbody>
-          <tr id='tr1PostList'>
-            <th>Id</th>
-            <th>Body</th>
-            <th>Author</th>
-            <th>Latitude</th>
-            <th>Longitude</th>
-            <th>Commentaris</th>
-            <th>Visibility</th>
-            <th>Likes</th>
-            <th></th>
-            <th></th>
-            <th></th>
+      <div className='bodyList'>
+        <table id='tableList'>
+          <tbody>
+            <tr id='tr1List'>
+              <th>Id</th>
+              <th>Body</th>
+              <th>Author</th>
+              <th>Latitude</th>
+              <th>Longitude</th>
+              <th>Commentaris</th>
+              <th>Visibility</th>
+              <th>Likes</th>
+              <th></th>
+              <th></th>
+              <th></th>
 
-          </tr>        
-          {posts.map((post) => (
-            <tr  key={posts.id} id='tr2PostList'>
-              <PostList post={post} />
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
+            </tr>        
+            {posts.map((post) => (
+              <tr  key={posts.id} id='tr2List'>
+                <PostList post={post} />
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </>
   )
 }

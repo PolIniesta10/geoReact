@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { BiImageAdd } from 'react-icons/bi';
+import { BiImage } from 'react-icons/bi';
 import { BsGrid } from 'react-icons/bs';
 import { BsListTask } from 'react-icons/bs';
 import { BiSearchAlt } from 'react-icons/bi';
