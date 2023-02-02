@@ -8,15 +8,15 @@ export default function Footer(){
   return (
     <>
       <footer>
-        <div class="footer">
-          <div class="row">
+        <div className="footer">
+          <div className="row">
             <a href="#"><BsFacebook/></a>
             <a href="#"><BsInstagram/></a>
             <a href="#"><BsYoutube/></a>
             <a href="#"><BsTwitter/></a>
           </div>
 
-          <div class="row">
+          <div className="row">
             <ul>
               <li><a href="#">Contact us</a></li>
               <li><a href="#">Our Services</a></li>
@@ -26,7 +26,7 @@ export default function Footer(){
             </ul>
           </div>
 
-          <div class="row">
+          <div className="row">
             INFERNO Copyright © 2021 Inferno - All rights reserved || Designed By: Mahesh 
           </div>
         </div>

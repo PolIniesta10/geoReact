@@ -6,7 +6,17 @@ export default function Post(){
   const { id } = useParams();
   let { authToken, setAuthToken } = useContext(UserContext);
   const {usuari} = useCallback(UserContext)
-  let [post, setPost] = useState([]);
+  let [post, setPost] = useState({
+    author:{name:""},
+    body:"",
+    latitude:"",
+    longitude:"",
+    likes_count:"",
+    visibility:"",
+    comments_count:"",
+    file:{filepath:""}
+
+  });
   
   const getPost = async (e) => {
     try {
@@ -34,13 +44,33 @@ export default function Post(){
   useEffect(() => { getPost(); }, []);
   return (
    <div>
+     <div>
+       {post.author.name}
+     </div>
+     <div>
+       {post.body}
+     </div>
+     <div>
+        {post.latitude}
+      </div>
+      <div>
+        {post.longitude}
+      </div>
+        
      
-     <p>{post.latitude}hola</p>
-     <p>{post.longitude}</p>
-     <p>{post.body}</p>
-     <p>{post.likes_count}</p>
-     <p>{post.comments_count}</p>
-     <p>{post.visibility}</p>
+      <div>
+       {post.likes_count}
+      </div>
+      <div>
+        {post.comments_count}
+      </div>
+      <div>
+        {post.visibility}
+      </div>
+      
+
+     
+     
      
    
    </div>
