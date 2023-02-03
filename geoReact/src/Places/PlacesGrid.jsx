@@ -38,7 +38,7 @@ export default function PlacesGrid() {
   return (
     <>
           { places.map (  (place)=> ( 
-              <div key={place.id}>
+              <div key={place.id} >
                 <PlaceGrid place={place} />
               </div>  
           ) ) }

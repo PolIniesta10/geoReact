@@ -60,7 +60,6 @@ body {
 	/* height: 100vh; */
 	/* margin: -20px 0 50px; */
 	margin: -20;
-	
    
 }
 
@@ -864,3 +863,30 @@ h2 {
 /* #####################################################
 				END PLACES & POST ADD
 ##################################################### */
+
+/* #####################################################
+				     PLACES GRID
+##################################################### */
+
+.placegrid {
+	background-color: grey;
+	margin: auto;
+	margin-top: 10px;
+	width: 50%;
+}
+.nomplace {
+	height: 20%;
+}
+.placeimg {
+	height: 60%;
+	width: 100%;
+	margin: 0;
+}
+.placeimg img {
+	height: 100%;
+	width: 100%;
+	
+}
+.infoplace {
+	height: 20%	;
+}
