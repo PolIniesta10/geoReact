@@ -25,7 +25,7 @@ export const PlaceList = ({place}) => {
             <td><ImEye className='icono'/></td>
 
          
-            <td><BiEdit className='icono2'/></td> 
+            <td><BiEdit className='icono'/></td> 
 
            
             <td><FaTrashAlt className='icono'/></td> 

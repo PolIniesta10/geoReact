@@ -21,7 +21,7 @@ export const PostList = ({post}) => {
             <td><Link className="headerLink" to={"/posts/" +post.id}><ImEye className='icono'/></Link></td>
 
            
-            <td><BiEdit className='icono2'/></td> 
+            <td><BiEdit className='icono'/></td> 
 
             <td><FaTrashAlt className='icono'/></td>
         </>

@@ -10,10 +10,10 @@ export default function Footer(){
       <footer>
         <div className="footer">
           <div className="row">
-            <a href="#"><BsFacebook/></a>
-            <a href="#"><BsInstagram/></a>
-            <a href="#"><BsYoutube/></a>
-            <a href="#"><BsTwitter/></a>
+            <a href="https://es-es.facebook.com/" target={"_blank"}><BsFacebook/></a>
+            <a href="https://www.instagram.com/" target={"_blank"}><BsInstagram/></a>
+            <a href="https://www.youtube.com/?hl=es&gl=ES" target={"_blank"}><BsYoutube/></a>
+            <a href="https://twitter.com/?lang=es" target={"_blank"}><BsTwitter/></a>
           </div>
 
           <div className="row">
