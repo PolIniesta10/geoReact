@@ -77,7 +77,7 @@ export default function PlaceAdd(){
               <input type="text" className='field_add' placeholder="Name" id="name" name="name" onChange={handleFormulari}/>
               <input type="text" className='field_add' placeholder="Description" id="description" name="description" onChange={handleFormulari}/>
               <input type="text" className='field_add' placeholder="Latitude" id="latitude" name="latitude" onChange={handleFormulari}/> 
-              <input type="text" className='field_add' placeholder="longitude" id="longitude" name="longitude" onChange={handleFormulari}/>
+              <input type="text" className='field_add' placeholder="Longitude" id="longitude" name="longitude" onChange={handleFormulari}/>
               
              
               <select value= {formulari.visibility } onChange={handleFormulari} id="visibility" name="visibility"  className='field_add'>
@@ -85,7 +85,10 @@ export default function PlaceAdd(){
                 <option  value="3">Private</option>
                 <option  value="2">Contacts</option>
               </select>
-              <input type="file" className='file_add' id="upload" name="upload" onChange={handleFormulari}/>
+              <div class="upload-btn-wrapper">
+                <button class="btn">Upload a file</button>
+                <input type="file" id="upload" name="upload" onChange={handleFormulari} />
+              </div>
               <button className="btn_add" onClick={(e) => { addPlace(e); }}>Create</button>
             </form>
 

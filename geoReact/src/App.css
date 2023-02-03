@@ -805,7 +805,8 @@ h2 {
     transition: .3s;
     margin-top: 8px;
     margin-bottom: 8px;
-    border-radius: 5px;
+    border-radius: 8px;
+	color: gray;
 }
 
 .field_add:hover{
@@ -818,11 +819,11 @@ h2 {
     background-color: #2ecc71;
     color: #fff;
     font-size: 1.1rem;
+	font-weight: bold;
     border: none;
     outline: none;
     cursor: pointer;
     transition: .3s;
-    margin-top: 8px;
     border-radius: 5px;
 }
 
@@ -835,6 +836,31 @@ h2 {
     background-color: #fff;
 }
 
+.upload-btn-wrapper {
+	position: relative;
+	overflow: hidden;
+	display: inline-block;
+  }
+  
+  .btn {
+	border: 2px solid gray;
+    color: gray;
+	background-color: rgba(230, 230, 230, 0.6);
+	padding: 13px 119px;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+	margin-top: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .upload-btn-wrapper input[type=file] {
+	font-size: 100px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0;
+  }
 /* #####################################################
 				END PLACES & POST ADD
 ##################################################### */
