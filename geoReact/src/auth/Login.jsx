@@ -45,7 +45,7 @@ export default function Login({ setLogin }) {
       <>
         <div className="container" id="container">
           <div className="form-container sign-in-container">
-            <form action="#">
+            <form className="form_log_reg" action="#">
               <h1 className="h1_log_reg">Iniciar sesion</h1>
               <div className="social-container">
                 <a href="#" className="social"><i><FontAwesomeIcon icon={faFacebookF}/></i></a>

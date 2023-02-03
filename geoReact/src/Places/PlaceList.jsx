@@ -23,11 +23,7 @@ export const PlaceList = ({place}) => {
                 </div>
             </td>
             <td><ImEye className='icono'/></td>
-
-         
             <td><BiEdit className='icono'/></td> 
-
-           
             <td><FaTrashAlt className='icono'/></td> 
         </>
     )

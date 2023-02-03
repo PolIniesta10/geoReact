@@ -63,7 +63,7 @@ export default function Register({ setLogin }) {
       <>
         <div className="container right-panel-active" id="container">
           <div className="form-container sign-up-container">
-            <form action="#">
+            <form clasName="form_log_reg" action="#">
               <h1 className="h1_log_reg">Crear cuenta</h1>
               <div className="social-container">
                 <a href="#" className="social"><i><FontAwesomeIcon icon={faFacebookF}/></i></a>
