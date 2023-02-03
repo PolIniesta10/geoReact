@@ -27,7 +27,7 @@ export default function Footer(){
           </div>
 
           <div className="row">
-            INFERNO Copyright © 2021 Inferno - All rights reserved || Designed By: Mahesh 
+            GEOREACT Copyright © 2023 - All rights reserved || Designed By: Oscar Mejias & Pol iniesta 
           </div>
         </div>
       </footer>
