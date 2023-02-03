@@ -85,8 +85,8 @@ export default function PlaceAdd(){
                 <option  value="3">Private</option>
                 <option  value="2">Contacts</option>
               </select>
-              <div class="upload-btn-wrapper">
-                <button class="btn">Upload a file</button>
+              <div className="upload-btn-wrapper">
+                <button className="btn">Upload a file</button>
                 <input type="file" id="upload" name="upload" onChange={handleFormulari} />
               </div>
               <button className="btn_add" onClick={(e) => { addPlace(e); }}>Create</button>

@@ -69,7 +69,7 @@ export default function PostAdd(){
     <>
       <div className="container_add">
         <div className="add-box">
-          <div className="left_add"></div>
+          
           <div className="right_add">
             <h2 className='h2_add'>Posts Add</h2>
             <form id='formaddplace'>
@@ -83,14 +83,14 @@ export default function PostAdd(){
                 <option  value="3">Private</option>
                 <option  value="2">Contacts</option>
               </select>
-              <div class="upload-btn-wrapper">
-                <button class="btn">Upload a file</button>
+              <div className="upload-btn-wrapper">
+                <button className="btn">Upload a file</button>
                 <input type="file" id="upload" name="upload" onChange={handleFormulari} />
               </div>  
               <button className="btn_add" onClick={(e) => { addPost(e); }}>Create</button>
             </form>
-
           </div>
+          <div className="left_add_post"></div>
         </div>
       </div>
     </>

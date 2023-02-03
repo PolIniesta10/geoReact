@@ -162,7 +162,7 @@ h2 {
 .form_log_reg input {
 	background-color: #eee;
 	border: none;
-  border-radius: 5px;
+	border-radius: 5px;
 	padding: 12px 15px;
 	margin: 8px 0;
 	width: 100%;
@@ -765,11 +765,19 @@ h2 {
 }
 
 .left_add{
-	background: url("img/bg.jpg") no-repeat center;
+	background: url("./assets/bg2.jpg") no-repeat center;
 	background-size: cover;
 	height: 100%;
 	width: 100%;
 	border-radius: 25px 0 0 25px;
+}
+
+.left_add_post{
+	background: url("./assets/postAdd.jpg") no-repeat center;
+	background-size: cover;
+	height: 100%;
+	width: 100%;
+	border-radius: 0px 25px 25px 0px;
 }
 
 .right_add{

@@ -63,7 +63,7 @@ export default function Register({ setLogin }) {
       <>
         <div className="container right-panel-active" id="container">
           <div className="form-container sign-up-container">
-            <form clasName="form_log_reg" action="#">
+            <form className="form_log_reg" action="#">
               <h1 className="h1_log_reg">Crear cuenta</h1>
               <div className="social-container">
                 <a href="#" className="social"><i><FontAwesomeIcon icon={faFacebookF}/></i></a>
@@ -71,10 +71,10 @@ export default function Register({ setLogin }) {
                 <a href="#" className="social"><i><FontAwesomeIcon icon={faTwitter}/></i></a>
               </div>
               <span className="span_log_reg">o use su correo electrónico para registrarse</span>
-              <input name="name" type="text" placeholder="Nombre" onChange={handleChange}/>
-              <input name="email" type="email" placeholder="Email" onChange={handleChange}/>
-              <input name="password" type="password" placeholder="Contraseña" onChange={handleChange}/>
-              <input name="password2" type="password" placeholder="Repite contraseña" onChange={handleChange}/>
+              <input className="input_log_reg" name="name" type="text" placeholder="Nombre" onChange={handleChange}/>
+              <input className="input_log_reg" name="email" type="email" placeholder="Email" onChange={handleChange}/>
+              <input className="input_log_reg" name="password" type="password" placeholder="Contraseña" onChange={handleChange}/>
+              <input className="input_log_reg" name="password2" type="password" placeholder="Repite contraseña" onChange={handleChange}/>
               <div className="errores" hidden></div>
               <button className="SignBtn margin-top" onClick={(e) => {handleRegister(e);}}>Registrarse</button>
             </form>
