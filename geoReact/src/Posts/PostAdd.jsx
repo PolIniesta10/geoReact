@@ -73,9 +73,9 @@ export default function PostAdd(){
           <div className="right_add">
             <h2 className='h2_add'>Posts Add</h2>
             <form id='formaddplace'>
-              <input type="textarea" className='field_add' placeholder="Body" id="body" name="body" onChange={handleFormulari}/>
-              <input type="text" className='field_add' placeholder="Latitude" id="latitude" name="latitude" onChange={handleFormulari}/> 
-              <input type="text" className='field_add' placeholder="Longitude" id="longitude" name="longitude" onChange={handleFormulari}/>
+              <textarea className='textarea_add' placeholder="Body" id="body" name="body" onChange={handleFormulari}/>
+              <input type="text" className='field_add' placeholder="Latitude" id="latitude" name="latitude" value={formulari.latitude} onChange={handleFormulari}/> 
+              <input type="text" className='field_add' placeholder="Longitude" id="longitude" name="longitude" value={formulari.latitude} onChange={handleFormulari}/>
               
              
               <select value= {formulari.visibility } onChange={handleFormulari} id="visibility" name="visibility"  className='field_add'>
