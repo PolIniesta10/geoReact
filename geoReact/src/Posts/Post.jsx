@@ -43,36 +43,35 @@ export default function Post(){
   }
   useEffect(() => { getPost(); }, []);
   return (
-   <div>
-     <div>
-       {post.author.name}
-     </div>
-     <div>
-       {post.body}
-     </div>
-     <div>
-        {post.latitude}
+    <>
+      <div className='cardContainer'>
+        <div className='cardShow'>
+          <div className='cardImage'>
+            <img src={"https://backend.insjoaquimmir.cat/storage/" + post.file.filepath} alt={post.name}/>  
+          </div>
+          <div className='cardElements'>
+            <p>Author: {post.author.name}</p>
+          </div>
+          <div className='cardElements'>
+            <p>Body: {post.body}</p>
+          </div>
+          <div className='cardElements'>
+            <p>Latitude: {post.latitude}</p>
+          </div>
+          <div className='cardElements'>
+            <p>Longitude: {post.longitude}</p>
+          </div>
+          <div className='cardElements'>
+            <p>Likes: {post.likes_count}</p>
+          </div>
+          <div className='cardElements'>
+            <p>Comments: {post.comments_count}</p>
+          </div>
+          <div className='cardElements'>
+            <p>Visibility: {post.visibility.name}</p>
+          </div>
+        </div>
       </div>
-      <div>
-        {post.longitude}
-      </div>
-        
-     
-      <div>
-       {post.likes_count}
-      </div>
-      <div>
-        {post.comments_count}
-      </div>
-      <div>
-        {post.visibility}
-      </div>
-      
-
-     
-     
-     
-   
-   </div>
+    </>
   )
 }

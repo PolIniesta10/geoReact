@@ -6,5 +6,6 @@ export default function PlaceEdit(){
 
   return (
     <div>PlaceEdit {id}</div>
+    
   )
 }
