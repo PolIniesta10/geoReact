@@ -458,6 +458,7 @@ h2 {
 	align-items: center;
 	width: 100%;
 	margin: 7px;
+	margin-right: 20px;
 }
 .user__header{
 	color: #333;
@@ -495,7 +496,11 @@ h2 {
 	flex-direction: row;
 	width: 100%;
 	height: 20%;
+<<<<<<< HEAD
 	background-color: white;
+=======
+	background-color:white;
+>>>>>>> ba02127be61bb025d1d97fcd8362cb20b5ff50d2
 	border-radius: 0 0 20px 20px;
 	margin-top: 5px;
 }
@@ -505,6 +510,7 @@ h2 {
 	align-items: center;
 	width: 100%;
 	margin: 7px;
+	margin-left: 20px;
 }
 .izq_menu .link_menu{
 	text-decoration: none;	
@@ -540,6 +546,7 @@ h2 {
 	align-items: center;
 	width: 100%;
 	margin: 7px;
+	margin-right: 20px;
 }
 .container_buscador{
 	width: 300px;
@@ -791,6 +798,7 @@ h2 {
 	height: 100%;
 	width: 100%;
 	border-radius: 0px 25px 25px 0px;
+
 }
 
 .right_add{
@@ -830,6 +838,25 @@ h2 {
 }
 
 .field_add:hover{
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.textarea_add{
+	width: 100%;
+    border: 2px solid rgba(0, 0, 0, 0);
+    outline: none;
+    background-color: rgba(230, 230, 230, 0.6);
+    padding: 0.9rem 1rem;
+    font-size: 1.1rem;
+    transition: .3s;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+	color: gray;
+	resize: none;
+}
+
+.textarea_add:hover{
 	background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -997,6 +1024,11 @@ h2 {
 /* #####################################################
 				END PLACES & POST SHOW
 ##################################################### */
+
+/* #####################################################
+				PLACES & POST GRID
+##################################################### */
+
 .buttonicon {
 	background-color: transparent;
 	border: none;
@@ -1018,3 +1050,27 @@ h2 {
 	padding: 5px;
 	font-size: 1.1em;
 }
+
+/* #####################################################
+				END PLACES & POST GRID
+##################################################### */
+
+/* #####################################################
+				END PLACES & POST EDIT
+##################################################### */
+
+.left_edit_post {
+	height: 100%;
+	width: 100%;
+}
+
+.left_edit_post img{
+	padding: 20px;
+    height: 600px;
+	width: 100%;
+	border-radius: 35px;
+}
+
+/* #####################################################
+				END PLACES & POST EDIT
+##################################################### */
