@@ -19,7 +19,7 @@ export const PostList = ({post}) => {
             <td>{post.visibility.name}</td>
             <td><i className="bi bi-star-fill"></i>{post.likes_count}</td>
             <td><Link className="headerLink" to={"/posts/" +post.id}><ImEye className='icono'/></Link></td>
-            <td><Link className="headerLink" to={"/postsedit/" +post.id}><BiEdit className='icono'/></Link></td> 
+            <td><Link className="headerLink" to={"/posts/edit/" +post.id}><BiEdit className='icono'/></Link></td> 
             <td><FaTrashAlt className='icono'/></td>
         </>
     )

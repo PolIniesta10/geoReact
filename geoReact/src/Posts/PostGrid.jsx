@@ -10,7 +10,7 @@ import { AiOutlineLike } from 'react-icons/ai';
 
 import { Link } from 'react-router-dom'
 
-export const PlaceGrid = ({place}) => {
+export const PostGrid = ({post}) => {
   let { usuari, setUsuari,authToken,setAuthToken } = useContext(UserContext)
   
   
@@ -18,25 +18,24 @@ export const PlaceGrid = ({place}) => {
     <div className="placegrid">
       <div className="infoarribaplace">
         <div className="nameplace">
-          <h2>{place.author.name}</h2>
-          <h3>{place.name}</h3>
+          <h2>{post.author.name}</h2>
         </div>
         <div className="detallesplace">
-          <p>Latitude: {place.latitude}</p>
-          <p>Longitude: {place.longitude}</p>
+          <p>Latitude: {post.latitude}</p>
+          <p>Longitude: {post.longitude}</p>
           
         </div>
         
       </div>
       <div className="placeimg">
-          <img src={"https://backend.insjoaquimmir.cat/storage/" + place.file.filepath} alt={place.name}/>
+          <img src={"https://backend.insjoaquimmir.cat/storage/" + post.file.filepath} alt={post.name}/>
 
       </div>
       <div className='infoabajoplace'>
         <div className="iconosplace">
           <div className="iconosplaceizq">
             <div className="favoritesplace">
-              <button className='buttonicon'><AiOutlineLike className='icplace'/></button><p>{place.favorites_count}</p>
+              <button className='buttonicon'><AiOutlineLike className='icplace'/></button><p>{post.likes_count}</p>
 
             </div>
               
@@ -47,9 +46,9 @@ export const PlaceGrid = ({place}) => {
             <button className='buttonicon'><BiSave className='icplace'/></button>
           </div>
         </div>
-        <p className='descriptionplace'>{place.description}</p>
-        <p className='reviewsplace'>Reviews: {place.reviews_count}</p>
-        <p className='createdplace'>{place.created_at}</p>
+        <p className='descriptionplace'>{post.body}</p>
+        <p className='reviewsplace'>Reviews: {post.comments_count}</p>
+        <p className='createdplace'>{post.created_at}</p>
        
         
         
