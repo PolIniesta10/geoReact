@@ -495,8 +495,9 @@ h2 {
 	flex-direction: row;
 	width: 100%;
 	height: 20%;
-	background-color: rgba(238, 238, 238, 0.377);
+	background-color: white;
 	border-radius: 0 0 20px 20px;
+	margin-top: 5px;
 }
 .izq_menu {
 	display: flex;
@@ -704,8 +705,9 @@ h2 {
 	font-family: 'Play', sans-serif;
 	text-align:center;
 	background-color: white;
+	border-radius: 20px 20px 0 0;
+	margin-top: 10px;
 }
-	
 .footer .row{
 	width:100%;
 	margin:1% 0%;
@@ -887,15 +889,15 @@ h2 {
 				PLACES  & POST GRID
 ##################################################### */
 
-.placegrid {
-	background-color: rgb(128, 125, 125);
+.grid {
+	background-color:white;
 	margin: auto;
 	margin-top: 10px;
 	width: 50%;
 	padding: 10px;
 	border-radius: 20px;
 }
-.infoarribaplace {
+.infoTopGrid {
 	height: 150px;
 	display: flex;
 	background-color: black;
@@ -904,56 +906,60 @@ h2 {
 	border-radius: 20px;
 	margin-bottom: 10px;
 }
-.nameplace {
+.nameGrid {
 	width: 30%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 }
-.detallesplace {
+.detallesGrid {
 	width: 70%;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-end;
 	justify-content: center;
 }
-.detallesplace p {
+.detallesGrid p {
 	margin: 5px;
 }
-.placeimg {
+.gridImg {
 	height: 60%;
 	width: 100%;
 	margin: 0;
 	margin-bottom: 10px;
 }
-.placeimg img {
+.gridImg img {
 	height: 100%;
 	width: 100%;
 	border-radius: 20px;
 }
-.infoabajoplace {
+.infoBottomGrid {
 	height: 20%	;
-	background-color: rgba(223, 223, 223, 0.377);
+	background-color: rgb(175, 173, 173);
 	border-radius: 20px;
 	padding: 5px;
 }
-.iconosplace {
+.iconosGrid {
 	display: flex;
+	background-color: black;
+	color: white;
+	border-radius: 20px;
 }
-.iconosplaceizq {
+.iconosGridIzq {
 	width: 20%;
 	display: flex;
 	justify-content: space-around;
 }
-.iconosplaceder {
+.iconosGridDer {
 	width: 80%;
 	display: flex;
 	justify-content: flex-end;
 }
-.icplace {
+.icGrid {
 	font-size: 35px;
-	
+	color: rgb(192, 190, 190);
+
 }
 
 /* #####################################################
@@ -996,18 +1002,18 @@ h2 {
 	border: none;
 	cursor: pointer;
 }
-.descriptionplace {
+.description_bodyGrid {
 	text-align: justify;
 	font-size: 1.1em;
 	padding: 5px;
 }
-.favoritesplace {
+.fav_likeGrid {
 	display: flex;
 }
-.favoritesplace p {
+.fav_likeGrid p {
 	font-size: 1.1em;
 }
-.reviewsplace, .createdplace {
+.reviews_commentsGrid, .created_atGrid {
 	text-align: start;
 	padding: 5px;
 	font-size: 1.1em;

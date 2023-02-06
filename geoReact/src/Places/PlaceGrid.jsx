@@ -15,41 +15,41 @@ export const PlaceGrid = ({place}) => {
   
   
   return (
-    <div className="placegrid">
-      <div className="infoarribaplace">
-        <div className="nameplace">
+    <div className="grid">
+      <div className="infoTopGrid">
+        <div className="nameGrid">
           <h2>{place.author.name}</h2>
           <h3>{place.name}</h3>
         </div>
-        <div className="detallesplace">
+        <div className="detallesGrid">
           <p>Latitude: {place.latitude}</p>
           <p>Longitude: {place.longitude}</p>
           
         </div>
         
       </div>
-      <div className="placeimg">
+      <div className="gridImg">
           <img src={"https://backend.insjoaquimmir.cat/storage/" + place.file.filepath} alt={place.name}/>
 
       </div>
-      <div className='infoabajoplace'>
-        <div className="iconosplace">
-          <div className="iconosplaceizq">
-            <div className="favoritesplace">
-              <button className='buttonicon'><AiOutlineLike className='icplace'/></button><p>{place.favorites_count}</p>
+      <div className='infoBottomGrid'>
+        <div className="iconosGrid">
+          <div className="iconosGridIzq">
+            <div className="fav_likeGrid">
+              <button className='buttonicon'><AiOutlineLike className='icGrid'/></button><p>{place.favorites_count}</p>
 
             </div>
               
-            <button className='buttonicon'><FaRegComments className='icplace'/></button>
-            <button className='buttonicon'><BsShare className='icplace'/></button>
+            <button className='buttonicon'><FaRegComments className='icGrid'/></button>
+            <button className='buttonicon'><BsShare className='icGrid'/></button>
           </div>
-          <div className="iconosplaceder">
-            <button className='buttonicon'><BiSave className='icplace'/></button>
+          <div className="iconosGridDer">
+            <button className='buttonicon'><BiSave className='icGrid'/></button>
           </div>
         </div>
-        <p className='descriptionplace'>{place.description}</p>
-        <p className='reviewsplace'>Reviews: {place.reviews_count}</p>
-        <p className='createdplace'>{place.created_at}</p>
+        <p className='description_bodyGrid'>{place.description}</p>
+        <p className='reviews_commentsGrid'>Reviews: {place.reviews_count}</p>
+        <p className='created_atGrid'>{place.created_at}</p>
        
         
         
