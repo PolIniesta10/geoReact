@@ -3,7 +3,7 @@ import { UserContext } from '../userContext';
 import { useParams } from 'react-router-dom';
 import { FaRegStar } from 'react-icons/fa';
 import { MdOutlineReviews } from 'react-icons/md';
-import { FaRegShareSquare } from 'react-icons/bs';
+import { FaRegShareSquare } from 'react-icons/fa';
 import { BiSave } from 'react-icons/bi';
 
 export default function Place(){

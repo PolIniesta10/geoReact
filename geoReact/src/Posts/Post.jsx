@@ -3,7 +3,7 @@ import { UserContext } from '../userContext';
 import { useParams } from 'react-router-dom';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { FaRegComments } from 'react-icons/fa';
-import { BsShare } from 'react-icons/bs';
+import { FaRegShareSquare } from 'react-icons/fa';
 import { BiSave } from 'react-icons/bi';
 
 export default function Post(){
@@ -80,7 +80,7 @@ export default function Post(){
                   <button className='buttonicon'><FaRegComments className='icGrid'/></button><p>{post.comments_count}</p>
                 </div>
 
-                <button className='buttonicon'><BsShare className='icGrid'/></button>
+                <button className='buttonicon'><FaRegShareSquare className='icGrid'/></button>
               </div>
 
               <div className="iconosGridDer">
