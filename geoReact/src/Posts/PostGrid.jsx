@@ -2,9 +2,8 @@ import React, { useCallback, useContext } from 'react'
 import { UserContext } from '../userContext'
 import { AiOutlineHeart } from 'react-icons/ai';
 import { FaRegComments } from 'react-icons/fa';
-import { BsShare } from 'react-icons/bs';
+import { FaRegShareSquare } from 'react-icons/fa';
 import { BiSave } from 'react-icons/bi';
-
 import { Link } from 'react-router-dom'
 
 export const PostGrid = ({post}) => {
@@ -38,7 +37,7 @@ export const PostGrid = ({post}) => {
             </div>
               
             <button className='buttonicon'><FaRegComments className='icGrid'/></button>
-            <button className='buttonicon'><BsShare className='icGrid'/></button>
+            <button className='buttonicon'><FaRegShareSquare className='icGrid'/></button>
           </div>
           <div className="iconosGridDer">
             <button className='buttonicon'><BiSave className='icGrid'/></button>
