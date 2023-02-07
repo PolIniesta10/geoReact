@@ -499,6 +499,7 @@ h2 {
 	background-color: white;
 	border-radius: 0 0 20px 20px;
 	margin-top: 5px;
+	margin-bottom: 10px;
 }
 .izq_menu {
 	display: flex;
@@ -525,14 +526,15 @@ h2 {
 	font-size: 20px;
 }
 .izq_menu .link_menu:hover{
-	background-color: #2b303b8a;
+	background-color: #2b303bc6;
+	border: 2px solid #3a434bc7;
+	color: #1e222a;
+}
+.izq_menu .link_menu:active, .izq_menu .link_menu:focus{
+	background-color: #2b303b9e;
 	border: 2px solid #4f5b66c7;
-	color: #2b303b;
+	color: #1e222a;
 }
-.linksheader.active{
-	color: black;
-}
-
 .izq_menu .link_menu svg{
 	margin-right: 5px;
 }
@@ -644,9 +646,11 @@ h2 {
 }
 #tableList{	
 	border-collapse: collapse;
-	background-color: #a8a8a8;
-	width: 100%;
+	background-color: black;
 	border: 2px solid black;
+	width: 100%;
+	border-radius: 1em;
+	overflow: hidden;
 }
 #tr1List {
 	background-color: #33FFA4;
@@ -682,6 +686,7 @@ h2 {
 	padding: 5px;
 	border-radius:25px;
 	background-color: #6f6f6f69;
+	color: rgba(245, 245, 220, 0.603);
 }
 .iconofavourite {
 	display: flex;
@@ -692,9 +697,7 @@ h2 {
 	font-size: 1.3em;
 	cursor: pointer;
 }
-.headerLink:visited {
-	color: blue;
-}
+
 
 /* #####################################################
 				END ICONOS PLACES & POST LISTS	

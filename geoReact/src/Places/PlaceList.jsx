@@ -3,7 +3,7 @@ import { UserContext } from '../userContext';
 import { ImEye } from 'react-icons/im';
 import { BiEdit } from 'react-icons/bi';
 import { FaTrashAlt } from 'react-icons/fa';
-import { AiOutlineLike } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 export const PlaceList = ({place}) => {
 
@@ -17,13 +17,9 @@ export const PlaceList = ({place}) => {
             <td>{place.longitude}</td>
             <td>{place.reviews_count}</td>
             <td>{place.visibility.name}</td>
-            <td>
-                <div className='iconofavourite'>
-                    <AiOutlineLike className='icono3'/>{place.favorites_count}
-                </div>
-            </td>
-            <td><ImEye className='icono'/></td>
-            <td><BiEdit className='icono'/></td> 
+            <td className="iconofavourite">{place.favorites_count}</td>
+            <td><Link className="headerLink" to={"/places/" +place.id}><ImEye className='icono'/></Link></td>
+            <td><Link className="headerLink" to={"/places/edit/" +place.id}><BiEdit className='icono'/></Link></td> 
             <td><FaTrashAlt className='icono'/></td> 
         </>
     )
