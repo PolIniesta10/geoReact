@@ -18,10 +18,11 @@ export default function Post(){
     likes_count:"",
     visibility:"",
     comments_count:"",
-    file:{filepath:""}
+    file:{filepath:""},
+    created_at:""
 
   });
-  
+
   const getPost = async (e) => {
     try {
       const data = await fetch("https://backend.insjoaquimmir.cat/api/posts/" + id, {
@@ -47,45 +48,53 @@ export default function Post(){
   }
   useEffect(() => { getPost(); }, []);
   return (
-    <div className="grid">
-      <div className="infoTopGrid">
-        <div className="nameGrid">
-          <h2>{post.author.name}</h2>
+    <>
+      <div className="containerShow">
+        <div className="grid">
+          <div className="infoTopGrid">
 
-        </div>
-        <div className="detallesGrid">
-          <p>Latitude: {post.latitude}</p>
-          <p>Longitude: {post.longitude}</p>
-          
-        </div>
-        
-      </div>
-      <div className="gridImg">
-      <img src={"https://backend.insjoaquimmir.cat/storage/" + post.file.filepath} alt={post.name}/>
+            <div className="nameGrid">
+              <h2>{post.author.name}</h2>
+            </div>
 
-      </div>
-      <div className='infoBottomGrid'>
-        <div className="iconosGrid">
-          <div className="iconosGridIzq">
-            <div className="fav_likeGrid">
-              <button className='buttonicon'><AiOutlineHeart className='icGrid'/></button><p>{post.likes_count}</p>
+            <div className="detallesGrid">
+              <p>Latitude: {post.latitude}</p>
+              <p>Longitude: {post.longitude}</p>
+            </div>
+            
+          </div>
+
+          <div className="gridImg">
+            <img src={"https://backend.insjoaquimmir.cat/storage/" + post.file.filepath} alt={post.name}/>
+          </div>
+
+          <div className='infoBottomGrid'>
+            <div className="iconosGrid">
+              <div className="iconosGridIzq">
+
+                <div className="fav_likeGrid">
+                  <button className='buttonicon'><AiOutlineHeart className='icGrid'/></button><p>{post.likes_count}</p>
+                </div>
+
+                <div className="fav_likeGrid">
+                  <button className='buttonicon'><FaRegComments className='icGrid'/></button><p>{post.comments_count}</p>
+                </div>
+
+                <button className='buttonicon'><BsShare className='icGrid'/></button>
+              </div>
+
+              <div className="iconosGridDer">
+                <button className='buttonicon'><BiSave className='icGrid'/></button>
+              </div>
 
             </div>
-              
-            <button className='buttonicon'><FaRegComments className='icGrid'/></button>
-            <button className='buttonicon'><BsShare className='icGrid'/></button>
-          </div>
-          <div className="iconosGridDer">
-            <button className='buttonicon'><BiSave className='icGrid'/></button>
+
+            <p className='description_bodyGrid'>{post.body}</p>
+            <p className='created_atGrid'>Created at: {post.created_at}</p>
+          
           </div>
         </div>
-        <p className='description_bodyGrid'>{post.body}</p>
-        <p className='reviews_commentsGrid'>Comments: {post.comments_count}</p>
-        <p className='created_atGrid'>{post.created_at}</p>
-       
-        
-        
       </div>
-    </div>
+    </>
   )
 }
