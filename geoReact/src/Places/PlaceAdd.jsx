@@ -20,14 +20,23 @@ export default function PlaceAdd(){
   
     });
   }, [])
+
   const handleFormulari = (e) => {
     e.preventDefault();
-    setFormulari({
-      // ...formulari es como el cache
-      ...formulari,
-      [e.target.name]: e.target.type == "file" ? e.target.files[0] : e.target.value
-    });
+    if (e.target.type && e.target.type==="file")
+      {
+        setFormulari({
+          ...formulari,
+          [e.target.name] : e.target.files[0] 
+        })
+      } else {
+        setFormulari({
+          ...formulari,
+          [e.target.name] : e.target.value
+      })
+    }
   };
+
   const addPlace = async(e) => {
     e.preventDefault();
     let {name,description,upload,latitude,longitude,visibility}=formulari;
@@ -59,6 +68,9 @@ export default function PlaceAdd(){
 
       else{
         console.log(formulari)
+        const errores = document.getElementsByClassName("errores")[0];
+        errores.innerHTML = resposta.message
+        errores.removeAttribute("hidden")
       } 
         
     }catch{
@@ -76,8 +88,8 @@ export default function PlaceAdd(){
             <form id='formaddplace'>
               <input type="text" className='field_add' placeholder="Name" id="name" name="name" onChange={handleFormulari}/>
               <input type="text" className='field_add' placeholder="Description" id="description" name="description" onChange={handleFormulari}/>
-              <input type="text" className='field_add' placeholder="Latitude" id="latitude" name="latitude" onChange={handleFormulari}/> 
-              <input type="text" className='field_add' placeholder="Longitude" id="longitude" name="longitude" onChange={handleFormulari}/>
+              <input type="text" className='field_add' placeholder="Latitude" id="latitude" name="latitude" value={formulari.latitude} onChange={handleFormulari}/> 
+              <input type="text" className='field_add' placeholder="Longitude" id="longitude" name="longitude" value={formulari.longitude} onChange={handleFormulari}/>
               
              
               <select value= {formulari.visibility } onChange={handleFormulari} id="visibility" name="visibility"  className='field_add'>
@@ -89,6 +101,7 @@ export default function PlaceAdd(){
                 <button className="btn">Upload a file</button>
                 <input type="file" id="upload" name="upload" onChange={handleFormulari} />
               </div>
+              <div className="erroresPost-Places" hidden></div>
               <button className="btn_add" onClick={(e) => { addPlace(e); }}>Create</button>
             </form>
 

@@ -10,7 +10,7 @@ import { UserContext } from '../userContext'
 export default function Login({ setLogin }) {
   let [email, setEmail] = useState("");
   let [password, setPassword] = useState("");
-  let { authToken,setAuthToken } = useContext(UserContext)
+  let {userEmail, setUserEmail, authToken,setAuthToken } = useContext(UserContext);
 
 
   const sendLogin = async (e) =>  {
@@ -23,13 +23,14 @@ export default function Login({ setLogin }) {
           "Content-Type": "application/json"
         },
         method: "POST",
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email: email, password: password })
       });
 
 
       const resposta = await data.json();
       if (resposta.success === true) {
-        setAuthToken(resposta.authToken);
+        setAuthToken(resposta.authToken),
+        setUserEmail(email);
       }
       else {
         const errores = document.getElementsByClassName("errores")[0];

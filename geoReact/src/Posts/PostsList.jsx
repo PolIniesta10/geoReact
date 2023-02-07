@@ -3,10 +3,9 @@ import { UserContext } from '../userContext';
 import { PostList } from './PostList';
 export default function PostsList(){
 
-  let { authToken, setAuthToken } = useContext(UserContext);
-  const {usuari} = useCallback(UserContext)
+  let { userEmail, setUserEmail, authToken, setAuthToken } = useContext(UserContext);
   let [posts, setPosts] = useState([]);
-  let[username, setUserName]=useState("");
+  let [refresh,setRefresh] = useState(false)
 
   const getPosts = async (e) => {
     try {
@@ -31,37 +30,33 @@ export default function PostsList(){
       alert("Catch!");
     }
   }
-  useEffect(() => { getPosts(); }, []);
-  const getUser = async () => {
-    try {
-  
-      const data = await fetch("https://backend.insjoaquimmir.cat/api/user", {
-        headers: {
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-          "Authorization": 'Bearer '  + authToken,
-  
-        },
-        method: "GET",
-    })
-      const resposta = await data.json();
-      if (resposta.success == true )
-      {
-        console.log(resposta); 
-        setUserName(resposta.user.name);  
-      }else{
-        console.log("La resposta no ha triomfat");
-  
-      }            
+
+  useEffect(() => { getPosts(); }, [refresh]);
+
+  const deletePost = async(id) => {
+    try{
       
-    } catch {
+      const data = await fetch("https://backend.insjoaquimmir.cat/api/posts/"+ id, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer '  + authToken,
+        },
+        method: "DELETE"
+      })
+
+      const resposta = await data.json();
+      if (resposta.success === true)
+        console.log(resposta),
+        setRefresh(!refresh);
+      
+      else alert("La resposta no a triomfat");
+
+    }catch{
       console.log("Error");
-      console.log("catch");
+      alert("catch");  
     }
-  };
-  useEffect(()=>{
-    getUser();
-  }, [])
+  }
   return (
     <>
       <div className='bodyList'>
@@ -80,13 +75,13 @@ export default function PostsList(){
               <th></th>
               <th></th>
 
-            </tr>        
-            {posts.map((post) => (
-              (post.visibility.name != 'private' || username == post.author.name) &&
-              <tr  key={posts.id} id='tr2List'>
-                <PostList post={post} />
-              </tr>
+            </tr>     
+
+            { posts.map ( (post)=> (
+              (post.visibility.name != 'private' || userEmail == post.author.email) && (<tr key={post.id} id='tr2List'>
+              <PostList post={post} deletePost={deletePost} setRefresh={setRefresh} refresh={refresh}/></tr>)
             ))}
+
           </tbody>
         </table>
       </div>

@@ -1,7 +1,7 @@
 import reactLogo from './assets/react.svg'
 import './App.css'
 import LoginRegister from './auth/LoginRegister'
-import { UserContext } from "./userContext";
+import { UserContext} from "./userContext";
 import { useState } from 'react'
 import Header from './Layout/Header';
 import Footer from './Layout/Footer';
@@ -31,10 +31,11 @@ import NotFound from './NotFound';
 
 function App() {
   let [authToken, setAuthToken] = useState("");
+  let [userEmail, setUserEmail] = useState("");
 
   return (
     
-    <UserContext.Provider value={{ authToken, setAuthToken }}  >
+    <UserContext.Provider value= { { userEmail,setUserEmail,authToken,setAuthToken }}>
       {authToken ? (
       <>
       <div className='cajamaster'>

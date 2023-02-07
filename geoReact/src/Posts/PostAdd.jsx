@@ -20,14 +20,23 @@ export default function PostAdd(){
   
     });
   }, [])
+
   const handleFormulari = (e) => {
     e.preventDefault();
-    setFormulari({
-      // ...formulari es como el cache
-      ...formulari,
-      [e.target.name]: e.target.type == "file" ? e.target.files[0] : e.target.value
-    });
+    if (e.target.type && e.target.type==="file")
+      {
+        setFormulari({
+          ...formulari,
+          [e.target.name] : e.target.files[0] 
+        })
+      } else {
+        setFormulari({
+          ...formulari,
+          [e.target.name] : e.target.value
+      })
+    }
   };
+
   const addPost = async(e) => {
     e.preventDefault();
     let {body,upload,latitude,longitude,visibility}=formulari;
@@ -58,6 +67,9 @@ export default function PostAdd(){
 
       else{
         console.log(formulari)
+        const errores = document.getElementsByClassName("errores")[0];
+        errores.innerHTML = resposta.message
+        errores.removeAttribute("hidden")
       } 
         
     }catch{
@@ -75,7 +87,7 @@ export default function PostAdd(){
             <form id='formaddplace'>
               <textarea className='textarea_add' placeholder="Body" id="body" name="body" onChange={handleFormulari}/>
               <input type="text" className='field_add' placeholder="Latitude" id="latitude" name="latitude" value={formulari.latitude} onChange={handleFormulari}/> 
-              <input type="text" className='field_add' placeholder="Longitude" id="longitude" name="longitude" value={formulari.latitude} onChange={handleFormulari}/>
+              <input type="text" className='field_add' placeholder="Longitude" id="longitude" name="longitude" value={formulari.longitude} onChange={handleFormulari}/>
               
              
               <select value= {formulari.visibility } onChange={handleFormulari} id="visibility" name="visibility"  className='field_add'>
@@ -86,7 +98,8 @@ export default function PostAdd(){
               <div className="upload-btn-wrapper">
                 <button className="btn">Upload a file</button>
                 <input type="file" id="upload" name="upload" onChange={handleFormulari} />
-              </div>  
+              </div> 
+              <div className="erroresPost-Places" hidden></div> 
               <button className="btn_add" onClick={(e) => { addPost(e); }}>Create</button>
             </form>
           </div>

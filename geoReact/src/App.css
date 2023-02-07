@@ -907,6 +907,17 @@ h2 {
 	top: 0;
 	opacity: 0;
   }
+
+  .erroresPost-Places {
+    background-color: rgb(255, 173, 173);
+    border: 1px solid rgb(255, 76, 76);
+    border-radius: 5px;
+    padding: 7px;
+    font-size: 13px;
+    width: 344px;
+    margin-bottom: 5px;
+}
+
 /* #####################################################
 				END PLACES & POST ADD
 ##################################################### */
@@ -970,19 +981,36 @@ h2 {
 	border-radius: 20px;
 }
 .iconosGridIzq {
-	width: 20%;
+	width: 60%;
 	display: flex;
 	justify-content: space-around;
 }
 .iconosGridDer {
-	width: 80%;
+	width: 40%;
 	display: flex;
 	justify-content: flex-end;
 }
 .icGrid {
 	font-size: 35px;
 	color: rgb(192, 190, 190);
+}
 
+.authorButtons{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-radius: 25px;
+    background-color: transparent;
+	margin-left: 200px;
+}
+.authorIcons {
+	font-size: 2.5em;
+	cursor: pointer;
+	padding: 5px;
+	border-radius:25px;
+	background-color: #99999969;
+	color: rgba(245, 245, 220, 0.603);
+	margin: 2px;
 }
 
 /* #####################################################

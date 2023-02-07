@@ -7,15 +7,21 @@ export default function PlaceEdit(){
   let [formulari, setFormulari] = useState({upload:""});
   let { authToken, setAuthToken } = useContext(UserContext);
   let [place, setPlace] = useState({});
-
-
+    
   const handleFormulari = (e) => {
     e.preventDefault();
-    setFormulari({
-      // ...formulari es como el cache
-      ...formulari,
-      [e.target.name]: e.target.type == "file" ? e.target.files[0] : e.target.value
-    });
+    if (e.target.type && e.target.type==="file")
+      {
+        setFormulari({
+          ...formulari,
+          [e.target.name] : e.target.files[0] 
+        })
+      } else {
+        setFormulari({
+          ...formulari,
+          [e.target.name] : e.target.value
+      })
+    }
   };
 
   const getPlace = async(e) => {
@@ -79,7 +85,10 @@ export default function PlaceEdit(){
       } 
 
       else{
-        console.log(formulari)
+        console.log(resposta)
+        const errores = document.getElementsByClassName("errores")[0];
+        errores.innerHTML = resposta.message
+        errores.removeAttribute("hidden")
       } 
         
     }catch{
@@ -110,7 +119,8 @@ export default function PlaceEdit(){
               <div className="upload-btn-wrapper">
                 <button className="btn">Change file</button>
                 <input type="file" id="upload" name="upload" onChange={handleFormulari} />
-              </div>  
+              </div> 
+              <div className="erroresPost-Places" hidden></div> 
               <button className="btn_add" onClick={(e) => { editPlace(e); }}>Edit</button>
             </form>
           </div>

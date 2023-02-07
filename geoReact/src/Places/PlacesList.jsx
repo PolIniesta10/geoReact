@@ -3,9 +3,9 @@ import { UserContext } from '../userContext';
 import { PlaceList } from './PlaceList';
 export default function PlacesList(){
 
-  let { authToken, setAuthToken } = useContext(UserContext);
-  const {usuari} = useCallback(UserContext)
+  let { userEmail, setUserEmail, authToken, setAuthToken } = useContext(UserContext);
   let [places, setPlaces] = useState([]);
+  let [refresh,setRefresh] = useState(false)
 
   const getPLaces = async (e) => {
     try {
@@ -30,7 +30,32 @@ export default function PlacesList(){
       alert("Catch!");
     }
   }
-  useEffect(() => { getPLaces(); }, []);
+  useEffect(() => { getPLaces(); }, [refresh]);
+
+  const deletePlace = async(id) => {
+    try{
+      
+      const data = await fetch("https://backend.insjoaquimmir.cat/api/places/"+ id, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          'Authorization': 'Bearer '  + authToken,
+        },
+        method: "DELETE"
+      })
+
+      const resposta = await data.json();
+      if (resposta.success === true)
+        console.log(resposta),
+        setRefresh(!refresh);
+      
+      else alert("La resposta no a triomfat");
+
+    }catch{
+      console.log("Error");
+      alert("catch");  
+    }
+  }
   return (
     <>
     <div className='bodyList'>
@@ -48,12 +73,13 @@ export default function PlacesList(){
             <th></th>
             <th></th>
             <th></th>
-          </tr>        
-            {places.map((place) => (
-              <tr  key={places.id} id='tr2List'>
-                <PlaceList place={place} />
-              </tr>
-            ))}
+          </tr>      
+
+          { places.map ( (place)=> (
+              (place.visibility.name != 'private' || userEmail == place.author.email) && (<tr key={place.id} id='tr2List'>
+              <PlaceList place={place} deletePlace={deletePlace} setRefresh={setRefresh} refresh={refresh}/></tr>)
+          ))}
+
           </tbody>
         </table>
       </div>

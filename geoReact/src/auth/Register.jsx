@@ -8,7 +8,7 @@ import { UserContext } from '../userContext'
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 export default function Register({ setLogin }) {
   let [formulari, setFormulari] = useState({});
-  let { authToken,setAuthToken } = useContext(UserContext)
+  let {userEmail,setUserEmail, authToken,setAuthToken } = useContext(UserContext);
 
   const handleChange = async (e) => {
     e.preventDefault();
@@ -26,7 +26,7 @@ export default function Register({ setLogin }) {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    let { name, password, password2, email } = formulari;
+    let { name, email, password, password2} = formulari;
 
     if (password2 !== password) {
       alert("La contraseña no coincide");
@@ -46,7 +46,8 @@ export default function Register({ setLogin }) {
 
       const resposta = await data.json();
       if (resposta.success === true) {
-        setAuthToken(resposta.authToken);
+        setAuthToken(resposta.authToken),
+        setUserEmail(email);
       }
       else {
         const errores = document.getElementsByClassName("errores")[0];

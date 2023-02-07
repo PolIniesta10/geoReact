@@ -1,13 +1,14 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react'
 import { UserContext } from '../userContext';
 import { ImEye } from 'react-icons/im';
+import { AiOutlineHeart } from 'react-icons/ai';
 import { BiEdit } from 'react-icons/bi';
 import { FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-export const PostList = ({post}) => {
+export const PostList = ({post, deletePost,refresh, setRefresh}) => {
+    let { userEmail, setUserEmail } = useContext(UserContext);
 
-    const {usuari} = useCallback(UserContext)
     return (
         <>
             <td>{post.id}</td>
@@ -17,10 +18,22 @@ export const PostList = ({post}) => {
             <td>{post.longitude}</td>
             <td>{post.comments_count}</td>
             <td>{post.visibility.name}</td>
-            <td><i className="bi bi-star-fill"></i>{post.likes_count}</td>
+            <td><AiOutlineHeart className='icono'/>{post.likes_count}</td>
             <td><Link className="headerLink" to={"/posts/" +post.id}><ImEye className='icono'/></Link></td>
+
+            {(userEmail == post.author.email) ?
+
             <td><Link className="headerLink" to={"/posts/edit/" +post.id}><BiEdit className='icono'/></Link></td> 
-            <td><FaTrashAlt className='icono'/></td>
+                :
+            <td></td>
+            }
+
+            {(userEmail == post.author.email) ?
+
+            <td><FaTrashAlt className='icono' onClick={() => {deletePost(post.id), setRefresh(!refresh);}}/></td>
+                : 
+            <td></td>
+            }
         </>
     )
 }
