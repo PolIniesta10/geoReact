@@ -77,7 +77,8 @@ export default function PostEdit(){
       } 
 
       else{
-        console.log(formulari)
+        console.log(resposta);
+        console.log(formulari);
       } 
         
     }catch{

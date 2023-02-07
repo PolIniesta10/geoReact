@@ -6,6 +6,7 @@ export default function PostsList(){
   let { authToken, setAuthToken } = useContext(UserContext);
   const {usuari} = useCallback(UserContext)
   let [posts, setPosts] = useState([]);
+  let[username, setUserName]=useState("");
 
   const getPosts = async (e) => {
     try {
@@ -31,6 +32,36 @@ export default function PostsList(){
     }
   }
   useEffect(() => { getPosts(); }, []);
+  const getUser = async () => {
+    try {
+  
+      const data = await fetch("https://backend.insjoaquimmir.cat/api/user", {
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "Authorization": 'Bearer '  + authToken,
+  
+        },
+        method: "GET",
+    })
+      const resposta = await data.json();
+      if (resposta.success == true )
+      {
+        console.log(resposta); 
+        setUserName(resposta.user.name);  
+      }else{
+        console.log("La resposta no ha triomfat");
+  
+      }            
+      
+    } catch {
+      console.log("Error");
+      console.log("catch");
+    }
+  };
+  useEffect(()=>{
+    getUser();
+  }, [])
   return (
     <>
       <div className='bodyList'>
@@ -51,6 +82,7 @@ export default function PostsList(){
 
             </tr>        
             {posts.map((post) => (
+              (post.visibility.name != 'private' || username == post.author.name) &&
               <tr  key={posts.id} id='tr2List'>
                 <PostList post={post} />
               </tr>

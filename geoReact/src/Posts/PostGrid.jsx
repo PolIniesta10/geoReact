@@ -1,7 +1,6 @@
 import React, { useCallback, useContext } from 'react'
 import { UserContext } from '../userContext'
 import { AiOutlineHeart } from 'react-icons/ai';
-import { AiFillLike } from 'react-icons/ai';
 import { FaRegComments } from 'react-icons/fa';
 import { BsShare } from 'react-icons/bs';
 import { BiSave } from 'react-icons/bi';
