@@ -95,12 +95,12 @@ export default function PostEdit(){
           <div className="right_add">
             <h2 className='h2_add'>Editing Post {id}</h2>
             <form id='formaddplace'>
-              <textarea rows="3" className='textarea_add' placeholder="Body" id="body" name="body" defaultValue={post.body} onChange={handleFormulari}/>
-              <input type="text" className='field_add' placeholder="Latitude" id="latitude" name="latitude"  defaultValue={post.latitude} onChange={handleFormulari}/> 
-              <input type="text" className='field_add' placeholder="Longitude" id="longitude" name="longitude"  defaultValue={post.longitude} onChange={handleFormulari}/>
+              <textarea rows="3" className='textarea_add' placeholder="Body" id="body" name="body" defaultValue={formulari.body} onChange={handleFormulari}/>
+              <input type="text" className='field_add' placeholder="Latitude" id="latitude" name="latitude"  defaultValue={formulari.latitude} onChange={handleFormulari}/> 
+              <input type="text" className='field_add' placeholder="Longitude" id="longitude" name="longitude"  defaultValue={formulari.longitude} onChange={handleFormulari}/>
               
              
-              <select onChange={handleFormulari} id="visibility" name="visibility" defaultValue={post.visibility}  className='field_add'>
+              <select onChange={handleFormulari} id="visibility" name="visibility" defaultValue={formulari.visibility}  className='field_add'>
                 <option  value="1" checked >Public</option>
                 <option  value="3">Private</option>
                 <option  value="2">Contacts</option>
@@ -113,7 +113,7 @@ export default function PostEdit(){
             </form>
           </div>
           <div className="left_edit_post">
-          <img src={"https://backend.insjoaquimmir.cat/storage/" + formulari.upload.filepath} alt={post.name}/> 
+          <img src={"https://backend.insjoaquimmir.cat/storage/" + formulari.upload.filepath} alt={formulari.name}/> 
           </div>
         </div>
       </div>
