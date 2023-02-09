@@ -20,21 +20,21 @@ export const PostList = ({post, deletePost,refresh, setRefresh}) => {
             <td>{post.longitude}</td>
             <td>{post.comments_count}</td>
             <td>{post.visibility.name}</td>
-            <td><AiOutlineHeart className='icono'/>{post.likes_count}</td>
+            <td><AiOutlineHeart className='icono iconoLike'/>{post.likes_count}</td>
             <td><Link className="headerLink" to={"/posts/" +post.id}><ImEye className='icono'/></Link></td>
 
             {(userEmail == post.author.email) ?
 
                 <td><Link className="headerLink" to={"/posts/edit/" +post.id}><BiEdit className='icono'/></Link></td> 
                     :
-                <td><TbEditOff className='iconoNotYours'/></td>
+                <td><TbEditOff className='icono NotYours'/></td>
             }
 
             {(userEmail == post.author.email) ?
 
                 <td><FaTrashAlt className='icono' onClick={() => {deletePost(post.id), setRefresh(!refresh);}}/></td>
                     : 
-                <td><TbTrashOff className='iconoNotYours'/></td>
+                <td><TbTrashOff className='icono NotYours'/></td>
             }
         </>
     )

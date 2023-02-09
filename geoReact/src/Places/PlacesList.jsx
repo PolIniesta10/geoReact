@@ -56,6 +56,7 @@ export default function PlacesList(){
       console.log("Error");
       alert("catch");  
     }
+
   }
   return (
     <>

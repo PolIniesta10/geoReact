@@ -689,6 +689,18 @@ h2 {
 	background-color: #6f6f6f69;
 	color: rgba(245, 245, 220, 0.603);
 }
+
+.NotYours {
+	cursor: none;
+	background-color: rgba(253, 123, 123, 0.686);
+
+}
+.iconoLike{
+	color: red;
+}
+.iconoFav{
+	color: yellow;
+}
 .iconofavourite {
 	display: flex;
 	justify-content: center;
