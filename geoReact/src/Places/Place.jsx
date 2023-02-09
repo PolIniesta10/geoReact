@@ -70,6 +70,7 @@ export default function Place(){
       const resposta = await data.json();
       if (resposta.success === true)
         console.log(resposta),
+        alert("Se ha eliminat correctament."),
         setRefresh(!refresh);
       
       else alert("La resposta no a triomfat");
@@ -124,7 +125,7 @@ export default function Place(){
 
                   {(userEmail == place.author.email) ?
 
-                    <td><FaTrashAlt className='authorIcons' onClick={() => {deletePlace(place.id), setRefresh(!refresh);}}/></td>
+                    <td><Link className="headerLink" to={"/posts/list/"}><FaTrashAlt className='authorIcons' onClick={() => {deletePlace(place.id), setRefresh(!refresh);}}/></Link></td>
                         : 
                     <td></td>
                   }

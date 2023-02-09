@@ -52,6 +52,7 @@ export default function PostsGrid() {
       const resposta = await data.json();
       if (resposta.success === true)
         console.log(resposta),
+        alert("Se ha eliminat correctament."),
         setRefresh(!refresh);
       
       else alert("La resposta no a triomfat");
