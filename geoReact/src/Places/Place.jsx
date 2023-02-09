@@ -8,6 +8,7 @@ import { MdOutlineReviews } from 'react-icons/md';
 import { FaRegShareSquare } from 'react-icons/fa';
 import { BiSave } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
+import { ReviewsList } from './reviews/ReviewsList';
 
 export default function Place(){
   const { id } = useParams();
@@ -112,6 +113,7 @@ export default function Place(){
                 </div>
                 
                 <button className='buttonicon'><FaRegShareSquare className='icGrid'/></button>
+                
 
                 <div className='authorButtons'>
                   
@@ -124,7 +126,7 @@ export default function Place(){
 
                   {(userEmail == place.author.email) ?
 
-                    <td><FaTrashAlt className='authorIcons' onClick={() => {deletePlace(place.id), setRefresh(!refresh);}}/></td>
+                    <td><Link className="headerLink" to={"/places/list"}><FaTrashAlt className='authorIcons' onClick={() => {deletePlace(place.id), setRefresh(!refresh);}}/></Link></td>
                         : 
                     <td></td>
                   }
@@ -141,7 +143,7 @@ export default function Place(){
             <p className='description_bodyGrid'>{place.name}</p>
             <p className='description_bodyGrid'>{place.description}</p>
             <p className='created_atGrid'>Created at: {place.created_at}</p>
-            
+            <ReviewsList id={place.id}/>
           </div>
         </div>
       </div>

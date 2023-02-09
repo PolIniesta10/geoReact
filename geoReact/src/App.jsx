@@ -28,11 +28,21 @@ import PostsList from './Posts/PostsList';
 
 import NotFound from './NotFound';
 
+import { ReviewsList } from './Places/reviews/ReviewsList';
+
 
 function App() {
   let [authToken, setAuthToken] = useState("");
   let [userEmail, setUserEmail] = useState("");
-
+  function disableScroll(){  
+    var x = window.scrollX;
+    var y = window.scrollY;
+    window.onscroll = function(){ window.scrollTo(x, y) };
+  }
+  function enableScroll(){  
+    window.onscroll = null;
+  }
+  
   return (
     
     <UserContext.Provider value= { { userEmail,setUserEmail,authToken,setAuthToken }}>
@@ -61,6 +71,8 @@ function App() {
             <Route path="/posts/grid" element={ <> <PostsMenu/><PostsGrid/> </>} /> 
             <Route path="/posts/list" element={ <> <PostsMenu/><PostsList/> </>} /> 
 
+            <Route path="/places/reviews" element={<><PlacesMenu /><ReviewsList /> </>} />
+
         </Routes>
 
         <div className='footer'>
@@ -71,6 +83,7 @@ function App() {
         
       </>): ( 
       <>
+        
         <LoginRegister/>
       </>)}
       
