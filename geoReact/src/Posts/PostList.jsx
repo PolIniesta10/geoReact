@@ -4,6 +4,8 @@ import { ImEye } from 'react-icons/im';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { BiEdit } from 'react-icons/bi';
 import { FaTrashAlt } from 'react-icons/fa';
+import { TbEditOff } from 'react-icons/tb';
+import { TbTrashOff } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 
 export const PostList = ({post, deletePost,refresh, setRefresh}) => {
@@ -23,16 +25,16 @@ export const PostList = ({post, deletePost,refresh, setRefresh}) => {
 
             {(userEmail == post.author.email) ?
 
-            <td><Link className="headerLink" to={"/posts/edit/" +post.id}><BiEdit className='icono'/></Link></td> 
-                :
-            <td></td>
+                <td><Link className="headerLink" to={"/posts/edit/" +post.id}><BiEdit className='icono'/></Link></td> 
+                    :
+                <td><TbEditOff className='iconoNotYours'/></td>
             }
 
             {(userEmail == post.author.email) ?
 
-            <td><FaTrashAlt className='icono' onClick={() => {deletePost(post.id), setRefresh(!refresh);}}/></td>
-                : 
-            <td></td>
+                <td><FaTrashAlt className='icono' onClick={() => {deletePost(post.id), setRefresh(!refresh);}}/></td>
+                    : 
+                <td><TbTrashOff className='iconoNotYours'/></td>
             }
         </>
     )

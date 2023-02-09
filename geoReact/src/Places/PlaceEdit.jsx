@@ -86,7 +86,7 @@ export default function PlaceEdit(){
 
       else{
         console.log(resposta)
-        const errores = document.getElementsByClassName("errores")[0];
+        const errores = document.getElementsByClassName("erroresPost-Places")[0];
         errores.innerHTML = resposta.message
         errores.removeAttribute("hidden")
       } 
@@ -101,7 +101,9 @@ export default function PlaceEdit(){
     <>
     <div className="container_add">
         <div className="add-box">
-          
+        <div className="left_add">
+          {/* <img src={"https://backend.insjoaquimmir.cat/storage/" + formulari.upload.filepath} alt={formulari.name}/>  */}
+          </div>
           <div className="right_add">
             <h2 className='h2_add'>Editing Place {id}</h2>
             <form id='formaddplace'>
@@ -123,9 +125,6 @@ export default function PlaceEdit(){
               <div className="erroresPost-Places" hidden></div> 
               <button className="btn_add" onClick={(e) => { editPlace(e); }}>Edit</button>
             </form>
-          </div>
-          <div className="left_edit_post">
-          <img src={"https://backend.insjoaquimmir.cat/storage/" + formulari.upload.filepath} alt={formulari.name}/> 
           </div>
         </div>
       </div>

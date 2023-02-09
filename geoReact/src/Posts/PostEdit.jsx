@@ -84,12 +84,12 @@ export default function PostEdit(){
 
       else{
         console.log(resposta);
-        const errores = document.getElementsByClassName("errores")[0];
+        const errores = document.getElementsByClassName("erroresPost-Places")[0];
         errores.innerHTML = resposta.message
         errores.removeAttribute("hidden")
       } 
         
-    }catch{
+    }catch{ 
       console.log("Error");
       alert("catch");
     }
@@ -99,7 +99,7 @@ export default function PostEdit(){
     <>
     <div className="container_add">
         <div className="add-box">
-          
+
           <div className="right_add">
             <h2 className='h2_add'>Editing Post {id}</h2>
             <form id='formaddplace'>
@@ -121,8 +121,8 @@ export default function PostEdit(){
               <button className="btn_add" onClick={(e) => { editPost(e); }}>Edit</button>
             </form>
           </div>
-          <div className="left_edit_post">
-          <img src={"https://backend.insjoaquimmir.cat/storage/" + formulari.upload.filepath} alt={formulari.name}/> 
+          <div className="left_add_post">
+          {/* <img src={"https://backend.insjoaquimmir.cat/storage/" + formulari.upload.filepath} alt={formulari.name}/>  */}
           </div>
         </div>
       </div>
