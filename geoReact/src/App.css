@@ -327,7 +327,8 @@ h2 {
 
 .page_404{ 
 	padding:40px 0; 
-	background:transparent; 
+	background: white;
+    border-radius: 20px;
 }
 
 .page_404  img{
