@@ -9,12 +9,8 @@ export const ReviewsList = ({id}) => {
   let [reviews, setReviews] = useState([]);
   let [canAddReview, setCanAddReview] = useState(true);
   let [addReview, setAddReview] = useState(true);
-  let [review, setReview] = useState({
-    user:{name:""},
-    id:"",
-    review:"",
-
-  })  
+  let [review, setReview] = useState("");
+  let [refresh,setRefresh] = useState(false)
 
   const saveReviews = async() => {
       try{  
@@ -28,7 +24,7 @@ export const ReviewsList = ({id}) => {
           method: "GET"
         })
         const resposta = await data.json();
-        if (resposta.success === true) setReviews(resposta.data) ,console.log(resposta);
+        if (resposta.success === true) setReviews(resposta.data) ,console.log(resposta),setRefresh(!refresh);
         
         else alert("La resposta no a triomfat");   
     
@@ -37,7 +33,7 @@ export const ReviewsList = ({id}) => {
       alert("catch");  
     }
   }
-  useEffect(() => { saveReviews(); }, []); 
+  useEffect(() => { saveReviews(); }, [refresh]); 
   
   const deleteReview = async(idReview) => {
     try{
