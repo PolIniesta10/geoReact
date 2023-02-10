@@ -120,16 +120,16 @@ export default function Place(){
                   
                   {(userEmail == place.author.email) ?
 
-                    <td><Link className="headerLink" to={"/places/edit/" +place.id}><BiEdit className='authorIcons'/></Link></td> 
+                    <div><Link className="headerLink" to={"/places/edit/" +place.id}><BiEdit className='authorIcons'/></Link></div> 
                         :
-                    <td></td>
+                    <div></div>
                   }
 
                   {(userEmail == place.author.email) ?
 
-                    <td><Link className="headerLink" to={"/places/list"}><FaTrashAlt className='authorIcons' onClick={() => {deletePlace(place.id), setRefresh(!refresh);}}/></Link></td>
+                    <div><Link className="headerLink" to={"/places/list"}><FaTrashAlt className='authorIcons' onClick={() => {deletePlace(place.id), setRefresh(!refresh);}}/></Link></div>
                         : 
-                    <td></td>
+                    <div></div>
                   }
 
                 </div>

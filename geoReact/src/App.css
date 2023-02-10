@@ -1111,3 +1111,62 @@ h2 {
 /* #####################################################
 				END PLACES & POST EDIT
 ##################################################### */
+/* #####################################################
+					ADD REVIEW
+##################################################### */
+
+.addReview{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 5px;
+	color: rgba(245, 245, 220, 0.603);
+}
+
+.addReviewButton{
+	display: flex;
+	align-items: center;
+    cursor: pointer;
+	padding-left:10px;padding-right: 10px;
+    border-radius: 25px;
+    background-color: #6f6f6f69;
+}
+
+.addReviewIcono{
+	font-size: 2em;
+	padding: 5px;
+}
+
+.addReviewInput{
+	background-color: #6f6f6f69;
+	border: none;
+	border-radius: 25px;
+	font-size: 15px;
+}
+
+
+.addReview input#review::-webkit-input-placeholder {
+	color: rgba(245, 245, 220, 0.603);
+	padding-left: 5px;
+ }
+ .addReview input#review:-moz-placeholder {
+	color: rgba(245, 245, 220, 0.603); 
+	padding-left: 5px;
+}
+
+ .addReview input#review::-moz-placeholder {
+	color: rgba(245, 245, 220, 0.603); 
+	padding-left: 5px;
+}
+
+ .addReview input#review:-ms-input-placeholder {  
+	color: rgba(245, 245, 220, 0.603);
+	padding-left: 5px;
+ }
+
+.pad10{
+	padding: 10px;
+}
+
+/* #####################################################
+					END ADD REVIEW
+##################################################### */
