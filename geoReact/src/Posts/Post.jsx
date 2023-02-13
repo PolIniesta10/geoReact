@@ -8,7 +8,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 import { FaRegShareSquare } from 'react-icons/fa';
 import { BiSave } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
-
+import { CommentsList } from './comments/CommentsList';
 export default function Post(){
   const { id } = useParams();
   let { userEmail, setUserEmail, authToken, setAuthToken } = useContext(UserContext);
@@ -143,7 +143,7 @@ export default function Post(){
 
             <p className='description_bodyGrid'>{post.body}</p>
             <p className='created_atGrid'>Created at: {post.created_at}</p>
-          
+            <CommentsList id={post.id}/>
           </div>
         </div>
       </div>
