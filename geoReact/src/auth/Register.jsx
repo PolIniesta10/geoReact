@@ -5,10 +5,12 @@ import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 import { faGooglePlusG } from "@fortawesome/free-brands-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { UserContext } from '../userContext'
-import { faFacebook } from "@fortawesome/free-brands-svg-icons";
+// import { useForm } from '../hooks/useForm'
+
 export default function Register({ setLogin }) {
   let [formulari, setFormulari] = useState({});
   let {userEmail,setUserEmail, authToken,setAuthToken } = useContext(UserContext);
+  
 
   const handleChange = async (e) => {
     e.preventDefault();
