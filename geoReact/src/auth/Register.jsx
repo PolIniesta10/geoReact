@@ -5,30 +5,21 @@ import { faFacebookF } from "@fortawesome/free-brands-svg-icons";
 import { faGooglePlusG } from "@fortawesome/free-brands-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { UserContext } from '../userContext'
-// import { useForm } from '../hooks/useForm'
+import { useForm } from '../hooks/useForm'
 
 export default function Register({ setLogin }) {
-  let [formulari, setFormulari] = useState({});
   let {userEmail,setUserEmail, authToken,setAuthToken } = useContext(UserContext);
-  
-
-  const handleChange = async (e) => {
-    e.preventDefault();
-    try {
-      setFormulari({
-        ...formulari,
-        [e.target.name]: e.target.value
+  const { formState, onInputChange } = useForm({
+      name: "",
+      email: "",
+      password: "",
+      password2: "",
       });
-    }
-    catch {
-      console.log("Catch!");
-    }
-    
-  };
+      
+  const { name,email,password, password2} = formState
+
   const handleRegister = async (e) => {
     e.preventDefault();
-
-    let { name, email, password, password2} = formulari;
 
     if (password2 !== password) {
       alert("La contraseña no coincide");
@@ -74,10 +65,10 @@ export default function Register({ setLogin }) {
                 <a href="#" className="social"><i><FontAwesomeIcon icon={faTwitter}/></i></a>
               </div>
               <span className="span_log_reg">o use su correo electrónico para registrarse</span>
-              <input className="input_log_reg" name="name" type="text" placeholder="Nombre" onChange={handleChange}/>
-              <input className="input_log_reg" name="email" type="email" placeholder="Email" onChange={handleChange}/>
-              <input className="input_log_reg" name="password" type="password" placeholder="Contraseña" onChange={handleChange}/>
-              <input className="input_log_reg" name="password2" type="password" placeholder="Repite contraseña" onChange={handleChange}/>
+              <input className="input_log_reg" name="name" type="text" placeholder="Nombre" onChange={onInputChange} value={name}/>
+              <input className="input_log_reg" name="email" type="email" placeholder="Email" onChange={onInputChange} value={email}/>
+              <input className="input_log_reg" name="password" type="password" placeholder="Contraseña" onChange={onInputChange} value={password}/>
+              <input className="input_log_reg" name="password2" type="password" placeholder="Repite contraseña" onChange={onInputChange} value={password2}/>
               <div className="errores" hidden></div>
               <button className="SignBtn margin-top" onClick={(e) => {handleRegister(e);}}>Registrarse</button>
             </form>
