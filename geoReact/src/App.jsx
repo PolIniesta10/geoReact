@@ -14,8 +14,8 @@ import PlacesMenu from './Places/PlacesMenu';
 import Place from './Places/Place';
 import PlaceAdd from './Places/PlaceAdd';
 import PlaceEdit from './Places/PlaceEdit';
-import PlacesGrid from './Places/PlacesGrid';
-import PlacesList from './Places/PlacesList';
+import { PlacesGrid } from './Places/PlacesGrid';
+import { PlacesList } from './Places/PlacesList';
 
 import Posts from './Posts/Posts';
 import PostsMenu from './Posts/PostsMenu';

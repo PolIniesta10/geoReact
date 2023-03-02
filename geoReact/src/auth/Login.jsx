@@ -12,8 +12,8 @@ export default function Login({ setLogin }) {
   let {userEmail, setUserEmail, authToken,setAuthToken } = useContext(UserContext);
 
   const { formState, onInputChange } = useForm({
-    email: "e@gmail.com",
-    password: "eeeeeeee",
+    email: "oscar@gmail.com",
+    password: "oscar1234",
   });
 
   const {email,password} = formState
