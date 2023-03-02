@@ -2,7 +2,9 @@ import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from "../../userContext";
 import { Review } from './Review';
 import { BiMessageAdd } from 'react-icons/bi';
-import { BiSend } from 'react-icons/bi';
+import { BiSend } from 'react-icons/bi'; 
+import { FaEraser } from 'react-icons/fa';
+import { useForm } from "../../hooks/useForm";
 
 export const ReviewsList = ({id}) => {
   let { userEmail, setUserEmail,authToken, setAuthToken } = useContext(UserContext);
@@ -11,6 +13,13 @@ export const ReviewsList = ({id}) => {
   let [addReview, setAddReview] = useState(true);
   let [review, setReview] = useState("");
   let [refresh,setRefresh] = useState(false)
+
+  const { formState, OnResetForm } = useForm({
+    reviewed: "",
+
+  });
+
+  const {reviewed} = formState
 
   const saveReviews = async() => {
       try{  
@@ -124,9 +133,10 @@ export const ReviewsList = ({id}) => {
             : <form> 
                 <div className='addReview'>
 
-                    <input type="text" className='addReviewInput pad10' placeholder="Write review" id='review' onChange={(e) => {setReview(e.target.value);}}/>
+                    <input name="reviewed" value={reviewed} type="text" className='addReviewInput pad10' placeholder="Write review" id='review' onChange={(e) => {setReview(e.target.value), {OnChangeForm}}}/>
               
                   <div className='addReviewButton pad10' onClick={(e) => {sendReview(e), setCanAddReview(false)}}><BiSend className='addReviewIcono'/></div>
+                  <div className='addReviewButton pad10' onClick={OnResetForm}><FaEraser className='addReviewIcono'/></div>
                 </div>
               </form> 
 
