@@ -33,7 +33,7 @@ import { ReviewsList } from './Places/reviews/ReviewsList';
 
 function App() {
   let [authToken, setAuthToken] = useState("");
-  let [userEmail, setUserEmail] = useState("");
+  let [usuari, setUsuari] = useState("");
   function disableScroll(){  
     var x = window.scrollX;
     var y = window.scrollY;
@@ -45,7 +45,7 @@ function App() {
   
   return (
     
-    <UserContext.Provider value= { { userEmail,setUserEmail,authToken,setAuthToken }}>
+    <UserContext.Provider value= { { usuari, setUsuari,authToken,setAuthToken }}>
       {authToken ? (
       <>
       <div className='cajamaster'>
