@@ -1,146 +1,91 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React from "react";
+import { useEffect } from "react";
+import { Comment } from "./Comment";
+
+import { useContext } from "react";
 import { UserContext } from "../../userContext";
-import { Comment } from './Comment';
-import { BiMessageAdd } from 'react-icons/bi';
-import { BiSend } from 'react-icons/bi';
 
-export const CommentsList = ({id}) => {
-  let { userEmail, setUserEmail,authToken, setAuthToken } = useContext(UserContext);
-  let [comments, setComments] = useState([]);
-  let [canAddComment, setCanAddComment] = useState(true);
-  let [addComment, setAddComment] = useState(true);
-  let [comment, setComment] = useState("");
-  let [refresh,setRefresh] = useState(false)
+import { useState } from "react";
+import { CommentAdd } from "./CommentAdd";
+import { CommentsContext } from "./commentsContext";
+// Fem servir un context únicament dins de tots els components de Reviews
 
-  const saveComments = async() => {
-      try{  
-          const data = await fetch("https://backend.insjoaquimmir.cat/api/posts/"+ id +"/comments", {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            'Authorization': 'Bearer '  + authToken,
+export const CommentsList = ({ id, comments_count }) => {
+  //let {setAdd, setRefresca, reviewsCount, setReviewsCount } = useContext(ReviewsContext)
+  let { usuari, setUsuari, authToken, setAuthToken } = useContext(UserContext);
 
-          },
-          method: "GET"
-        })
-        const resposta = await data.json();
-        if (resposta.success === true) setComments(resposta.data) ,console.log(resposta),setRefresh(!refresh);
-        
-        else alert("La resposta no a triomfat");   
-    
-  }catch{
-      console.log("Error");
-      alert("catch");  
+  let [error, setError] = useState("");
+  const [refresca, setRefresca] = useState(false);
+  const [add, setAdd] = useState(true);
+  const [commentsCount, setCommentsCount] = useState(comments_count);
+
+  const [reviews, setReviews] = useState([]);
+
+  // review ={v} setAdd={setAdd } setRefresca={ setRefresca}
+
+  const listComments = async () => {
+    const headers = {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + authToken,
+      },
+      method: "GET",
+    };
+
+    let data = await fetch(
+      "https://backend.insjoaquimmir.cat/api/posts/" + id + "/comments",
+      headers
+    );
+    let resposta = await data.json();
+    console.log(resposta);
+
+    if (resposta.success == true) { console.log(resposta.data); setReviews(resposta.data);}
+    else {
+      setError(resposta.message);
     }
-  }
-  useEffect(() => { saveComments(); }, [refresh]); 
-  
-  const deleteComment = async(idComment) => {
-    try{
-      
-        const data = await fetch("https://backend.insjoaquimmir.cat/api/posts/"+ id + "/comments/"+ idComment, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          'Authorization': 'Bearer '  + authToken,
-        },
-        method: "DELETE"
-      })
-      const resposta = await data.json();
-      if (resposta.success === true) console.log(resposta);
-      
-      else alert("La resposta no a triomfat");
 
-      }catch{
-        console.log("Error");
-        alert("catch");  
+    resposta.data.map((v) => {
+      if (v.user.email === usuari) {
+        setAdd(false);
+        console.log("Te review");
       }
-      
-  }
+    });
+  };
 
-  const sendComment = async(e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("comment", comment);
-    try{
-      const data = await fetch("https://backend.insjoaquimmir.cat/api/posts/"+ id + "/comments", {
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + authToken,
-        },
-        method: "POST",
-        body: formData
-      });
-      
-      const resposta = await data.json();
-      if (resposta.success === true)  alert("Comment creada!");
+  useEffect(() => {
+    listComments();
+    setRefresca(false);
+  }, [refresca]);
 
-
-      else alert("La resposta no ha triomfat");
-
-
-    }catch{
-      console.log("Error");
-      alert("catch");
-    }
-  }
-  
   return (
-    <>
-      <div className='bodyList'>
-        <table id='tableList'>
-          <tbody>
-            <tr id='tr1List'>
-              <th>Id</th>
-              <th>Comment</th>
-              <th>Author</th>
-              <th>Delete</th>
-
-            </tr>
-
-            { comments.map ( (comment)=> (
-              <tr id='tr2List' key={comment.id}>
-                {(userEmail == comment.user.email && canAddComment == true) && setCanAddComment(false)}
-                <Comment comment={comment} deleteComment={deleteComment} />
-              </tr>
-            ))}
-
-            </tbody>
-        </table>
+    <CommentsContext.Provider
+      value={{ setAdd, setRefresca, commentsCount, setCommentsCount }}
+    >
+      {add ? <CommentAdd id={id} /> : <></>}
+      <div class="flex mx-auto items-center justify-center  mt-6 mx-8 mb-4 max-w-lg">
+        {commentsCount == 0 ? (
+          <div className="flex mb-4 w-full items-center space-x-2 rounded-2xl bg-red-50 px-4 ring-2 ring-red-200">
+            No hi ha reviews
+          </div>
+        ) : (
+          <div className="flex mb-4 w-full items-center space-x-2 rounded-2xl bg-blue-50 px-4 ring-2 ring-blue-200">
+            Hi ha {commentsCount} {commentsCount > 1 ? " ressenyes" : " ressenya"}{" "}
+          </div>
+        )}
       </div>
-        
-      
-      {//Si no tiene ninguna review
-      (canAddComment== true) ?
-        
-        //Si no a pulsado el boton
-        (addComment == true && canAddComment == true) ? 
-              <div className='addReview' > 
-                <div className='addReviewButton' onClick={() => {setAddComment(false);}}><BiMessageAdd className='addReviewIcono'/><p>Add Comment</p></div>
-              </div>
-            
-              
-            //Cuando a pulsado el boton
-            : <form> 
-                <div className='addReview'>
 
-                    <input type="text" className='addReviewInput pad10' placeholder="Write review" id='review' onChange={(e) => {setComment(e.target.value);}}/>
-              
-                  <div className='addReviewButton pad10' onClick={(e) => {sendComment(e), setCanAddComment(false)}}><BiSend className='addReviewIcono'/></div>
-                </div>
-              </form> 
+      {error ? (
+        <div className="flex mb-4 w-full items-center space-x-2 rounded-2xl bg-red-50 px-4 ring-2 ring-red-200 ">
+          {error}
+        </div>
+      ) : (
+        <></>
+      )}
 
-            : <div></div>
-
-    }
-    </>
-  )
-
-
-
-
-
-
-
-
-}
+      {reviews.map((v) => {
+        return <Comment key={v.id} comment={v} />;
+      })}
+    </CommentsContext.Provider>
+  );
+};
