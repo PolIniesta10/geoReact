@@ -1,4 +1,4 @@
-import { useState} from "react";
+import { useState } from 'react';
 
 export const useForm = (initialForm={}) => {
 
@@ -19,4 +19,5 @@ export const useForm = (initialForm={}) => {
     
     return { ...formState, formState, onInputChange, OnResetForm };
     
-};
+    };
+
