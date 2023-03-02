@@ -1,63 +1,63 @@
 import React, { useState, useContext, useEffect, useCallback } from 'react'
 import { UserContext } from '../userContext';
 import { PlaceList } from './PlaceList';
-export default function PlacesList(){
+import useFetch from "../hooks/useFetch";
 
-  let { userEmail, setUserEmail, authToken, setAuthToken } = useContext(UserContext);
-  let [places, setPlaces] = useState([]);
+export const PlacesList = () => {
+
+  // desa el retorn de dades de l'api places
+  let [ places, setPlaces ] = useState([]);
+  // Ho utilitzem per provar un refresc quan esborrem un element
   let [refresh,setRefresh] = useState(false)
+  // Dades del context. Ens cal el token per poder fer les crides a l'api
+  let { usuari,  setUsuari,authToken,setAuthToken } = useContext(UserContext)
 
-  const getPLaces = async (e) => {
-    try {
-      const data = await fetch("https://backend.insjoaquimmir.cat/api/places", {
-          headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          'Authorization': 'Bearer ' + authToken
-          },
-          method: "GET",
-      })
-      const resposta = await data.json();
-          console.log(resposta);
-          if (resposta.success === true) {
-              setPlaces(resposta.data)
-          }else{
-              setMissatge(resposta.message);
-          }
-    }
-    catch {
-      console.log(data);
-      alert("Catch!");
-    }
-  }
-  useEffect(() => { getPLaces(); }, [refresh]);
+  const { data, error, loading} = useFetch("https://backend.insjoaquimmir.cat/api/places", {
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + authToken,
+    },
+    method: "GET",
+  })
 
-  const deletePlace = async(id) => {
-    try{
-      
-      const data = await fetch("https://backend.insjoaquimmir.cat/api/places/"+ id, {
+const deletePlace = (id,e) => {
+
+
+  let confirma = confirm("Estas  segur?")
+
+  if (confirma)
+  {
+    fetch ("https://backend.insjoaquimmir.cat/api/places/"+id,{
+    
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          'Authorization': 'Bearer '  + authToken,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + authToken
         },
-        method: "DELETE"
-      })
-
-      const resposta = await data.json();
-      if (resposta.success === true)
-        console.log(resposta),
-        alert("Se ha eliminat correctament."),
-        setRefresh(!refresh);
-      
-      else alert("La resposta no a triomfat");
-
-    }catch{
-      console.log("Error");
-      alert("catch");  
+        method: "DELETE",
+       
     }
+    ).then( data => data.json() )
+    .then (resposta => { 
+        
+            console.log(resposta); 
+            if (resposta.success == true )
+            {
+                console.log("OK")
+                // provoca el refrescat del component i la reexecució de useEffect
+                setRefresh(!refresh);
 
+                // let b = places.filter( e =>  {
+                //   return e.id !== id
+                // });
+                // setPlaces(b)
+                
+            }
+        } ) 
   }
+}
+
   return (
     <>
     <div className='bodyList'>
@@ -76,13 +76,18 @@ export default function PlacesList(){
             <th></th>
             <th></th>
           </tr>      
-
-          { places.map ( (place)=> (
-              (place.visibility.name != 'private' || userEmail == place.author.email) && (<tr key={place.id} id='tr2List'>
-              <PlaceList place={place} deletePlace={deletePlace} setRefresh={setRefresh} refresh={refresh}/></tr>)
-          ))}
+          {loading ? "Espera..." : <>{data.map((place) => {
+            return (
+              <>
+                { place.visibility.id == 1 || place.author.email == usuari ? (<tr id='tr2List'><PlaceList  deletePlace={ deletePlace } key={place.id} place={place}/></tr>) : <></> }            
+              </>
+            )
+          })}</>}
+          
+         
 
           </tbody>
+          
         </table>
       </div>
     </>

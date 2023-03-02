@@ -1,76 +1,62 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from "../userContext";
 import { PlaceGrid } from './PlaceGrid'
+import useFetch from '../hooks/useFetch';
 
-export default function PlacesGrid() {
-  let { userEmail, setUserEmail, authToken, setAuthToken } = useContext(UserContext);
-  let [places, setPlaces] = useState([]);
-  let [refresh,setRefresh] = useState(false)
+export const PlacesGrid = () => {
+  // desa el retorn de dades de l'api places
+  let [ places, setPlaces ] = useState([]);
+  // Ho utilitzem per provar un refresc quan esborrem un element
+  let [refresca,setRefresca] = useState(false)
+  // Dades del context. Ens cal el token per poder fer les crides a l'api
+  let { usuari, setUsuari,authToken,setAuthToken } = useContext(UserContext)
 
-  const getPlaces = async(e) => {
-    try{
-      
-        const data = await fetch("https://backend.insjoaquimmir.cat/api/places", {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          'Authorization': 'Bearer '  + authToken,
-        },
-        method: "GET"
-      })
-      const resposta = await data.json();
-      if (resposta.success === true) {
-        setPlaces(resposta.data);
-        console.log(resposta);
-      }
-      
-      else {
-        console.log(resposta);
-      }
-      
-
-      }catch{
-        console.log("Error");
-        alert("catch");  
-      }   
+  let { data,error,loading,reRender} = useFetch("https://backend.insjoaquimmir.cat/api/places",
+  {
+    headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    'Authorization': 'Bearer ' + authToken
+    },
+    method: "GET",
   }
-
-  useEffect(() => { getPlaces(); }, [refresh]);
-
-
-  const deletePlace = async(id) => {
+  )
+  const deletePlace = async (e,id) =>{
+    e.preventDefault();
     try{
-      
-      const data = await fetch("https://backend.insjoaquimmir.cat/api/places/"+ id, {
-        headers: {
+      const data = await fetch("https://backend.insjoaquimmir.cat/api/places/" + id, {
+          headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          'Authorization': 'Bearer '  + authToken,
-        },
-        method: "DELETE"
+          'Authorization': 'Bearer ' + authToken
+          },
+          method: "DELETE",
       })
 
       const resposta = await data.json();
-      if (resposta.success === true)
-        console.log(resposta),
-        alert("Se ha eliminat correctament."),
-        setRefresh(!refresh);
-      
-      else alert("La resposta no a triomfat");
+          console.log(resposta);
+          if (resposta.success === true) {
+              reRender();
+              console.log("Place eliminat correctament");
+          }else{
+              setMissatge(error);
+          }
 
-    }catch{
-      console.log("Error");
-      alert("catch");  
+    }catch {
+      console.log(data);
+      alert("Estem tenint problemes amb la xarxa o amb l'informació a les rutes");
     }
   }
-
+  
   return (
     <>
-          { places.map ( (place)=> (
-              (place.visibility.name != 'private' || userEmail == place.author.email) && (<div key={place.id} >
-              <PlaceGrid place={place} deletePlace={deletePlace} setRefresh={setRefresh} refresh={refresh}/></div>)
-          ))}
-
+         {loading ? "Espera..." : <>{data.map((place) => {
+            return (
+              <>
+                { place.visibility.id == 1 || place.author.email == usuari ? (<PlaceGrid  deletePlace={ deletePlace } key={place.id} place={place}/>) : <></> }            
+              </>
+            )
+          })}</>}
     </>
   )
 }
