@@ -22,7 +22,7 @@ const init = () => {
 };
 
 export default function Post(){
-  const [postmark, dispatchPosts] = useReducer(postMarkReducer, initialState, init);
+  const [postmark, dispatchPosts] = useReducer(postMarkReducer, initialState,init);
   const { pathname } = useLocation();
 
   const { id } = useParams();
@@ -87,6 +87,7 @@ export default function Post(){
       payload: postmark
     };
     console.log(postmark);
+    alert("Marcador añadido!");
     dispatchPosts(action);
   };
   

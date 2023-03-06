@@ -6,7 +6,7 @@ export const PostMark = ({post,handleDeleteMark}) => {
   return (
       <>
       <div className="todo">
-        <div className='todoText'>{post.body}</div>
+        <div className='todoText'><strong>Body: </strong>{post.body} || <strong>Ruta: </strong>{post.ruta}</div>
         <div className="botonesTodo">
             <button onClick={(e) => {handleDeleteMark(post.id)}}>ESBORRAR</button>
         </div>

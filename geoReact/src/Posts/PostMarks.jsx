@@ -18,6 +18,9 @@ const PostMarks = () => {
             payload: id
         });
         console.log("mark borrado")
+        const updatedPostmark = postmark.filter(post => post.id !== id);
+        localStorage.setItem("postmark", JSON.stringify(updatedPostmark));
+        
     };
 
     return (
