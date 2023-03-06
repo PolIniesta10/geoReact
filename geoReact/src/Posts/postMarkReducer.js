@@ -3,7 +3,7 @@ export const postMarkReducer = (initialState, action) => {
 
     case "Add mark":
     
-        console.log("Mark place" + action.payload )
+        console.log("Mark post" + action.payload )
 
         return [ ...initialState, action.payload]
 

@@ -10,7 +10,6 @@ import { useLogin } from '../hooks/useLogin';
 
 
 export default function Login({ setLogin }) {
-  let {userEmail, setUserEmail, authToken,setAuthToken } = useContext(UserContext);
 
   const { formState, onInputChange } = useForm({
     email: "oscar@gmail.com",

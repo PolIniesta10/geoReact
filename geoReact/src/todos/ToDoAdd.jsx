@@ -5,7 +5,7 @@ import { useForm } from '../hooks/useForm';
 
 
 export const ToDoAdd = ({handleNewToDo}) => {
-  const { formState, onInputChange, onResetForm } = useForm({
+  const { formState, onInputChange, onResetForm  } = useForm({
     id: 0,
     text: "",
     done : false,
