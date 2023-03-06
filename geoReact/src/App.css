@@ -1169,3 +1169,49 @@ h2 {
 /* #####################################################
 					END ADD REVIEW
 ##################################################### */
+
+/* #####################################################
+					    TODOS
+##################################################### */
+
+.cajaTodos {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin: auto;
+	width: 50%;
+}
+.tableTodos {
+	border-collapse: collapse;
+	border: 2px solid black;
+	border-radius: 1em;
+	width: 100%;
+	overflow: hidden;
+}
+.trTableTodos {
+	height: 35px;
+	background-color: #a8a8a8;
+	color: #2b303b;
+	border: 2px solid black;
+}
+#trTableTodos:nth-child(even) {
+	background-color: #2b303b;
+	color: #a8a8a8;
+}
+#trTableTodos:hover {
+	background-color: rgb(218, 218, 218);
+	color: #2b303b;
+}
+.todo {
+	display: flex;
+	width: 55%;
+	justify-content: space-between;
+	padding: 5px;
+	margin-left: 45%;
+	
+}
+.todoText {
+	margin-right: 5px;
+}
+.buttonDoneToDo {
+	cursor: pointer;
+}

@@ -11,13 +11,12 @@ export const useForm = (initialForm={}) => {
             [name]: value,
         });
     };
-
-
-    const OnResetForm = () => {
-        setFormState(initialForm);
-    };
     
-    return { ...formState, formState, onInputChange, OnResetForm };
+    const onResetForm = () => {
+        setFormState(initialForm)
+    }
+
+    return { ...formState, formState,onInputChange, onResetForm };
     
     };
 

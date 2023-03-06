@@ -63,7 +63,7 @@ export const CommentsList = ({ id, comments_count }) => {
       value={{ setAdd, setRefresca, commentsCount, setCommentsCount }}
     >
       {add ? <CommentAdd id={id} /> : <></>}
-      <div class="flex mx-auto items-center justify-center  mt-6 mx-8 mb-4 max-w-lg">
+      <div className="flex mx-auto items-center justify-center  mt-6 mx-8 mb-4 max-w-lg">
         {commentsCount == 0 ? (
           <div className="flex mb-4 w-full items-center space-x-2 rounded-2xl bg-red-50 px-4 ring-2 ring-red-200">
             No hi ha reviews

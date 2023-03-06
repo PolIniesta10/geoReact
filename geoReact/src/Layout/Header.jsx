@@ -71,6 +71,7 @@ export default function Header() {
           <Link to="/places" className='linksheader'><MdOutlinePlace />Places</Link>
           <Link to="/posts" className='linksheader'><AiOutlinePicture />Posts</Link>
           <Link to="/about" className='linksheader'><TiInfoLargeOutline />About</Link>
+          <Link to="/todos" className='linksheader'><TiInfoLargeOutline />Todos</Link>
       </div>
       <div className='der_header'>
           <div className='user__header'><p>{user}({ roles.map ((v) => ( <span key={v}> {v} </span> ))})</p></div>

@@ -83,13 +83,10 @@ const deletePlace = (id,e) => {
               </>
             )
           })}</>}
-          
-         
 
-          </tbody>
-          
-        </table>
-      </div>
+        </tbody>
+      </table>
+    </div>
     </>
   )
 }

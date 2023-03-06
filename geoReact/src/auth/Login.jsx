@@ -6,48 +6,21 @@ import { faGooglePlusG } from "@fortawesome/free-brands-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { UserContext } from '../userContext'
 import { useForm } from '../hooks/useForm'
+import { useLogin } from '../hooks/useLogin';
 
 
 export default function Login({ setLogin }) {
-  let {userEmail, setUserEmail, authToken,setAuthToken } = useContext(UserContext);
 
   const { formState, onInputChange } = useForm({
     email: "oscar@gmail.com",
     password: "oscar1234",
   });
 
-  const {email,password} = formState
+  const {email,password} = formState;
 
+  const {doLogin} = useLogin();
 
-  const sendLogin = async (e) =>  {
-    e.preventDefault();
-
-    try {
-      const data = await fetch("https://backend.insjoaquimmir.cat/api/login", {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        method: "POST",
-        body: JSON.stringify({ email: email, password: password })
-      });
-
-
-      const resposta = await data.json();
-      if (resposta.success === true) {
-        setAuthToken(resposta.authToken),
-        setUserEmail(email);
-      }
-      else {
-        const errores = document.getElementsByClassName("errores")[0];
-        errores.innerHTML = resposta.message
-        errores.removeAttribute("hidden")
-      }
-    } catch {
-      console.log("Error");
-      alert("catch");
-    }
-  };
+  
     return (
       <>
         <div className="container" id="container">
@@ -64,7 +37,7 @@ export default function Login({ setLogin }) {
               <input name="password" type="password" placeholder="Contraseña" value={password} onChange={onInputChange}/>
               <div className="errores" hidden></div>
               <a className="a_log_reg" href="#">Olvidaste tu contraseña?</a>
-              <button className="SignBtn" onClick={(e) => {sendLogin(e);}}>Iniciar sesion</button>
+              <button className="SignBtn" onClick={ () => { doLogin(formState) }}>Iniciar sesion</button>
             </form>
           </div>
           <div className="overlay-container">
