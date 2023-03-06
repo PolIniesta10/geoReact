@@ -17,7 +17,7 @@ export default function Login({ setLogin }) {
     password: "oscar1234",
   });
 
-  const {email,password} = formState
+  const {email,password} = formState;
 
   const {doLogin} = useLogin();
 

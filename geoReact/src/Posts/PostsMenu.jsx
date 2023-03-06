@@ -13,6 +13,7 @@ export default function PostsMenu(){
         <Link to="/posts/add" className='link_menu'><BiImageAdd />Add</Link>
         <Link to="/posts/grid" className='link_menu'><BsGrid />Grid</Link>
         <Link to="/posts/list" className='link_menu'><BsListTask />List</Link>
+        <Link to="/posts/marks" className='link_menu'><BsListTask />Marks</Link>
       </div>
       <div className='der_menu'>
         <div className="buscador">

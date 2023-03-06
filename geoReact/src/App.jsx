@@ -25,11 +25,13 @@ import PostAdd from './Posts/PostAdd';
 import PostEdit from './Posts/PostEdit';
 import PostsGrid from './Posts/PostsGrid';
 import PostsList from './Posts/PostsList';
+import PostMarks from './Posts/PostMarks';
 
 import NotFound from './NotFound';
 
 import { ReviewsList } from './Places/reviews/ReviewsList';
 
+import ToDos from './todos/ToDos';
 
 function App() {
   let [authToken, setAuthToken] = useState("");
@@ -70,9 +72,10 @@ function App() {
             <Route path="/posts/edit/:id" element={ <> <PostsMenu/><PostEdit/> </>} /> 
             <Route path="/posts/grid" element={ <> <PostsMenu/><PostsGrid/> </>} /> 
             <Route path="/posts/list" element={ <> <PostsMenu/><PostsList/> </>} /> 
+            <Route path="/posts/marks" element={ <> <PostsMenu/><PostMarks/> </>} /> 
 
             <Route path="/places/reviews" element={<><PlacesMenu /><ReviewsList /> </>} />
-
+            <Route path="/todos" element={<><PlacesMenu /><ToDos /> </>} />
         </Routes>
 
         <div className='footer'>
