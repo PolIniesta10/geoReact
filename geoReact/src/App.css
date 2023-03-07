@@ -415,13 +415,14 @@ h2 {
 	border-radius: 20px 20px 0 0;
 }
 .logo_header{
-	background-image: url(./assets/GeoReact.png);
+	background-image: url(./assets/GeoReact2.png);
+	background-size: 85%;
 	height: 90px;
 	width: 200px;
-	background-size: contain;
 	background-repeat: no-repeat;
 	margin-left: 20px;
 	margin-right: 10px;
+	margin-top: 13px;
 }
 .izq_header {
 	display: flex;
@@ -1216,4 +1217,11 @@ h2 {
 }
 .buttonDoneToDo {
 	cursor: pointer;
+}
+.todoLink {
+	color: black;
+	text-decoration: none;
+}
+.todoLink:visited {
+	color: black;
 }
