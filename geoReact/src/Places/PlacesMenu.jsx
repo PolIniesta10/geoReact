@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { MdOutlineAddLocationAlt } from 'react-icons/md';
+import { MdOutlineBookmarks } from 'react-icons/md';
 import { BsGrid } from 'react-icons/bs';
 import { BsListTask } from 'react-icons/bs';
 import { BiSearchAlt } from 'react-icons/bi';
@@ -12,6 +13,7 @@ export default function PlacesMenu(){
         <Link to="/places/add" className='link_menu'><MdOutlineAddLocationAlt />Add</Link>
         <Link to="/places/grid" className='link_menu'><BsGrid />Grid</Link>
         <Link to="/places/list" className='link_menu'><BsListTask />List</Link>
+        <Link to="/posts/marks" className='link_menu'><MdOutlineBookmarks />Marks</Link>
       </div>
       <div className='der_menu'>
         <div className="buscador">

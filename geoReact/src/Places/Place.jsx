@@ -9,11 +9,25 @@ import { FaRegShareSquare } from 'react-icons/fa';
 import { BiSave } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import { ReviewsList } from './reviews/ReviewsList';
+import { placeMarkReducer } from './placeMarkReducer';
+import { useLocation } from "react-router-dom";
+import { useForm } from '../hooks/useForm';
+
+import { useReducer } from "react";
+
+
+const initialState = [];
+const init = () => {
+  return JSON.parse(localStorage.getItem("placemark")) || [];
+};
+
 
 export default function Place(){
+  const [placemark, dispatchPlaces] = useReducer(placeMarkReducer, initialState,init);
+  const { pathname } = useLocation();
+
   const { id } = useParams();
   let { userEmail, setUserEmail, authToken, setAuthToken } = useContext(UserContext);
-  let [places, setPlaces] = useState([]);
   let [refresh,setRefresh] = useState(false)
   
   let [place, setPlace] = useState({
@@ -55,6 +69,23 @@ export default function Place(){
   }
 
   useEffect(() => { getPlace(); }, [refresh]);
+
+  const markPlace = (place) => {
+    console.log("Añadiendo");
+    console.log({ place });
+    const placemark = {
+      id: new Date().getTime(),
+      body: place.body,
+      ruta: pathname
+    };
+    const action = {
+      type: "Add Mark",
+      payload: placemark
+    };
+    console.log(placemark);
+    alert("Marcador añadido!");
+    dispatchPosts(action);
+  };
 
   const deletePlace = async(id) => {
     try{
@@ -137,7 +168,7 @@ export default function Place(){
               </div>
 
               <div className="iconosGridDer">
-                <button className='buttonicon'><BiSave className='icGrid'/></button>
+                <button className='buttonicon' onClick={ (e) => { markPost(post) }}><BiSave className='icGrid'/></button>
               </div>
 
             </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { postMarkReducer } from './postMarkReducer';
-import { PostMark } from "../Posts/PostMark";
+import { PostMark } from "./PostMark";
 import { useReducer } from "react";
 
 const initialState = [];

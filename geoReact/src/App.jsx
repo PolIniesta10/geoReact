@@ -32,6 +32,7 @@ import NotFound from './NotFound';
 import { ReviewsList } from './Places/reviews/ReviewsList';
 
 import ToDos from './todos/ToDos';
+import Menu from './Layout/Menu';
 
 function App() {
   let [authToken, setAuthToken] = useState("");
@@ -54,9 +55,9 @@ function App() {
         <Header/>
         
         <Routes>
-            <Route path="/*" element={<NotFound />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/" element={<Posts />}/>
+            <Route path="/*" element={<><Menu /><NotFound /></> } />
+            <Route path="/about" element={<><Menu /><About /></> } />
+            <Route path="/" element={<><Menu /><Posts /></>}/>
             <Route path="/places" element={ <> <PlacesMenu/><Places/> </> } /> 
 
             <Route path="/places/:id" element={ <> <PlacesMenu/><Place/> </>} />
@@ -75,7 +76,7 @@ function App() {
             <Route path="/posts/marks" element={ <> <PostsMenu/><PostMarks/> </>} /> 
 
             <Route path="/places/reviews" element={<><PlacesMenu /><ReviewsList /> </>} />
-            <Route path="/todos" element={<><PlacesMenu /><ToDos /> </>} />
+            <Route path="/todos" element={<><Menu /><ToDos /> </>} />
         </Routes>
 
         <div className='footer'>
