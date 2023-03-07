@@ -11,7 +11,6 @@ import { Link } from 'react-router-dom';
 export const PostList = ({post, deletePost,refresh, setRefresh}) => {
     let { usuari, setUsuari } = useContext(UserContext);
 
-    console.log(usuari);
     return (
         <>
             <td>{post.id}</td>
