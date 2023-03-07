@@ -9,8 +9,9 @@ import { TbTrashOff } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 
 export const PostList = ({post, deletePost,refresh, setRefresh}) => {
-    let { userEmail, setUserEmail } = useContext(UserContext);
+    let { usuari, setUsuari } = useContext(UserContext);
 
+    console.log(usuari);
     return (
         <>
             <td>{post.id}</td>
@@ -23,14 +24,14 @@ export const PostList = ({post, deletePost,refresh, setRefresh}) => {
             <td><AiOutlineHeart className='icono iconoLike'/>{post.likes_count}</td>
             <td><Link className="headerLink" to={"/posts/" +post.id}><ImEye className='icono'/></Link></td>
 
-            {(userEmail == post.author.email) ?
+            {(usuari == post.author.email) ?
 
                 <td><Link className="headerLink" to={"/posts/edit/" +post.id}><BiEdit className='icono'/></Link></td> 
                     :
                 <td><TbEditOff className='icono NotYours'/></td>
             }
 
-            {(userEmail == post.author.email) ?
+            {(usuari == post.author.email) ?
 
                 <td><FaTrashAlt className='icono' onClick={() => {deletePost(post.id), setRefresh(!refresh);}}/></td>
                     : 
