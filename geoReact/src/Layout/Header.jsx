@@ -4,6 +4,7 @@ import { FiLogOut } from 'react-icons/fi';
 import { TiInfoLargeOutline } from 'react-icons/ti';
 import { MdOutlinePlace } from 'react-icons/md';
 import { AiOutlinePicture } from 'react-icons/ai';
+import { BiCalendarPlus } from 'react-icons/bi';
 import { UserContext } from '../userContext'
 import { useState, useContext, useEffect } from "react";
 
@@ -71,7 +72,7 @@ export default function Header() {
           <Link to="/places" className='linksheader'><MdOutlinePlace />Places</Link>
           <Link to="/posts" className='linksheader'><AiOutlinePicture />Posts</Link>
           <Link to="/about" className='linksheader'><TiInfoLargeOutline />About</Link>
-          <Link to="/todos" className='linksheader'><TiInfoLargeOutline />Todos</Link>
+          <Link to="/todos" className='linksheader'><BiCalendarPlus />Todos</Link>
       </div>
       <div className='der_header'>
           <div className='user__header'><p>{user}({ roles.map ((v) => ( <span key={v}> {v} </span> ))})</p></div>
