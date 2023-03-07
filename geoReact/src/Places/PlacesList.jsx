@@ -76,7 +76,7 @@ const deletePlace = (id,e) => {
             <th></th>
             <th></th>
           </tr>      
-          {loading ? "Espera..." : <>{data.map((place) => {
+          {loading ? <p className='esperant'>Espera...</p> : <>{data.map((place) => {
             return (
               <>
                 { place.visibility.id == 1 || place.author.email == usuari ? (<tr id='tr2List'><PlaceList  deletePlace={ deletePlace } key={place.id} place={place}/></tr>) : <></> }            

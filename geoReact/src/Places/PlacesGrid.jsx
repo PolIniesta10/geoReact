@@ -50,7 +50,7 @@ export const PlacesGrid = () => {
   
   return (
     <>
-         {loading ? "Espera..." : <>{data.map((place) => {
+         {loading ? <p className='esperant'>Espera...</p> : <>{data.map((place) => {
             return (
               <>
                 { place.visibility.id == 1 || place.author.email == usuari ? (<PlaceGrid  deletePlace={ deletePlace } key={place.id} place={place}/>) : <></> }            

@@ -50,7 +50,7 @@ export const PostsGrid = () => {
   
   return (
     <>
-         {loading ? "Espera..." : <>{data.map((post) => {
+         {loading ? <p className='esperant'>Espera...</p> : <>{data.map((post) => {
             return (
               <>
                 { post.visibility.id == 1 || post.author.email == usuari ? (<PostGrid  deletePost={ deletePost } key={post.id} post={post}/>) : <></> }            

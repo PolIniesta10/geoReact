@@ -76,7 +76,7 @@ const deletePost = (id,e) => {
             <th></th>
             <th></th>
           </tr>      
-          {loading ? "Espera..." : <>{data.map((post) => {
+          {loading ? <p className='esperant'>Espera...</p> : <>{data.map((post) => {
             return (
               <>
                 { post.visibility.id == 1 || post.author.email == usuari ? (<tr id='tr2List'><PostList  deletePost={ deletePost } key={post.id} post={post}/></tr>) : <></> }            
