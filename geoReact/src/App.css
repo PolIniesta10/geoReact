@@ -417,6 +417,7 @@ h2 {
 .logo_header{
 	background-image: url(./assets/GeoReact2.png);
 	background-size: 85%;
+	border-radius: 25%;
 	height: 90px;
 	width: 200px;
 	background-repeat: no-repeat;
