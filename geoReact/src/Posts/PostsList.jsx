@@ -21,7 +21,7 @@ export const PostsList = () => {
     method: "GET",
   })
 
-const deletePost = (id,e) => {
+const deletePost = (id) => {
 
 
   let confirma = confirm("Estas  segur?")
@@ -79,7 +79,7 @@ const deletePost = (id,e) => {
           {loading ? <p className='esperant'>Espera...</p> : <>{data.map((post) => {
             return (
               <>
-                { post.visibility.id == 1 || post.author.email == usuari ? (<tr id='tr2List'><PostList  deletePost={ deletePost } key={post.id} post={post} refresh={refresh}/></tr>) : <></> }            
+                { post.visibility.id == 1 || post.author.email == usuari ? (<tr id='tr2List'><PostList  deletePost={ deletePost } key={post.id} post={post} setRefresh={ setRefresh } refresh={refresh}/></tr>) : <></> }            
               </>
             )
           })}</>}

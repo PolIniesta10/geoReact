@@ -9,7 +9,7 @@ import { TbTrashOff } from 'react-icons/tb';
 import { Link } from 'react-router-dom';
 
 export const PlaceList = ({place, deletePlace,refresh, setRefresh}) => {
-    let { userEmail, setUserEmail } = useContext(UserContext);
+    let { usuari, setUsuari } = useContext(UserContext);
 
     return (
         <>
@@ -23,14 +23,14 @@ export const PlaceList = ({place, deletePlace,refresh, setRefresh}) => {
             <td><FaRegStar className="icono iconoFav"/>{place.favorites_count}</td>
             <td><Link className="headerLink" to={"/places/" +place.id}><ImEye className='icono'/></Link></td>
 
-            {(userEmail == place.author.email) ?
+            {(usuari == place.author.email) ?
 
                 <td><Link className="headerLink" to={"/places/edit/" +place.id}><BiEdit className='icono'/></Link></td> 
                     :
                 <td><TbEditOff className='icono NotYours'/></td>
             }
 
-            {(userEmail == place.author.email) ?
+            {(usuari == place.author.email) ?
             
                 <td><FaTrashAlt className='icono' onClick={() => {deletePlace(place.id), setRefresh(!refresh);}}/></td>
                     : 
