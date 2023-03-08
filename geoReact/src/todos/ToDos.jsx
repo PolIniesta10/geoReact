@@ -50,8 +50,6 @@ export default function ToDos() {
   return (
     <>
       <div className="cajaTodos">
-        
-          
           <table className="tableTodos">
             {todos.map((todo) => (<tr className="trTableTodos">
               <ToDo

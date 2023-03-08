@@ -307,6 +307,12 @@ h2 {
 	height: 40px;
 	width: 40px;
 }
+.social {
+	color: #FF4B2B;
+}
+.social:visited {
+	color: #FF4B2B;
+}
 .errores {
 	background-color: rgb(255, 173, 173);
 	border: 1px solid  rgb(255, 76, 76);
