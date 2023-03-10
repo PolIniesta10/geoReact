@@ -14,15 +14,17 @@ import { useLocation } from "react-router-dom";
 import { useForm } from '../hooks/useForm';
 
 import { useReducer } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addpostMark } from "../slices/postMarkSlice";
 
-
-const initialState = [];
-const init = () => {
-  return JSON.parse(localStorage.getItem("postmark")) || [];
-};
+//const initialState = [];
+//const init = () => {
+  //return JSON.parse(localStorage.getItem("postmark")) || [];
+//};
 
 export default function Post(){
-  const [postmark, dispatchPosts] = useReducer(postMarkReducer, initialState,init);
+  //const [postmark, dispatchPosts] = useReducer(postMarkReducer, initialState,init);
+  const { postsMarks } = useSelector((state) => state.postMarks);
   const { pathname } = useLocation();
 
   const { id } = useParams();
@@ -31,10 +33,7 @@ export default function Post(){
   
   
   
-  useEffect(() => {
-    localStorage.setItem("postmark", JSON.stringify(postmark));
-  }, [postmark]);
-
+ 
   let [post, setPost] = useState({
     author:{name:""},
     body:"",
@@ -73,8 +72,14 @@ export default function Post(){
  
   useEffect(() => { getPost(); }, [refresh]);
   
+  useEffect(() => {
+    localStorage.setItem("postsMarks", JSON.stringify(postsMarks));
+  }, [postsMarks]);
 
-  const markPost = (post) => {
+
+  const dispatch = useDispatch();
+
+  /*const markPost = (post) => {
     console.log("Añadiendo");
     console.log({ post });
     const postmark = {
@@ -89,6 +94,20 @@ export default function Post(){
     console.log(postmark);
     alert("Marcador añadido!");
     dispatchPosts(action);
+  };*/
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    if (post.body.length <= 1) return;
+
+    const newpostMark = {
+      id: new Date().getTime(),
+      body: post.body,
+      ruta: pathname,
+    };
+
+    console.log("Abans del dispatch");
+    dispatch(addpostMark(newpostMark));
+    console.log("Després del dispatch");
   };
   
     
@@ -174,7 +193,7 @@ export default function Post(){
               </div>
 
               <div className="iconosGridDer">
-                <button className='buttonicon' onClick={ (e) => { markPost(post) }}><BiSave className='icGrid'/></button>
+                <button className='buttonicon' /*onClick={ (e) => { markPost(post) }}*/ onClick={ (e) => { onFormSubmit(e)}}><BiSave className='icGrid'/></button>
               </div>
 
             </div>
