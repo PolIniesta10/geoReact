@@ -30,9 +30,6 @@ export default function Post(){
   let { usuari, setUsuari, authToken, setAuthToken } = useContext(UserContext);
   let [refresh,setRefresh] = useState(false)
   
-  
-  
- 
   let [post, setPost] = useState({
     author:{name:""},
     body:"",
@@ -45,6 +42,7 @@ export default function Post(){
     created_at:""
 
   });
+  
   const getPost = async (e) => {
     try {
       const data = await fetch("https://backend.insjoaquimmir.cat/api/posts/" + id, {

@@ -1,14 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { delplaceMark } from '../slices/placeMarkSlice';
 
-
-export const PlaceMark = ({place,handleDeleteMark}) => {
-    console.log({place})
+export const PlaceMark = ({mark/*,handleDeleteMark*/}) => {
+    const dispatch = useDispatch();
   return (
       <>
       <div className="todo">
-        <div className='todoText'><strong>Name: </strong>{place.name} || <strong>Description: </strong>{place.description} || <strong>Ruta: </strong><a href={place.ruta} className='todoLink'>{place.ruta}</a></div>
+        <div className='todoText'><strong>Body: </strong>{mark.body} || <strong>Ruta: </strong><a href={mark.ruta} className='todoLink'>{mark.ruta}</a></div>
         <div className="botonesTodo">
-            <button onClick={(e) => {handleDeleteMark(place.id)}}>ESBORRAR</button>
+            <button onClick={(e) => {e.preventDefault(); dispatch(delplaceMark(mark.id));}}>ESBORRAR</button>
         </div>
         
       </div>
