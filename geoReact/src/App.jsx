@@ -16,6 +16,7 @@ import PlaceAdd from './Places/PlaceAdd';
 import PlaceEdit from './Places/PlaceEdit';
 import { PlacesGrid } from './Places/PlacesGrid';
 import { PlacesList } from './Places/PlacesList';
+import PlaceMarks from './Places/PlaceMarks';
 
 import Posts from './Posts/Posts';
 import PostsMenu from './Posts/PostsMenu';
@@ -65,6 +66,7 @@ function App() {
             <Route path="/places/edit/:id" element={ <> <PlacesMenu/><PlaceEdit /> </>} /> 
             <Route path="/places/grid" element={ <> <PlacesMenu/><PlacesGrid /> </>} /> 
             <Route path="/places/list" element={ <> <PlacesMenu/><PlacesList /> </>} /> 
+            <Route path="/places/marks" element={ <> <PlacesMenu/><PlaceMarks/> </>} />
 
             <Route path="/posts" element={ <> <PostsMenu/><Posts/> </>} />
 

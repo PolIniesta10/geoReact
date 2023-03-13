@@ -28,7 +28,7 @@ const PlaceMarks = () => {
         <div>
         <table className="tableTodos">
             {placemark.map((place) => (<tr className="trTableTodos">
-              <PostMark
+              <PlaceMark
                 key={place.id}
                 place={place}
                 handleDeleteMark={handleDeleteMark}

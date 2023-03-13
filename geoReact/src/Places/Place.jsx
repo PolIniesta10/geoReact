@@ -29,7 +29,11 @@ export default function Place(){
   const { id } = useParams();
   let { userEmail, setUserEmail, authToken, setAuthToken } = useContext(UserContext);
   let [refresh,setRefresh] = useState(false)
-  
+
+  useEffect(() => {
+    localStorage.setItem("placemark", JSON.stringify(placemark));
+  }, [placemark]);
+
   let [place, setPlace] = useState({
     author:{name:""},
     name:"",
@@ -75,7 +79,8 @@ export default function Place(){
     console.log({ place });
     const placemark = {
       id: new Date().getTime(),
-      body: place.body,
+      name: place.name,
+      description: place.description,
       ruta: pathname
     };
     const action = {
@@ -84,7 +89,7 @@ export default function Place(){
     };
     console.log(placemark);
     alert("Marcador añadido!");
-    dispatchPosts(action);
+    dispatchPlaces(action);
   };
 
   const deletePlace = async(id) => {
@@ -168,7 +173,7 @@ export default function Place(){
               </div>
 
               <div className="iconosGridDer">
-                <button className='buttonicon' onClick={ (e) => { markPost(post) }}><BiSave className='icGrid'/></button>
+                <button className='buttonicon' onClick={ (e) => { markPlace(place) }}><BiSave className='icGrid'/></button>
               </div>
 
             </div>

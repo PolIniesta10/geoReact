@@ -307,6 +307,12 @@ h2 {
 	height: 40px;
 	width: 40px;
 }
+.social {
+	color: #FF4B2B;
+}
+.social:visited {
+	color: #FF4B2B;
+}
 .errores {
 	background-color: rgb(255, 173, 173);
 	border: 1px solid  rgb(255, 76, 76);
@@ -1005,7 +1011,7 @@ h2 {
 	justify-content: flex-end;
 }
 .icGrid {
-	font-size: 35px;
+	font-size: 2.5em;
 	color: rgb(192, 190, 190);
 }
 
@@ -1073,6 +1079,15 @@ h2 {
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
+}
+.icButtonSave {
+	color: green;
+	font-size: 2.5em;
+	
+}
+.icButtonSaved {
+	color: red;
+	font-size: 2.5em;
 }
 .description_bodyGrid {
 	text-align: justify;

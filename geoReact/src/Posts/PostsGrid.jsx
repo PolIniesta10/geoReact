@@ -21,8 +21,8 @@ export const PostsGrid = () => {
     method: "GET",
   }
   )
-  const deletePost = async (e,id) =>{
-    e.preventDefault();
+  const deletePost = async (id) =>{
+    
     try{
       const data = await fetch("https://backend.insjoaquimmir.cat/api/posts/" + id, {
           headers: {

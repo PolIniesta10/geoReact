@@ -10,7 +10,7 @@ import { useLogin } from '../hooks/useLogin';
 
 
 export default function Login({ setLogin }) {
-
+    
   const { formState, onInputChange } = useForm({
     email: "oscar@gmail.com",
     password: "oscar1234",
@@ -28,9 +28,9 @@ export default function Login({ setLogin }) {
             <form className="form_log_reg" action="#">
               <h1 className="h1_log_reg">Iniciar sesion</h1>  
               <div className="social-container">
-                <a href="#" className="social"><i><FontAwesomeIcon icon={faFacebookF}/></i></a>
-                <a href="#" className="social"><i><FontAwesomeIcon icon={faGooglePlusG}/></i></a>
-                <a href="#" className="social"><i><FontAwesomeIcon icon={faTwitter}/></i></a>
+                <a href="https://es-es.facebook.com/" className="social" target="_blank"><i><FontAwesomeIcon icon={faFacebookF}/></i></a>
+                <a href="https://www.google.es/" className="social" target="_blank"><i><FontAwesomeIcon icon={faGooglePlusG}/></i></a>
+                <a href="https://twitter.com/?lang=es" className="social" target="_blank"><i><FontAwesomeIcon icon={faTwitter}/></i></a>
               </div>
               <span className="span_log_reg">o usa tu cuenta ya existente</span>
               <input name="email" type="email" placeholder="Email" value={email} onChange={onInputChange} />

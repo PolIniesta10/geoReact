@@ -21,8 +21,7 @@ export const PlacesGrid = () => {
     method: "GET",
   }
   )
-  const deletePlace = async (e,id) =>{
-    e.preventDefault();
+  const deletePlace = async (id) =>{
     try{
       const data = await fetch("https://backend.insjoaquimmir.cat/api/places/" + id, {
           headers: {
