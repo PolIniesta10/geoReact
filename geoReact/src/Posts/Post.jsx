@@ -15,8 +15,7 @@ import { useForm } from '../hooks/useForm';
 
 import { useReducer } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addpostMark } from "../slices/postMarkSlice";
-
+import { addpostMark, ismarked }  from "../slices/postMarkSlice";
 //const initialState = [];
 //const init = () => {
   //return JSON.parse(localStorage.getItem("postmark")) || [];
@@ -24,7 +23,7 @@ import { addpostMark } from "../slices/postMarkSlice";
 
 export default function Post(){
   //const [postmark, dispatchPosts] = useReducer(postMarkReducer, initialState,init);
-  const { postsMarks } = useSelector((state) => state.postMarks);
+  const { marks, isMarked } = useSelector(state => state.postMarks);
   const { pathname } = useLocation();
 
   const { id } = useParams();
@@ -72,10 +71,7 @@ export default function Post(){
  
   useEffect(() => { getPost(); }, [refresh]);
   
-  useEffect(() => {
-    localStorage.setItem("postsMarks", JSON.stringify(postsMarks));
-  }, [postsMarks]);
-
+  
 
   const dispatch = useDispatch();
 
@@ -95,22 +91,26 @@ export default function Post(){
     alert("Marcador añadido!");
     dispatchPosts(action);
   };*/
-  const onFormSubmit = (event) => {
-    event.preventDefault();
-    if (post.body.length <= 1) return;
+  const markPost = (post) =>{
+    console.log(post);
 
-    const newpostMark = {
+    const AddMark = {
       id: new Date().getTime(),
+      postId: post.id,
       body: post.body,
       ruta: pathname,
-    };
 
-    console.log("Abans del dispatch");
-    dispatch(addpostMark(newpostMark));
-    console.log("Després del dispatch");
-  };
+    }
+    dispatch(addpostMark(AddMark));
+    console.log(pathname);
+    alert("Has añadido este post a tus marcados!")
+  }
   
-    
+  useEffect(() => {
+    dispatch(ismarked(id));
+    localStorage.setItem('postsMarks', JSON.stringify(marks));
+  }, [marks]);
+  
   const deletePost = async(id) => {
     try{
       
@@ -189,11 +189,21 @@ export default function Post(){
                   }
 
                 </div>
-
               </div>
 
               <div className="iconosGridDer">
-                <button className='buttonicon' /*onClick={ (e) => { markPost(post) }}*/ onClick={ (e) => { onFormSubmit(e)}}><BiSave className='icGrid'/></button>
+              { isMarked ? 
+              <></>
+              :
+              <button className='buttoniconsave'
+              onClick={(e) => {
+                e.preventDefault();
+                markPost(post);
+              }}>
+                DESA
+              </button>
+              }
+                <button className='buttonicon' /*onClick={ (e) => { markPost(post) }}*/><BiSave className='icGrid'/></button>
               </div>
 
             </div>
