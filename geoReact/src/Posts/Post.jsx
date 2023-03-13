@@ -27,7 +27,7 @@ export default function Post(){
   const { pathname } = useLocation();
 
   const { id } = useParams();
-  let { userEmail, setUserEmail, authToken, setAuthToken } = useContext(UserContext);
+  let { usuari, setUsuari, authToken, setAuthToken } = useContext(UserContext);
   let [refresh,setRefresh] = useState(false)
   
   
@@ -174,14 +174,14 @@ export default function Post(){
 
                 <div className='authorButtons'>
                   
-                  {(userEmail == post.author.email) ?
+                  {(usuari == post.author.email) ?
 
                     <td><Link className="headerLink" to={"/posts/edit/" +post.id}><BiEdit className='authorIcons'/></Link></td> 
                         :
                     <td></td>
                   }
 
-                  {(userEmail == post.author.email) ?
+                  {(usuari == post.author.email) ?
 
                     <td><Link className="headerLink" to={"/posts/list/"}><FaTrashAlt className='authorIcons' onClick={() => {deletePost(post.id), setRefresh(!refresh);}}/></Link></td>
                         : 
