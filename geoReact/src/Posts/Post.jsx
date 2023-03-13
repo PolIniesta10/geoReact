@@ -6,7 +6,7 @@ import { FaRegComments } from 'react-icons/fa';
 import { BiEdit } from 'react-icons/bi';
 import { FaTrashAlt } from 'react-icons/fa';
 import { FaRegShareSquare } from 'react-icons/fa';
-import { BiSave } from 'react-icons/bi';
+import { FaSave } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { CommentsList } from './comments/CommentsList';
 import { postMarkReducer } from './postMarkReducer';
@@ -193,17 +193,22 @@ export default function Post(){
 
               <div className="iconosGridDer">
               { isMarked ? 
-              <></>
+              <button className='buttonicon'
+              onClick={(e) => {
+                e.preventDefault();
+              }}>
+                <FaSave className='icButtonSaved'/>
+              </button>
               :
-              <button className='buttoniconsave'
+              <button className='buttonicon'
               onClick={(e) => {
                 e.preventDefault();
                 markPost(post);
               }}>
-                DESA
+                <FaSave className='icButtonSave'/>
               </button>
               }
-                <button className='buttonicon' /*onClick={ (e) => { markPost(post) }}*/><BiSave className='icGrid'/></button>
+                {/*<button className='buttonicon' /*onClick={ (e) => { markPost(post) }}><FaSave className='icGrid'/></button>*/}
               </div>
 
             </div>

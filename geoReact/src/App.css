@@ -1011,7 +1011,7 @@ h2 {
 	justify-content: flex-end;
 }
 .icGrid {
-	font-size: 35px;
+	font-size: 2.5em;
 	color: rgb(192, 190, 190);
 }
 
@@ -1080,13 +1080,14 @@ h2 {
 	border: none;
 	cursor: pointer;
 }
-.buttoniconsave {
-	height: 80%;
-	margin-top: 5px;
-	border-radius: 25px;
-	background-color: green;
-	cursor: pointer;
-	color: white;
+.icButtonSave {
+	color: green;
+	font-size: 2.5em;
+	
+}
+.icButtonSaved {
+	color: red;
+	font-size: 2.5em;
 }
 .description_bodyGrid {
 	text-align: justify;
