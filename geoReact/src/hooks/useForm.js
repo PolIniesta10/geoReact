@@ -22,7 +22,7 @@ export const useForm = (initialForm={}) => {
     
     };
     
-    const onResetForm = ({})=> {
+    const onResetForm = ()=> {
         setFormState(initialForm)
     }
 
