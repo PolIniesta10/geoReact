@@ -60,9 +60,9 @@ export default function Register({ setLogin }) {
             <form className="form_log_reg" action="#">
               <h1 className="h1_log_reg">Crear cuenta</h1>
               <div className="social-container">
-                <a href="#" className="social"><i><FontAwesomeIcon icon={faFacebookF}/></i></a>
-                <a href="#" className="social"><i><FontAwesomeIcon icon={faGooglePlusG}/></i></a>
-                <a href="#" className="social"><i><FontAwesomeIcon icon={faTwitter}/></i></a>
+                <a href="https://es-es.facebook.com/" className="social" target="_blank"><i><FontAwesomeIcon icon={faFacebookF}/></i></a>
+                <a href="https://www.google.es/" className="social" target="_blank"><i><FontAwesomeIcon icon={faGooglePlusG}/></i></a>
+                <a href="https://twitter.com/?lang=es" className="social" target="_blank"><i><FontAwesomeIcon icon={faTwitter}/></i></a>
               </div>
               <span className="span_log_reg">o use su correo electrónico para registrarse</span>
               <input className="input_log_reg" name="name" type="text" placeholder="Nombre" onChange={onInputChange} value={name}/>

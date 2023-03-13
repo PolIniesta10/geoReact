@@ -10,7 +10,7 @@ import { FaTrashAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 export const PlaceGrid = ({place, deletePlace,refresh, setRefresh}) => {
-    let { userEmail, setUserEmail } = useContext(UserContext);
+  let { usuari, setUsuari } = useContext(UserContext);
   
   return (
     <div className="grid">
@@ -46,14 +46,14 @@ export const PlaceGrid = ({place, deletePlace,refresh, setRefresh}) => {
             <div className='authorButtons'>
               <Link className="headerlink" to={"/places/" +place.id}><ImEye className='authorIcons'/></Link>
               
-              {(userEmail == place.author.email) ?
+              {(usuari == place.author.email) ?
 
                 <td><Link className="headerLink" to={"/places/edit/" +place.id}><BiEdit className='authorIcons'/></Link></td> 
                     :
                 <td></td>
               }
 
-              {(userEmail == place.author.email) ?
+              {(usuari == place.author.email) ?
 
                 <td><FaTrashAlt className='authorIcons' onClick={() => {deletePlace(place.id), setRefresh(!refresh);}}/></td>
                     : 

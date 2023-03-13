@@ -1,156 +1,91 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React from "react";
+import { useEffect } from "react";
+import { Review } from "./Review";
+
+import { useContext } from "react";
 import { UserContext } from "../../userContext";
-import { Review } from './Review';
-import { BiMessageAdd } from 'react-icons/bi';
-import { BiSend } from 'react-icons/bi'; 
-import { FaEraser } from 'react-icons/fa';
-import { useForm } from "../../hooks/useForm";
 
-export const ReviewsList = ({id}) => {
-  let { userEmail, setUserEmail,authToken, setAuthToken } = useContext(UserContext);
-  let [reviews, setReviews] = useState([]);
-  let [canAddReview, setCanAddReview] = useState(true);
-  let [addReview, setAddReview] = useState(true);
-  let [review, setReview] = useState("");
-  let [refresh,setRefresh] = useState(false)
+import { useState } from "react";
+import { ReviewAdd } from "./ReviewAdd";
+import { ReviewsContext } from "./reviewsContext";
+// Fem servir un context únicament dins de tots els components de Reviews
 
-  const { formState, OnResetForm } = useForm({
-    reviewed: "",
+export const ReviewsList = ({ id, reviews_count }) => {
+  //let {setAdd, setRefresca, reviewsCount, setReviewsCount } = useContext(ReviewsContext)
+  let { usuari, setUsuari, authToken, setAuthToken } = useContext(UserContext);
 
-  });
+  let [error, setError] = useState("");
+  const [refresca, setRefresca] = useState(false);
+  const [add, setAdd] = useState(true);
+  const [reviewsCount, setReviewsCount] = useState(reviews_count);
 
-  const {reviewed} = formState
+  const [reviews, setReviews] = useState([]);
 
-  const saveReviews = async() => {
-      try{  
-          const data = await fetch("https://backend.insjoaquimmir.cat/api/places/"+ id +"/reviews", {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            'Authorization': 'Bearer '  + authToken,
+  // review ={v} setAdd={setAdd } setRefresca={ setRefresca}
 
-          },
-          method: "GET"
-        })
-        const resposta = await data.json();
-        if (resposta.success === true) setReviews(resposta.data) ,console.log(resposta),setRefresh(!refresh);
-        
-        else alert("La resposta no a triomfat");   
-    
-  }catch{
-      console.log("Error");
-      alert("catch");  
+  const listReviews = async () => {
+    const headers = {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + authToken,
+      },
+      method: "GET",
+    };
+
+    let data = await fetch(
+      "https://backend.insjoaquimmir.cat/api/places/" + id + "/reviews",
+      headers
+    );
+    let resposta = await data.json();
+    console.log(resposta);
+
+    if (resposta.success == true) setReviews(resposta.data);
+    else {
+      setError(resposta.message);
     }
-  }
-  useEffect(() => { saveReviews(); }, [refresh]); 
-  
-  const deleteReview = async(idReview) => {
-    try{
-      
-        const data = await fetch("https://backend.insjoaquimmir.cat/api/places/"+ id + "/reviews/"+ idReview, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          'Authorization': 'Bearer '  + authToken,
-        },
-        method: "DELETE"
-      })
-      const resposta = await data.json();
-      if (resposta.success === true) console.log(resposta);
-      
-      else alert("La resposta no a triomfat");
 
-      }catch{
-        console.log("Error");
-        alert("catch");  
+    resposta.data.map((v) => {
+      if (v.user.email === usuari) {
+        setAdd(false);
+        console.log("Te review");
       }
-      
-  }
+    });
+  };
 
-  const sendReview = async(e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("review", review);
-    try{
-      const data = await fetch("https://backend.insjoaquimmir.cat/api/places/"+ id + "/reviews", {
-        headers: {
-          'Accept': 'application/json',
-          'Authorization': 'Bearer ' + authToken,
-        },
-        method: "POST",
-        body: formData
-      });
-      
-      const resposta = await data.json();
-      if (resposta.success === true)  alert("Review creada!");
+  useEffect(() => {
+    listReviews();
+    setRefresca(false);
+  }, [refresca]);
 
-
-      else alert("La resposta no ha triomfat");
-
-
-    }catch{
-      console.log("Error");
-      alert("catch");
-    }
-  }
-  
   return (
-    <>
-      <div className='bodyList'>
-        <table id='tableList'>
-          <tbody>
-            <tr id='tr1List'>
-              <th>Id</th>
-              <th>Review</th>
-              <th>Author</th>
-              <th>Delete</th>
-
-            </tr>
-
-            { reviews.map ( (review)=> (
-              <tr id='tr2List' key={review.id}>
-                {(userEmail == review.user.email && canAddReview == true) && setCanAddReview(false)}
-                <Review review={review} deleteReview={deleteReview} />
-              </tr>
-            ))}
-
-            </tbody>
-        </table>
+    <ReviewsContext.Provider
+      value={{ setAdd, setRefresca, reviewsCount, setReviewsCount }}
+    >
+      {add ? <ReviewAdd id={id} /> : <></>}
+      <div className="flex mx-auto items-center justify-center  mt-6 mx-8 mb-4 max-w-lg">
+        {reviewsCount == 0 ? (
+          <div className="flex mb-4 w-full items-center space-x-2 rounded-2xl bg-red-50 px-4 ring-2 ring-red-200">
+            No hi ha reviews
+          </div>
+        ) : (
+          <div className="flex mb-4 w-full items-center space-x-2 rounded-2xl bg-blue-50 px-4 ring-2 ring-blue-200">
+            Hi ha {reviewsCount} {reviewsCount > 1 ? " ressenyes" : " ressenya"}{" "}
+          </div>
+        )}
       </div>
-        
-      
-      {//Si no tiene ninguna review
-      (canAddReview == true) ?
-        
-        //Si no a pulsado el boton
-        (addReview == true && canAddReview == true) ? 
-              <div className='addReview' > 
-                <div className='addReviewButton' onClick={() => {setAddReview(false);}}><BiMessageAdd className='addReviewIcono'/><p>Add Review</p></div>
-              </div>
-            
-              
-            //Cuando a pulsado el boton
-            : <form> 
-                <div className='addReview'>
 
-                    <input name="reviewed" value={reviewed} type="text" className='addReviewInput pad10' placeholder="Write review" id='review' onChange={(e) => {setReview(e.target.value), {OnChangeForm}}}/>
-              
-                  <div className='addReviewButton pad10' onClick={(e) => {sendReview(e), setCanAddReview(false)}}><BiSend className='addReviewIcono'/></div>
-                  <div className='addReviewButton pad10' onClick={OnResetForm}><FaEraser className='addReviewIcono'/></div>
-                </div>
-              </form> 
+      {error ? (
+        <div className="flex mb-4 w-full items-center space-x-2 rounded-2xl bg-red-50 px-4 ring-2 ring-red-200 ">
+          {error}
+        </div>
+      ) : (
+        <></>
+      )}
 
-            : <div></div>
-
-    }
-    </>
-  )
-
-
-
-
-
-
-
-
-}
+      {reviews.map((v) => {
+        return <Review key={v.id} review={v} />;
+      })}
+    </ReviewsContext.Provider>
+  );
+};

@@ -307,6 +307,12 @@ h2 {
 	height: 40px;
 	width: 40px;
 }
+.social {
+	color: #FF4B2B;
+}
+.social:visited {
+	color: #FF4B2B;
+}
 .errores {
 	background-color: rgb(255, 173, 173);
 	border: 1px solid  rgb(255, 76, 76);
@@ -415,13 +421,15 @@ h2 {
 	border-radius: 20px 20px 0 0;
 }
 .logo_header{
-	background-image: url(./assets/GeoReact.png);
+	background-image: url(./assets/GeoReact2.png);
+	background-size: 85%;
+	border-radius: 25%;
 	height: 90px;
 	width: 200px;
-	background-size: contain;
 	background-repeat: no-repeat;
 	margin-left: 20px;
 	margin-right: 10px;
+	margin-top: 13px;
 }
 .izq_header {
 	display: flex;
@@ -972,7 +980,6 @@ h2 {
 	margin: 5px;
 }
 .gridImg {
-	height: 60%;
 	width: 100%;
 	margin: 0;
 	margin-bottom: 10px;
@@ -1004,7 +1011,7 @@ h2 {
 	justify-content: flex-end;
 }
 .icGrid {
-	font-size: 35px;
+	font-size: 2.5em;
 	color: rgb(192, 190, 190);
 }
 
@@ -1025,7 +1032,9 @@ h2 {
 	color: rgba(245, 245, 220, 0.603);
 	margin: 2px;
 }
-
+.esperant {
+	color: white;
+}
 /* #####################################################
 				END PLACES  & POST GRID
 ##################################################### */
@@ -1070,6 +1079,15 @@ h2 {
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
+}
+.icButtonSave {
+	color: green;
+	font-size: 2.5em;
+	
+}
+.icButtonSaved {
+	color: red;
+	font-size: 2.5em;
 }
 .description_bodyGrid {
 	text-align: justify;
@@ -1170,3 +1188,56 @@ h2 {
 /* #####################################################
 					END ADD REVIEW
 ##################################################### */
+
+/* #####################################################
+					    TODOS
+##################################################### */
+
+.cajaTodos {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin: auto;
+	width: 50%;
+}
+.tableTodos {
+	border-collapse: collapse;
+	border: 2px solid black;
+	border-radius: 1em;
+	width: 100%;
+	overflow: hidden;
+}
+.trTableTodos {
+	height: 35px;
+	background-color: #a8a8a8;
+	color: #2b303b;
+	border: 2px solid black;
+}
+#trTableTodos:nth-child(even) {
+	background-color: #2b303b;
+	color: #a8a8a8;
+}
+#trTableTodos:hover {
+	background-color: rgb(218, 218, 218);
+	color: #2b303b;
+}
+.todo {
+	display: flex;
+    width: 100%;
+    padding: 5px;
+}
+.todoText {
+	margin-right: 5px;
+    align-items: center;
+    width: 100%;
+    margin-left: 90px;
+}
+.buttonDoneToDo {
+	cursor: pointer;
+}
+.todoLink {
+	color: black;
+	text-decoration: none;
+}
+.todoLink:visited {
+	color: black;
+}

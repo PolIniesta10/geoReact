@@ -1,76 +1,64 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { UserContext } from "../userContext";
 import { PostGrid } from './PostGrid'
+import useFetch from '../hooks/useFetch';
 
-export default function PostsGrid() {
-  let { userEmail, setUserEmail, authToken, setAuthToken } = useContext(UserContext);
-  let [posts, setPosts] = useState([]);
-  let [refresh,setRefresh] = useState(false)
+export const PostsGrid = () => {
+  // desa el retorn de dades de l'api places
+  let [ posts, setPosts ] = useState([]);
+  // Ho utilitzem per provar un refresc quan esborrem un element
+  let [refresca,setRefresca] = useState(false)
+  // Dades del context. Ens cal el token per poder fer les crides a l'api
+  let { usuari, setUsuari,authToken,setAuthToken } = useContext(UserContext)
 
-  const getPosts = async(e) => {
-    try{
-      
-        const data = await fetch("https://backend.insjoaquimmir.cat/api/posts", {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          'Authorization': 'Bearer '  + authToken,
-        },
-        method: "GET"
-      })
-      const resposta = await data.json();
-      if (resposta.success === true) {
-        setPosts(resposta.data);
-        console.log(resposta);
-      }
-      
-      else {
-        console.log(resposta);
-      }
-      
-
-      }catch{
-        console.log("Error");
-        alert("catch");  
-      }
-      
+  let { data,error,loading,reRender} = useFetch("https://backend.insjoaquimmir.cat/api/posts",
+  {
+    headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    'Authorization': 'Bearer ' + authToken
+    },
+    method: "GET",
   }
-  useEffect(() => { getPosts(); }, [refresh]);
-
-  const deletePost = async(id) => {
+  )
+  const deletePost = async (id) =>{
+    
     try{
-      
-      const data = await fetch("https://backend.insjoaquimmir.cat/api/posts/"+ id, {
-        headers: {
+      const data = await fetch("https://backend.insjoaquimmir.cat/api/posts/" + id, {
+          headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          'Authorization': 'Bearer '  + authToken,
-        },
-        method: "DELETE"
+          'Authorization': 'Bearer ' + authToken
+          },
+          method: "DELETE",
       })
 
       const resposta = await data.json();
-      if (resposta.success === true)
-        console.log(resposta),
-        alert("Se ha eliminat correctament."),
-        setRefresh(!refresh);
-      
-      else alert("La resposta no a triomfat");
+          console.log(resposta);
+          if (resposta.success === true) {
+              reRender();
+              console.log("Post eliminat correctament");
+          }else{
+              setMissatge(error);
+          }
 
-    }catch{
-      console.log("Error");
-      alert("catch");  
+    }catch {
+      console.log(data);
+      alert("Estem tenint problemes amb la xarxa o amb l'informació a les rutes");
     }
   }
-
+  
   return (
     <>
-          { posts.map ( (post)=> (
-              (post.visibility.name != 'private' || userEmail == post.author.email) && (<div key={post.id} >
-              <PostGrid post={post} deletePost={deletePost} setRefresh={setRefresh} refresh={refresh}/></div>)
-          ))}
-
+         {loading ? <p className='esperant'>Espera...</p> : <>{data.map((post) => {
+            return (
+              <>
+                { post.visibility.id == 1 || post.author.email == usuari ? (<PostGrid  deletePost={ deletePost } key={post.id} post={post}/>) : <></> }            
+              </>
+            )
+          })}</>}
     </>
   )
 }
+
 

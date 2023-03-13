@@ -6,15 +6,30 @@ import { FaRegComments } from 'react-icons/fa';
 import { BiEdit } from 'react-icons/bi';
 import { FaTrashAlt } from 'react-icons/fa';
 import { FaRegShareSquare } from 'react-icons/fa';
-import { BiSave } from 'react-icons/bi';
+import { FaSave } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { CommentsList } from './comments/CommentsList';
-export default function Post(){
-  const { id } = useParams();
-  let { userEmail, setUserEmail, authToken, setAuthToken } = useContext(UserContext);
-  let [posts, setPosts] = useState([]);
-  let [refresh,setRefresh] = useState(false)
+import { postMarkReducer } from './postMarkReducer';
+import { useLocation } from "react-router-dom";
+import { useForm } from '../hooks/useForm';
 
+import { useReducer } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addpostMark, ismarked }  from "../slices/postMarkSlice";
+//const initialState = [];
+//const init = () => {
+  //return JSON.parse(localStorage.getItem("postmark")) || [];
+//};
+
+export default function Post(){
+  //const [postmark, dispatchPosts] = useReducer(postMarkReducer, initialState,init);
+  const { marks, isMarked } = useSelector(state => state.postMarks);
+  const { pathname } = useLocation();
+
+  const { id } = useParams();
+  let { usuari, setUsuari, authToken, setAuthToken } = useContext(UserContext);
+  let [refresh,setRefresh] = useState(false)
+  
   let [post, setPost] = useState({
     author:{name:""},
     body:"",
@@ -27,7 +42,7 @@ export default function Post(){
     created_at:""
 
   });
-
+  
   const getPost = async (e) => {
     try {
       const data = await fetch("https://backend.insjoaquimmir.cat/api/posts/" + id, {
@@ -53,7 +68,47 @@ export default function Post(){
   }
  
   useEffect(() => { getPost(); }, [refresh]);
+  
+  
 
+  const dispatch = useDispatch();
+
+  /*const markPost = (post) => {
+    console.log("Añadiendo");
+    console.log({ post });
+    const postmark = {
+      id: new Date().getTime(),
+      body: post.body,
+      ruta: pathname
+    };
+    const action = {
+      type: "Add Mark",
+      payload: postmark
+    };
+    console.log(postmark);
+    alert("Marcador añadido!");
+    dispatchPosts(action);
+  };*/
+  const markPost = (post) =>{
+    console.log(post);
+
+    const AddMark = {
+      id: new Date().getTime(),
+      postId: post.id,
+      body: post.body,
+      ruta: pathname,
+
+    }
+    dispatch(addpostMark(AddMark));
+    console.log(pathname);
+    alert("Has añadido este post a tus marcados!")
+  }
+  
+  useEffect(() => {
+    dispatch(ismarked(id));
+    localStorage.setItem('postsMarks', JSON.stringify(marks));
+  }, [marks]);
+  
   const deletePost = async(id) => {
     try{
       
@@ -117,14 +172,14 @@ export default function Post(){
 
                 <div className='authorButtons'>
                   
-                  {(userEmail == post.author.email) ?
+                  {(usuari == post.author.email) ?
 
                     <td><Link className="headerLink" to={"/posts/edit/" +post.id}><BiEdit className='authorIcons'/></Link></td> 
                         :
                     <td></td>
                   }
 
-                  {(userEmail == post.author.email) ?
+                  {(usuari == post.author.email) ?
 
                     <td><Link className="headerLink" to={"/posts/list/"}><FaTrashAlt className='authorIcons' onClick={() => {deletePost(post.id), setRefresh(!refresh);}}/></Link></td>
                         : 
@@ -132,11 +187,26 @@ export default function Post(){
                   }
 
                 </div>
-
               </div>
 
               <div className="iconosGridDer">
-                <button className='buttonicon'><BiSave className='icGrid'/></button>
+              { isMarked ? 
+              <button className='buttonicon'
+              onClick={(e) => {
+                e.preventDefault();
+              }}>
+                <FaSave className='icButtonSaved'/>
+              </button>
+              :
+              <button className='buttonicon'
+              onClick={(e) => {
+                e.preventDefault();
+                markPost(post);
+              }}>
+                <FaSave className='icButtonSave'/>
+              </button>
+              }
+                {/*<button className='buttonicon' /*onClick={ (e) => { markPost(post) }}><FaSave className='icGrid'/></button>*/}
               </div>
 
             </div>
