@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { deltodo, toggletodo } from "../slices/todoSlice";
+import { deltodo, toggletodo } from "../slices/todosSlice";
 
 export const ToDo = ({todo/*,handleDelete,handleToggleTodo*/}) => {
   const dispatch = useDispatch();

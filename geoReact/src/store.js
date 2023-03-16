@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import postMarkSlice from './slices/postMarkSlice'
 import placeMarkSlice from './slices/placeMarkSlice'
-import todosReducer from "./slices/todoSlice"
-
+import postMarkSlice from './slices/postMarkSlice'
+import todosSlice from './slices/todosSlice'
 
 export const store = configureStore({
   reducer: {
-    todos: todosReducer,
-    postMarks: postMarkSlice,
+    todos: todosSlice,
     placeMarks: placeMarkSlice,
-  },
+    postMarks: postMarkSlice,
+
+  }
 })

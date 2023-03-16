@@ -9,22 +9,36 @@ import { FaRegShareSquare } from 'react-icons/fa';
 import { FaSave } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { ReviewsList } from './reviews/ReviewsList';
-import { placeMarkReducer } from './placeMarkReducer';
+import { placeMarksReducer } from './placemark/placeMarkReducer';
 import { useLocation } from "react-router-dom";
 import { useForm } from '../hooks/useForm';
 
 import { useReducer } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addplaceMark, ismarked }  from "../slices/placeMarkSlice";
-//const initialState = [];
-//const init = () => {
-  //return JSON.parse(localStorage.getItem("placemark")) || [];
-//};
+import { addmark, ismarked } from "../slices/placeMarkSlice";
+
+const initialState = [];
+
+const init = () => {
+  // Si localstorage tornes null tornariem un array buit
+  return JSON.parse(localStorage.getItem("placemarks")) || [];
+};
 
 export default function Place(){
-  //const [placemark, dispatchPlaces] = useReducer(placeMarkReducer, initialState,init);
-  const { marks, isMarked } = useSelector(state => state.placeMarks);
+
+    // const [stateMarks, dispatchMarks] = useReducer(
+    //   placeMarksReducer,
+    //   initialState,
+    //   init
+    // );
+  
+  const { placeMarks,isMarked } = useSelector(state => state.placeMarks)
+    // const { isMarked } = useSelector(state => state.isMarked)
+  
+  const dispatch = useDispatch();
+
   const { pathname } = useLocation();
+  console.log(pathname);
 
   const { id } = useParams();
   let { usuari, setUsuari, authToken, setAuthToken } = useContext(UserContext);
@@ -70,45 +84,47 @@ export default function Place(){
  
   useEffect(() => { getPlace(); }, [refresh]);
   
-  
-
-  const dispatch = useDispatch();
-
-  /*const markPlace = (place) => {
-    console.log("Añadiendo");
-    console.log({ place });
-    const placemark = {
-      id: new Date().getTime(),
-      body: place.body,
-      ruta: pathname
+  const anotaPlace = () => {
+    //e.preventDefault()
+    
+    const dada = {
+      id: place.id,
+      name: place.name,
+      description: place.description,
+      route: pathname,
     };
-    const action = {
-      type: "Add Mark",
-      payload: placemark
-    };
-    console.log(placemark);
-    alert("Marcador añadido!");
-    dispatchPlaces(action);
-  };*/
-  const markPlace = (place) =>{
-    console.log(place);
 
-    const AddMark = {
-      id: new Date().getTime(),
-      placeId: place.id,
-      body: place.description,
-      ruta: pathname,
+    dispatch(addmark( dada))
+    //setMarked(true)
+    console.log(dada);
 
-    }
-    dispatch(addplaceMark(AddMark));
-    console.log(pathname);
-    alert("Has añadido este place a tus marcados!")
+    // const action = { 
+    //   type: "AddMark",
+    //   payload: dada,
+    // };
+    //dispatchMarks(action);
+    // executarem un note add
+  };
+
+  const test_mark = (id) =>{
+
+
+    console.log(placeMarks.filter( placemark => placemark.id == id))
+
+    if (placeMarks.filter( placemark => placemark.id == id).length > 0)
+        return true
+    else 
+      return false 
+
   }
   
   useEffect(() => {
-    dispatch(ismarked(id));
-    localStorage.setItem('placesMarks', JSON.stringify(marks));
-  }, [marks]);
+    //console.log("Aqui estoy");
+    //console.log(stateMarks)
+    dispatch(ismarked(id))
+    localStorage.setItem("placemarks", JSON.stringify(placeMarks));
+
+  }, [placeMarks]);
   
   const deletePlace = async(id) => {
     try{

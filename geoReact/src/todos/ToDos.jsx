@@ -5,7 +5,7 @@ import { ToDo } from "./ToDo";
 import { ToDoAdd } from "./ToDoAdd";
 import { todosReducer } from "./todosReducer";
 import { useDispatch, useSelector } from "react-redux";
-import { addtodo } from "../slices/todoSlice";
+import { addtodo } from "../slices/todosSlice";
 
 const initialState = [];
 const init = () => {

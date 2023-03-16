@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useReducer } from "react";
 import { useForm } from '../hooks/useForm';
 import { useDispatch, useSelector } from "react-redux";
-import { addtodo } from "../slices/todoSlice";
+import { addtodo } from "../slices/todosSlice";
 
 
 export const ToDoAdd = ({/*handleNewToDo*/}) => {
