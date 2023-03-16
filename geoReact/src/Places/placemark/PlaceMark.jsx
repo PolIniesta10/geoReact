@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 
 export const PlaceMark = ({ placeMark, handleDelete }) => {
   return (
-    <div className="flex mb-4 items-center">
+    <div className="bg-red-200 font-black grid place-content-center h-24">
       <div className="w-full text-grey-darkest">
-        <span> {placeMark.description}</span>
+        <p><span> {placeMark.description}</span></p>
       </div>
       <div className="w-full ml-20 text-grey-darkest items-center ">
-        <span content-center >
+        <p><span content-center >
           <Link className="underline self-center text-blue-600 hover:text-blue-700 transition duration-300 ease-in-out mb-4" to={placeMark.route}>{placeMark.name}</Link>
-        </span>
+        </span></p>
       </div>
 
       <button

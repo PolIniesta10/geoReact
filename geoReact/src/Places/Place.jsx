@@ -91,12 +91,13 @@ export default function Place(){
       id: place.id,
       name: place.name,
       description: place.description,
-      route: pathname,
+      ruta: pathname,
     };
 
     dispatch(addmark( dada))
     //setMarked(true)
     console.log(dada);
+    alert("Has añadido este place a tus marcados!")
 
     // const action = { 
     //   type: "AddMark",
@@ -218,7 +219,7 @@ export default function Place(){
               <button className='buttonicon'
               onClick={(e) => {
                 e.preventDefault();
-                markPlace(place);
+                anotaPlace(e);
               }}>
                 <FaSave className='icButtonSave'/>
               </button>
@@ -228,7 +229,7 @@ export default function Place(){
 
             </div>
 
-            <p className='description_bodyGrid'>{place.body}</p>
+            <p className='description_bodyGrid'>{place.description}</p>
             <p className='created_atGrid'>Created at: {place.created_at}</p>
             <ReviewsList id={place.id}/>
           </div>

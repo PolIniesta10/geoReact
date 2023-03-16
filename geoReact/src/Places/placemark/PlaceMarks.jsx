@@ -38,7 +38,7 @@ export const PlaceMarks = () => {
   const { placeMarks } = useSelector((state) => state.placeMarks);
   const dispatch = useDispatch();
 
-  const markCollectionRef =collection(db,"placemarks")
+  // const markCollectionRef =collection(db,"placemarks")
 
 
   useEffect(() => {

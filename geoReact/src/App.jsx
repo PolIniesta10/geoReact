@@ -16,7 +16,7 @@ import PlaceAdd from './Places/PlaceAdd';
 import PlaceEdit from './Places/PlaceEdit';
 import { PlacesGrid } from './Places/PlacesGrid';
 import { PlacesList } from './Places/PlacesList';
-import PlaceMarks from './Places/placemark/PlaceMarks';
+import { PlaceMarks } from './Places/placemark/PlaceMarks';
 
 import Posts from './Posts/Posts';
 import PostsMenu from './Posts/PostsMenu';
