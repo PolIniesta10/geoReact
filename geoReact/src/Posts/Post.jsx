@@ -9,21 +9,25 @@ import { FaRegShareSquare } from 'react-icons/fa';
 import { FaSave } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { CommentsList } from './comments/CommentsList';
-import { postMarkReducer } from './postMarkReducer';
+import { postMarkReducer } from './postmark/postMarkReducer';
 import { useLocation } from "react-router-dom";
 import { useForm } from '../hooks/useForm';
 
 import { useReducer } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addpostMark, ismarked }  from "../slices/postMarkSlice";
-//const initialState = [];
-//const init = () => {
-  //return JSON.parse(localStorage.getItem("postmark")) || [];
-//};
+import { addmark, ismarked }  from "../slices/postMarkSlice";
+
+const initialState = [];
+
+const init = () => {
+  // Si localstorage tornes null tornariem un array buit
+  return JSON.parse(localStorage.getItem("postmarks")) || [];
+};
+
 
 export default function Post(){
   //const [postmark, dispatchPosts] = useReducer(postMarkReducer, initialState,init);
-  const { marks, isMarked } = useSelector(state => state.postMarks);
+  const { postMarks, isMarked } = useSelector(state => state.postMarks);
   const { pathname } = useLocation();
 
   const { id } = useParams();
@@ -42,7 +46,21 @@ export default function Post(){
     created_at:""
 
   });
-  
+
+  const anotaPost = () => {
+    //e.preventDefault()
+    
+    const dada = {
+      id: post.id,
+      body: post.body,
+      ruta: pathname,
+    };
+
+    dispatch(addmark( dada))
+    console.log(dada);
+    alert("Has añadido este post a tus marcados!")
+  };
+
   const getPost = async (e) => {
     try {
       const data = await fetch("https://backend.insjoaquimmir.cat/api/posts/" + id, {
@@ -68,46 +86,14 @@ export default function Post(){
   }
  
   useEffect(() => { getPost(); }, [refresh]);
-  
-  
 
   const dispatch = useDispatch();
 
-  /*const markPost = (post) => {
-    console.log("Añadiendo");
-    console.log({ post });
-    const postmark = {
-      id: new Date().getTime(),
-      body: post.body,
-      ruta: pathname
-    };
-    const action = {
-      type: "Add Mark",
-      payload: postmark
-    };
-    console.log(postmark);
-    alert("Marcador añadido!");
-    dispatchPosts(action);
-  };*/
-  const markPost = (post) =>{
-    console.log(post);
-
-    const AddMark = {
-      id: new Date().getTime(),
-      postId: post.id,
-      body: post.body,
-      ruta: pathname,
-
-    }
-    dispatch(addpostMark(AddMark));
-    console.log(pathname);
-    alert("Has añadido este post a tus marcados!")
-  }
   
   useEffect(() => {
     dispatch(ismarked(id));
-    localStorage.setItem('postsMarks', JSON.stringify(marks));
-  }, [marks]);
+    localStorage.setItem('postmarks', JSON.stringify(postMarks));
+  }, [postMarks]);
   
   const deletePost = async(id) => {
     try{
@@ -190,23 +176,16 @@ export default function Post(){
               </div>
 
               <div className="iconosGridDer">
-              { isMarked ? 
-              <button className='buttonicon'
-              onClick={(e) => {
-                e.preventDefault();
-              }}>
-                <FaSave className='icButtonSaved'/>
-              </button>
-              :
-              <button className='buttonicon'
-              onClick={(e) => {
-                e.preventDefault();
-                markPost(post);
-              }}>
-                <FaSave className='icButtonSave'/>
-              </button>
-              }
-                {/*<button className='buttonicon' /*onClick={ (e) => { markPost(post) }}><FaSave className='icGrid'/></button>*/}
+              { !isMarked ? (<button
+                  className="buttonicon"
+                  onClick={(e) => anotaPost(e)}
+                >
+                  <FaSave className='icButtonSave'/>
+                </button>) : (<button
+                  className="buttonicon"
+                >
+                  <FaSave className='icButtonSaved'/>
+                </button>)}
               </div>
 
             </div>

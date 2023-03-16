@@ -26,7 +26,7 @@ import PostAdd from './Posts/PostAdd';
 import PostEdit from './Posts/PostEdit';
 import { PostsGrid } from './Posts/PostsGrid';
 import { PostsList } from './Posts/PostsList';
-import PostMarks from './Posts/PostMarks';
+import { PostMarks } from './Posts/postmark/PostMarks';
 
 import NotFound from './NotFound';
 
