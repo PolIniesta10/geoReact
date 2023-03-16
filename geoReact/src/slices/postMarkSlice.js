@@ -1,34 +1,32 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  marks: JSON.parse(localStorage.getItem("postsMarks")) || [],
-  isMarked: false
-};
-export const postMarksSlice = createSlice({
-  name: 'marks',
+    postMarks: JSON.parse(localStorage.getItem("postmarks")) || [],
+    isMarked: false
+}
+
+export const postMarkSlice = createSlice({
+  name: 'postMarks',
   initialState,
   reducers: {
-    addpostMark: (state, action) => {
-      state.marks.push(action.payload); // aqui podem fer push
-      state.isMarked=true;
-      localStorage.setItem('postsMarks', JSON.stringify(state.marks));
-    },
-    delpostMark: (state, action) => {
-      state.marks = state.marks.filter(mark => mark.id !== action.payload);
-      localStorage.setItem('postsMarks', JSON.stringify(state.marks));
-    },
-    ismarked: (state,action) => {
-      state.isMarked = false
-      
-      state.marks.map((mark) => {
-          if (mark.postId == action.payload){
-              state.isMarked = true;
-              console.log(state.isMarked);
-          }  
-      })
-    }
-  }
-});
+        addmark: (state,action) => {
+              state.postMarks.push(action.payload)
+              state.isMarked=true
+        },
+        delmark: (state,action) => {
+              state.postMarks = state.postMarks.filter( postMark => postMark.id !== action.payload)
+        },
+        ismarked: (state,action) => {
 
-export const { addpostMark, delpostMark, ismarked } = postMarksSlice.actions;
-export default postMarksSlice.reducer;
+            if (state.postMarks.filter( postmark => postmark.id == action.payload).length > 0)
+                  state.isMarked = true;
+            else 
+                  state.isMarked = false;
+        }
+  },
+})
+
+// Action creators are generated for each case reducer function
+export const { addmark,delmark,ismarked } = postMarkSlice.actions
+
+export default postMarkSlice.reducer

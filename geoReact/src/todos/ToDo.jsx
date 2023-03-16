@@ -2,27 +2,33 @@ import React from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { deltodo, toggletodo } from "../slices/todoSlice";
 
-export const ToDo = ({todo/*,handleDelete,handleToggleTodo*/}) => {
+export const ToDo = ({todo}) => {
   const dispatch = useDispatch();
 
   return (
-      <>
-      <div className="todo">
-        <div className='todoText'>{todo.description}</div>
-        <div className="botonesTodo">
-            {(todo.done) ? /*<button onClick={ (e) => {handleToggleTodo(todo.id)}} className='buttonDoneToDo'>ToDO </button>:
-            <button onClick={ (e) => {handleToggleTodo(todo.id)}} className='buttonDoneToDo'> Done</button>
-            }
-            <button onClick={ (e) => {handleDelete(todo.id)}} className='buttonDoneToDo'> DELETE</button>*/
-            <button onClick={ (e) => dispatch(toggletodo(todo.id))} className='buttonDoneToDo'>Not Done</button> :
-            <button onClick={ (e) => dispatch(toggletodo(todo.id))} className='buttonDoneToDo'>Done</button>}
-            <button onClick={() => dispatch(deltodo(todo.id))} className="buttonDoneToDo">Remove</button>
-        </div>
-        
-      </div>
-        
+    <div className="flex mb-4 items-center">
+      <p className="w-full text-grey-darkest">
+      <span className={todo.done ? "line-through" : ""}> {todo.description}</span>
+      </p>
+      { todo.done ? (
+        <button onClick = { ()=> dispatch(toggletodo(todo.id)) } className="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-gray-400 border-gray-600 hover:bg-gray-500">
+        Not Done
+      </button>
+          
+      ) :(
+        <button onClick = { ()=>dispatch(toggletodo(todo.id)) } className="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-green-400 border-green-600 hover:bg-green-500">
+        Done
+      </button>
+          
+      )}
+    
 
-      </>
+      <button onClick = {()=> dispatch(deltodo(todo.id))} className="flex-no-shrink  p-2 ml-2 border-2 rounded  border-red-600  hover:text-white text-red-400 hover:bg-red-500">
+        Remove
+      </button>
+
+    
+  </div>
     
   )
 }
